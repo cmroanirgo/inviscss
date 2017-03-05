@@ -1,0 +1,354 @@
+
+/* Forms */
+
+.input-default() {
+	font-size: inherit;
+	line-height: inherit;
+    padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #aaa;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); // #ddd
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    border-radius: 4px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    margin-bottom: 0.72em;
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="week"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+select,
+textarea,
+.button, button {
+	.input-default();
+}
+
+input[type="file"] {
+	font-size: inherit;
+	line-height: inherit;
+    padding: 0.5em 0;
+    cursor: pointer;
+}
+
+
+input[type="range"] {
+	font-size: inherit;
+	line-height: inherit;
+ 	margin: 0.5em 0;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+input:not([type]) {
+	.input-default();
+}
+
+
+/* Chrome (as of v.32/34 on OS X) needs additional room for color to display. */
+/* May be able to remove this tweak as color inputs become more standardized across browsers. */
+input[type="color"] {
+    padding: 0.2em 0.5em;
+}
+
+
+
+.checkbox,
+.radio {
+    cursor: pointer;
+}
+
+/* File Specialisations */
+/* TODO combine input.form-control and .file-drop */
+
+input.form-control.js[type="file"] { /* the .js is added via javascript */
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+input.form-control.js[type="file"] + label {
+    max-width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding:0.5em 0;
+}
+
+.file-drop { /* basis from: https://scribblerockerz.com/drag-n-drop-file-input-without-javascript/ */
+	width: 100%;
+  	position: relative;
+  	margin:0.5em 0;
+
+	input[type="file"] {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	.file-notice {
+		padding: 30px;
+		text-align: center;
+		transition: background 0.3s ease-in-out;
+		background: rgba(0,0,0,0.1);
+		border: 2px dashed rgba(0,0,0,0.1);
+
+		.success {
+			display: none;
+		}
+	}	
+
+	&:hover .file-notice {
+		background: rgba(0,0,0,0.2);
+	}
+
+	input[type=file]:focus + .file-notice {
+		outline: 2px solid rgba(0,0,0,0.5);
+		outline: -webkit-focus-ring-color auto 5px;
+	}
+
+	input[type=file]:valid + .file-notice {
+		border-color: rgba(red(@color-success),green(@color-success),blue(@color-success),0.4);
+		background-color: rgba(red(@color-success),green(@color-success),blue(@color-success),0.3);
+
+		.success {
+			display: inline;
+		}
+		.default {
+			display: none;
+		}
+	}
+}
+
+.file-drop.light, .file-drop.lighten {
+	.file-notice {
+		background: rgba(255,255,255,0.2);
+		border: 2px dashed rgba(255,255,255,0.2);
+	}	
+
+	&:hover .file-notice {
+		background: rgba(255,255,255,0.1);
+	}
+
+	input[type=file]:focus + .file-notice {
+		outline: 2px solid rgba(255,255,255,0.5);
+		outline: -webkit-focus-ring-color auto 5px;
+	}
+
+}
+
+/* stacked */
+
+form.stacked { }
+input[type='text'],input[type='password'],input[type='email'],textarea { width:100%;width:calc(100% - 1em);}
+
+.stacked input,
+.stacked select,
+.stacked label,
+.stacked textarea,
+.stacked .form-control,
+.stacked .file-drop {
+    display: block;
+    margin: 0.25em 0;
+}
+.stacked label input { display:inline-block;}
+input[type="checkbox"],
+input[type="radio"],
+.stacked label:has( input[type="checkbox"]),
+.stacked label:has( input[type="radio"]) { cursor: pointer; } /* not all browsers support :has() yet */
+
+.aligned input,
+.aligned textarea,
+.aligned select,
+.aligned .form-control,
+.aligned .file-drop {
+    display:block; 
+}
+.aligned label:not(.checkbox):not(.radio):not(.file-notice) {
+	display: block;
+	flex-basis:100%;
+}
+.aligned input {  margin-bottom: 0.5em; }
+.aligned label input { display:inline-block;}
+.aligned .row label.checkbox, .aligned .row label.radio {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+@media @sm-viewport {
+	form.aligned { display:table; }
+
+	.aligned input,
+	.aligned select,
+	.aligned .form-control {
+	    display:table-cell; 
+	    vertical-align: middle;
+	}
+	.aligned textarea {
+	    display:table-cell; 
+	    vertical-align: top;
+	}
+
+	/* Aligned Forms */
+	.aligned .row {
+		display:table-row; 
+	    margin-bottom: 0.5em;
+	}
+	.aligned .row label:not(.checkbox):not(.radio):not(.file-notice) {
+	    text-align: right;
+	    display: table-cell; 
+	    vertical-align: middle;
+	    padding: 0 1em 0 0;
+	}
+
+	.aligned .row label.checkbox, .aligned .row label.radio {
+	    display: inline-block;
+	    vertical-align: middle;
+	}
+}
+
+
+
+.has-error, .has-error * {
+  color: darken(@color-danger, 15%); // @color-danger:          #d9534f;
+}
+.has-error input, input.has-error,
+.has-error textarea, textarea.has-error,
+.has-error select, select.has-error {
+  border-color:darken(@color-danger, 15%); // @color-danger:          #d9534f;
+  background-color: lighten(@color-danger, 40%);
+}
+
+// Alternate buttons
+// --------------------------------------------------
+.recolor(@text-color; @bg-color; @border-color) {
+  color:@text-color; background-color:@bg-color; border-color:@border-color;
+}
+.button, button, input[type="submit"] {
+  cursor:pointer;
+  padding:0.5em 1em;
+  margin:0.25em 0;
+  border-radius: 4px;
+  border:1px solid rgba(0,0,0,0.2);
+	&:hover:not(:active) {
+  		box-shadow: inset 0 -1px 3px rgba(0,0,0,0.1), inset 0 3px 3px rgba(255,255,255,0.1), 0 0 5px rgba(0,0,0,0.2);
+  	}	
+	&:active {
+  		box-shadow: inset 0 0px 5px rgba(0,0,0,0.4);
+  	}	
+}
+.button:hover, button:hover {
+  outline:0;
+}
+
+.button.default, button.default {
+  .recolor(@btn-default-color; @btn-default-bg; @btn-default-border);
+  //.hover-glow(@btn-default-bg);
+}
+.button.primary, button.primary, button[type="submit"] {
+  .recolor(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  //.hover-glow(@btn-primary-bg);
+}
+// Success appears as green
+.button.success, button.success {
+  .recolor(@btn-success-color; @btn-success-bg; @btn-success-border);
+  //.hover-glow(@btn-success-bg);
+}
+// Info appears as blue-green
+.button.info, button.info {
+  .recolor(@btn-info-color; @btn-info-bg; @btn-info-border);
+  //.hover-glow(@btn-info-bg);
+}
+// Warning appears as orange
+.button.warning, button.warning {
+  .recolor(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
+  //.hover-glow(@btn-warning-bg);
+}
+// Danger and error appear as red
+.button.danger, button.danger {
+  .recolor(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+  //.hover-glow(@btn-danger-bg);
+}
+
+
+
+
+/* Grouped Inputs */
+.horz-group { 
+	display: table; 
+	border-collapse: collapse;
+	margin:0.72em 0;
+
+	* {
+	    display: table-cell;
+	    margin: 0;
+	    padding-left: 1rem;padding-right: 1rem;
+		border-width:1px;
+		border-radius: 4px;
+	}
+	*:focus, *:hover {
+    	z-index: 3;
+	}
+	*:not(:first-child) {
+	 	border-top-left-radius: 0;
+	 	border-bottom-left-radius: 0;
+	}
+	*:not(:last-child) {
+	 	border-top-right-radius: 0;
+	 	border-bottom-right-radius: 0;
+	}
+}
+
+.vert-group { 
+	margin:0 0.72em;
+	border-collapse: collapse; 
+	width: max-content; 
+	display: inline-block;
+	vertical-align: top;
+	 * {
+	    display: block;
+	    box-sizing: border-box;
+	    width: 100% !important;
+	    margin: 0 !important;
+	    padding-top: 0.5em;
+	    padding-bottom: 0.5em;
+		border-width:1px;
+		border-radius: 4px;
+	}
+	*:focus, *:hover {
+	    z-index: 3;
+	}
+	*:not(:first-child) {
+	 	border-top-right-radius: 0;
+	 	border-top-left-radius: 0;
+	}
+	*:not(:last-child) {
+	 	border-bottom-right-radius: 0;
+	 	border-bottom-left-radius: 0;
+	}
+}

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Invis CSS</title>
+<link rel="stylesheet/less" href="less/inviscss.less" media="all" type="text/css" />
+<style>
+body { font-family: Helvetica, Arial, sans-serif}
+#banner { background-color: purple; color:white; padding: 1.66em 0;}
+#banner h1{ color:white; font-size: 42pt; }
+#xbanner h1:before{ content:"\2A01";font-size: 80pt;margin:0;padding:0;line-height: 0.1em} /* ⨁ */
+
+#grid-demo .row { margin:5px 0;}
+#grid-demo .row>div             { padding: 0.7em; text-align:center; }
+#grid-demo .row>div:not(.nobar) { background-color:#eee; border:1px solid #ddd; border-radius: 4px;}
+
+
+a { color: purple;}
+a:hover,a:visited { color: purple;}
+h2 a:hover:after {
+	content: " \000020 \0000b6"; /*&para;*/
+}
+/* docs */
+pre {
+  display:block;
+  padding:9.5px;
+  margin:01em 0 10px;
+  font-size:13px;
+  line-height:1.42857143;
+  color:#333;
+  word-break:break-all;
+  word-wrap:break-word;
+  background-color:#f5f5f5;
+  border:1px solid #ccc;
+  border-radius:4px
+}
+pre code {
+  padding:0;
+  font-size:inherit;
+  color:inherit;
+  white-space:pre-wrap;
+  background-color:transparent;
+  border-radius:0;
+}
+
+code { padding: 2px 4px;
+font-size: 90%;
+color: #C7254E;
+background-color: #F9F2F4;
+border-radius: 4px;
+}
+
+</style>
+<!--build:rm-begin-->
+<!-- 
+	This is automatically removed during the build process 
+-->
+<script>
+  less = {
+    xx_env: "development",
+    env:'production',
+    async: false,
+    fileAsync: false,
+    poll: 1000,
+    functions: {},
+    dumpLineNumbers: "comments",
+    relativeUrls: true,
+    xx_rootpath: ":/a.com/"
+  };
+</script>
+<script src="node_modules/less/dist/less.min.js" type="text/javascript"></script>
+<!--build:rm-end-->
+<script src="inviscss.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="banner">
+	<div class="container">
+		<h1 class="inv-invis">InvisCss</h1>
+	</div>
+</div>
+<section>
+<div class="container hr-after">
+	<h2 id="typography"><a href="#typography">Typography</a></h2>
+	<p>InvisCSS is designed to bring you the core of a good Css library without the cruft. That is, it's not filled with styles that are only used by developers and designers for their own websites. It's pretty much invisible. This is for <i>real</i> sites: 
+	<h3>Cleaner HTML</h3>
+	<ul><li>No more <code>class="btn btn-primary"</code>, or <code>class="form-control"</code> nonsense. Your HTML is clean and lean again. Although built with a Bootstrap audience in mind, you'll love the simplicity.</li></ul>
+	<h3>Smarter CSS</h3>
+	<ul>
+		<li>Use of <code>rem</code> units makes font scaling a snap.</li>
+		<li>No coloring or assumptions made (except for buttons).</li>
+		<li>Forms are unbelievably easy.</li>
+		<li>Minimal rules means it's easier to override. InvisCss is designed to be easy to change core features.</li>
+	</ul>
+
+	</p>
+	<h1>H1 Heading</h1>
+	<h2>H2 Heading</h2>
+	<h3>H3 Heading</h3>
+	<h4>H4 Heading</h4>
+	<h5>H5 Heading</h5>
+
+	<blockquote>Block Quote</blockquote>
+	<p>A simple paragraph with a <a href="#">hyperlink</a>.</p>
+
+	<h3>Normalise CSS</h3>
+	<p>We include NormalizeCSS by default so that you get consistent results across browsers. You can remove it easily by setting <code>@use-normalize: 0;</code></p>
+</div></section>
+
+<section>
+<div class="container hr-after">
+	<h2 id="containers"><a href="#containers">Containers</a></h2>
+
+	<p>InvisCss provides an optional containing element to wrap site contents. </p>
+	Use <code>container</code> for a responsive, variable width container, with a pleasant amount of whitespace to the left and right, as you can see on this page.</p>
+	<p>If you prefer a more rigid system, you can use <code>container-fixed</code> instead.</p>
+
+	<pre><code>&lt;div class="container"&gt;
+	...
+&lt;/div&gt;</code></pre>
+
+
+
+</div>
+</section>
+
+
+<section id="grid-demo">
+<div class="container hr-after">
+	<h2 id="grid"><a href="#grid">Flexbox Grid</a></h2>
+
+	<p>InvisCss uses a modified version of <a href="http://flexboxgrid.com"> FlexBox Grid</a> for grids. For anyone familiar with Bootstrap's Grid, you'll feel right at home.</p>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+</div>
+<div class="row">
+  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+</div>
+
+</section>
+
+<section>
+<div class="container hr-after">
+	<h2 id="tables"><a href="#tables">CSS Tables</a></h2>
+	<p>Gone are the days of html tables for anything but data. InvisCss reinvigorates table layouts using properly formatted div's and CSS.</p>
+
+	<div class="table stripe border">
+	<div class="row">
+		<div class="cell">Cell 1.1</div>
+		<div class="cell">Cell 1.2</div>
+		<div class="cell">Cell 1.3</div>
+	</div>
+	<div class="row">
+		<div class="cell nowrap">Cell 2.1 This is wide, but nowrap is on</div>
+		<div class="cell">Cell 2.2</div>
+		<div class="cell">Cell 2.3</div>
+	</div>
+	<div class="row">
+		<div class="cell">Cell 3.1</div>
+		<div class="cell">Cell 3.2</div>
+		<div class="cell">Cell 3.3 and wider</div>
+	</div>
+	<div class="row">
+		<div class="cell">Cell 4.1</div>
+		<div class="cell">Cell 4.2</div>
+		<div class="cell">Cell 4.3</div>
+	</div>
+
+	<div class="row">
+		<div class="cell">Cell 5.1</div>
+		<div class="cell">Cell 5.2</div>
+		<div class="cell">Cell 5.3</div>
+	</div>
+	</div>
+	<pre><code>&lt;div class="table stripe border"&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="cell nowrap"&gt;...&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+	<h3>Responsive Tables</h3>
+	<div class="table vert-stripe horiz-border outer-border">
+	<div class="row">
+		<div class="cell col-md-5 small">.col-md-5 .small</div>
+		<div class="cell col-sm-5 col-md-5 small">.col-sm-5 .col-md-5 .small</div>
+		<div class="cell col-md-2 col-xs-5 small">.col-xs-5 .col-md-2 .small</div>
+	</div>
+	<div class="row">
+		<div class="cell">Wider than normal</div>
+		<div class="cell">Cell 2.2</div>
+		<div class="cell">Cell 2.3</div>
+	</div>
+	<div class="row">
+		<div class="cell">Cell 3.1</div>
+		<div class="cell">Cell 3.2</div>
+		<div class="cell">Cell 3.3</div>
+	</div>
+	<div class="row">
+		<div class="cell">Cell 4.1</div>
+		<div class="cell">Cell 4.2</div>
+		<div class="cell">Cell 4.3</div>
+	</div>
+
+	<div class="row">
+		<div class="cell">Cell 5.1</div>
+		<div class="cell">Cell 5.2</div>
+		<div class="cell">Cell 5.3</div>
+	</div>
+	</div>
+	<pre><code>&lt;div class="table vert-stripe horiz-border outer-border"&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="cell col-md-5"&gt;...&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+
+	<p>...or on the table itself</p>
+	<div class="table stripe border col-md-8 center">
+	<div class="row">
+		<div class="cell">Cell 1.1</div>
+		<div class="cell">Cell 1.2</div>
+		<div class="cell">Cell 1.3</div>
+	</div>
+	<div class="row">
+		<div class="cell">Cell 2.1</div>
+		<div class="cell">Cell 2.2</div>
+		<div class="cell">Cell 2.3</div>
+	</div>
+	<div class="row">
+		<div class="cell">Cell 3.1</div>
+		<div class="cell">Cell 3.2</div>
+		<div class="cell">Cell 3.3</div>
+	</div>
+	<div class="row">
+		<div class="cell">Cell 4.1</div>
+		<div class="cell">Cell 4.2</div>
+		<div class="cell">Cell 4.3</div>
+	</div>
+
+	<div class="row">
+		<div class="cell">Cell 5.1</div>
+		<div class="cell">Cell 5.2</div>
+		<div class="cell">Cell 5.3</div>
+	</div>
+	</div>
+	<pre><code>&lt;div class="table stripe border col-md-8 center"&gt;
+	...
+&lt;/div&gt;</code></pre>
+</div>
+</section>
+
+
+<section id="forms">
+<div class="container hr-after" > 
+<h2 id="forms"><a href="#forms">Forms</a></h2>
+	<h3>Standard form</h3>
+	<p>This is the default layout, with only <code>aligned</code> specified on the form. <code>Label</code> elements are rendered as right-aligned table cells automatically, and are responsive.</p>
+	<form class="aligned"> 
+		<div class="row"> 
+			<label for="exampleInputEmail1">Email address</label> 
+			<input id="exampleInputEmail1" placeholder="Email" type="email"> 
+		</div> 
+		<div class="row small" > 
+			<label for="exampleInputEmail2">Small Text</label> 
+			<input id="exampleInputEmail2" placeholder="Text" type="text"> 
+		</div> 
+		<div class="row has-error"> 
+			<label for="exampleInputPassword1">Password With Error</label> 
+			<input id="exampleInputPassword1" placeholder="Password" type="password"> 
+		</div> 
+		<div class="row large"> 
+			<label for="exampleInputPassword2">Large Password</label> 
+			<input id="exampleInputPassword2" placeholder="Password" type="password"> 
+		</div> 
+		<div class="row">
+			<label for="exampleInputFile">File input*</label> 
+			<input id="exampleInputFile" type="file" class="form-control">  
+		</div> 
+		<div class="row">
+			<label for="exampleInputFile2">File drop*</label> 
+			<div class="file-drop">
+				<input id="exampleInputFile2" type="file" multiple>  
+				<div class="file-notice">
+					<span class="success inv-upload">Drop Files or Click Here...</span>
+					<span class="default inv-upload">Drop Files or Click Here...</span>
+				</div>
+			</div>
+		</div> 
+		<div class="row"><label for>Number</label><input type="number" min="1" max="10"> </div>
+		<div class="row"><label for>Range</label><input type="range" min="1" max="10"> </div>
+		<div class="row"><label for>Date</label><input type="date" > </div>
+		<div class="row"><label for>DateTime</label><input type="datetime" > </div>
+		<div class="row"><label for>Time</label><input type="time" > </div>
+		<div class="row"><label for>Search</label><input type="search" class="input-1"> </div>
+		<div class="row"><label for>Tel</label><input type="tel" > </div>
+
+		<div class="row"> 
+			<span class="td"><!--this pushes the checkboxes right. You could also use <label for>&nbsp;</label> here instead--></span> 
+			<label class="checkbox"> <input type="checkbox"> Check me out </label> <br/>
+			<label class="radio"> <input type="radio" name="group1" id="r1" value="a">  radio1 </label> <br/>
+			<label class="radio"> <input type="radio" name="group1" id="r2" value="b">radio2 </label> 
+		</div> 
+		<div class="row">
+			<label> </label><button type="submit">Submit</button> 
+		</div>
+	</form> 
+	<pre><code>&lt;form ...&gt;
+	&lt;div class="row"&gt; 
+		&lt;label for="exampleInputEmail1"&gt;Email address&lt;/label&gt; 
+		&lt;input id="exampleInputEmail1" placeholder="Email" type="email"&gt; 
+	&lt;/div&gt; 
+	...
+&lt;/form&gt;</code></pre>
+<p>* Requires Javascript</p>
+
+	<h2 id="stacked"><a href="#stacked">Stacked</a></h2>
+	<p>Just add <code>stacked</code> to the form's class (or to a parent of the form elements) to always stack elements vertically.</p>
+	<form class="stacked col-sm-8 center"> 
+		<label for="exampleInputEmail1">Email address</label> 
+		<input id="exampleInputEmail1" placeholder="Email" type="email"> 
+		<label for="exampleInputEmail2" class="small">Small Text</label> 
+		<input id="exampleInputEmail2" class="small" placeholder="Text" type="text"> 
+
+		<div class="has-error"> 
+			<label for="exampleInputPassword1">Password With Error</label> 
+			<input id="exampleInputPassword1" placeholder="Password" type="password"> 
+		</div> 
+		<div class="large"> 
+			<label for="exampleInputPassword2">Large Password</label> 
+			<input id="exampleInputPassword2" placeholder="Password" type="password"> 
+		</div> 
+		<label for="exampleInputFile">File input*</label> 
+		<input id="exampleInputFile" type="file" class="form-control">  
+		<label> <input type="checkbox"> Check me out </label> 
+		<button type="submit">Submit</button> 
+	</form> 	
+	<pre><code>&lt;form class="center stack" ...&gt;
+	...
+&lt;/form&gt;</code></pre>
+<p>* Requires Javascript</p>
+
+	<h2 id="buttons"><a href="#buttons">Buttons</a></h2>
+	<form class="aligned center"> 
+		<div class="row">
+			<label>Normal</label>
+			<div class="td"><button type="submit">Submit</button>
+				<button >Normal</button>
+				<button class="primary">Primary</button>
+				<button class="success">Success</button>
+				<button class="info">Info</button>
+				<button class="warning">Warning</button>
+				<button class="danger">Danger</button> </div>
+		</div>
+		<div class="row small">
+			<label>Small</label>
+			<div class="td"><button type="submit">Submit</button>
+			<button >Normal</button>
+				<button class="primary">Primary</button>
+				<button class="success">Success</button>
+				<button class="info">Info</button>
+				<button class="warning">Warning</button>
+				<button class="danger">Danger</button> </div>
+			</div>
+		<div class="row large">
+			<label>Large</label>
+			<div class="td"><button type="submit">Submit</button> 
+				<button >Normal</button> 
+				<button class="primary">Primary</button> 
+				<button class="success">Success</button> 
+				<button class="info">Info</button> 
+				<button class="warning">Warning</button> 
+				<button class="danger">Danger</button> </div>
+		</div>		
+	</form> 	
+		<div class="">
+			<h3>Grouped</h3>
+			<div class="horz-group">
+				<button type="submit">Submit</button> 
+				<button >Normal</button> 
+				<button class="primary">Primary</button> 
+				<button class="success">Success</button> 
+				<button class="info">Info</button> 
+				<button class="warning">Warning</button> 
+				<button class="danger">Danger</button> 
+			</div>
+			<div class="table">
+				<div class="td vert-group">
+					<button type="submit">Submit</button> 
+					<button >Normal</button> 
+					<button class="primary">Primary</button> 
+					<button class="warning">Warning</button> 
+					<button class="danger">Danger</button> 
+				</div>
+				<div class="td vert-group">
+					<input type='text'  placeholder="Username">
+					<input type='password'  placeholder="Password">
+					<input type='password'  placeholder="Password Again">
+					<input type="submit">
+				</div>
+			</div>
+		</div>
+
+</div>
+
+</section>
+</body>

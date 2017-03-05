@@ -1,0 +1,64 @@
+
+@use-normalize:			true; // set this to '0' to NOT include NormalizeCSS
+
+//Mobile First responsiveness. Invis CSS preferred
+@xs-min: 30;
+@sm-min: 48;
+@md-min: 64;
+@lg-min: 75;
+@screen-xs-min: unit(@xs-min, em);
+@screen-sm-min: unit(@sm-min, em);
+@screen-md-min: unit(@md-min, em);
+@screen-lg-min: unit(@lg-min, em);
+
+@container-sm: calc(unit(@sm-min, em) + @gutter-width);
+@container-md: calc(unit(@md-min, em) + @gutter-width);
+@container-lg: calc(unit(@lg-min, em) + @gutter-width);
+
+@container-fluid-xs: 98%;
+@container-fluid-sm: 95%;
+@container-fluid-md: 90%;
+@container-fluid-lg: 80%;
+
+@sm-viewport:		~"only screen and (min-width: 48em)";
+@md-viewport:		~"only screen and (min-width: 64em)";
+@lg-viewport:		~"only screen and (min-width: 75em)";
+
+@root-font-size:        14px;	 // this is applied to <html> and is the 'root' used in 'rem' units below
+@link-hover-decoration: underline;
+
+// for grid
+@gutter-width: 0; //1rem;
+@half-gutter-width: @gutter-width * 0.5;
+@gutter-compensation: @half-gutter-width * -1;
+
+// buttons
+@color-primary:			#337ab7; 
+@color-success:         #5cb85c;
+@color-info:            #5bc0de;
+@color-warning:         #f0ad4e;
+@color-danger:          #d9534f;
+
+@btn-default-color:             #333;
+@btn-default-bg:                #fff;
+@btn-default-border:            #ccc;
+
+@btn-primary-color:             #fff;
+@btn-primary-bg:                @color-primary;
+@btn-primary-border:            darken(@btn-primary-bg, 5%);
+
+@btn-success-color:             #fff;
+@btn-success-bg:                @color-success;
+@btn-success-border:            darken(@btn-success-bg, 5%);
+
+@btn-info-color:                #fff;
+@btn-info-bg:                   @color-info;
+@btn-info-border:               darken(@btn-info-bg, 5%);
+
+@btn-warning-color:             #fff;
+@btn-warning-bg:                @color-warning;
+@btn-warning-border:            darken(@btn-warning-bg, 5%);
+
+@btn-danger-color:              #fff;
+@btn-danger-bg:                 @color-danger;
+@btn-danger-border:             darken(@btn-danger-bg, 5%);

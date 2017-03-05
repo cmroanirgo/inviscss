@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "name": "inviscss",
+  "version": "0.2.0",
+  "description": "A minimal css library",
+  "scripts": {
+    "prep": "rm -rf dist && mkdir -p dist/css && cp -r demo dist/ && cp -r fonts dist/ && cp -r js dist/",
+
+    "build:css": "lessc less/inviscss.less dist/css/inviscss.css --autoprefix",
+    "build:css.min": "lessc less/inviscss.less --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"  dist/css/inviscss.min.css",
+    "build:demo": "node build.js dist/demo/",
+    "build:base": "npm run prep && npm run build:css && npm run build:css.min && npm run build:demo",
+    "build": "echo 'building...' && npm run -s build:base && echo 'done' && open dist/demo/index.html"
+  },
+  "devDependencies": {
+    "less": "latest",
+    "less-plugin-autoprefix": "^1.5.1",
+    "less-plugin-clean-css": "latest",
+    "flexboxgrid": "^6.3.1",
+    "font-awesome": "^4.7.0",
+    "normalize.css": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmroanirgo/inviscss.git"
+  },
+  "author": "cmroanirgo",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/cmroanirgo/inviscss/issues"
+  },
+  "homepage": "https://github.com/cmroanirgo/inviscss#readme",
+  "dependencies": {
+  }
+}

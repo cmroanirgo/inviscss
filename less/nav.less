@@ -1,0 +1,325 @@
+/* Navigation */
+@z-modal: 100;
+
+body.modal-open {
+    filter: blur(3px);	
+}
+.modal-backdrop {
+	position: fixed;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	z-index:(@z-modal)-1;
+
+	//&:not(.clear) { // used by menus to indicate no coloring of bg
+		background-color:rgba(0,0,0,0.5);
+	//}
+}
+nav,.nav {
+
+	ul {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		//align-content:flex-start;
+	    background-color: inherit;
+	    padding:0;
+	    margin:0;
+	    list-style: none;
+	    position: relative;
+	}
+
+
+ 	//good. but needs <a> as a child. javascript helps fix this
+	li {
+	    margin: 0;
+	    padding: 0;
+	    display:inline-block;
+	    flex:0 1 auto;
+	    position: relative;
+    }
+
+	a {
+	    display:block;
+	    margin:0;
+	    padding:0 1em;
+    	background-color: inherit;
+	    color:inherit;
+	    line-height: 3em;
+	    text-decoration:none;
+	    white-space: nowrap;
+	    cursor: pointer;
+	}
+
+	a:hover {
+    	background-color: inherit;
+	    color:inherit;
+	    text-decoration:none;
+	}
+
+	ul ul {
+	    display: none;
+	    position: absolute;
+	    top: 100%;
+	    top: calc(100% -2px);
+		box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.8);
+	}
+
+	&.hover ul li:hover > ul, ul li.open > ul {
+		display: flex;
+		flex-direction: column;
+		z-index: @z-modal;
+	}
+	
+
+	ul ul li {
+	    display:block;
+	    width: 100%;
+	    position: relative;
+	}
+
+	ul ul ul {
+	    position: absolute;
+	    top:0;
+	    left:100%;
+	}
+
+	// Add down/right arrow
+	ul li > a:after  { 
+		font-family: "invisicons"; 
+		content:  ' \e802'; // inv-down
+	} 
+	ul ul li > a:after { 
+		content:  '\e805'; // inv-right
+		position: relative;
+		left: 0.3em;
+	}
+	li > a:only-child:after { content: '' !important; }
+
+
+	&.right > ul, ul.right {
+		justify-content:flex-end;
+		ul {
+			right: 0;
+			left: auto;			
+		}
+		ul ul {
+		    left:auto;
+		    right:100%;
+		}
+		ul li > a:after {
+			content: '';
+			position: relative;
+			//padding: 0;
+		} 
+		ul li > a:before { 
+			content:  '\e804'; // inv-left
+			font-family: "invisicons"; 
+			position: absolute;
+			left: 0.3em;
+		}
+		li > a:only-child:before { content: '' !important; }
+	} 
+	&.center > ul, ul.center {
+		justify-content:center;
+	} 
+
+
+	&.collapse {
+		ul {
+			display: none;
+			flex-wrap:nowrap;
+			flex-direction:column;
+		}
+			
+		input#menu-toggle[type="checkbox"] {
+			display: none;
+		}
+		#menu-toggle-label {
+			cursor: pointer;
+		    padding:1em 1em;
+		    line-height: 3em;
+		}
+		#menu-toggle:checked ~ ul, ul.checked {
+			display: flex;
+		}
+
+		@media @sm-viewport {
+			// reshow as normal for larger screens
+			.label-toggle {
+				display: block;
+			}
+			#menu-toggle-label {
+				display: none;
+			}
+
+
+			// reset to default
+			ul { 
+				display: flex;
+				flex-wrap:wrap;
+				flex-direction:row;
+			}
+			ul ul {
+	    		display: none;
+	    	}
+
+		}
+	}
+
+}
+
+
+
+/* Good. hover menusbar.
+nav,.nav {
+
+	ul {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		//align-content:flex-start;
+	    background-color: inherit;
+	    padding:0;
+	    margin:0;
+	    list-style: none;
+	    position: relative;
+	}
+
+
+ 	//good. but needs <a> as a child. javascript helps fix this
+	li {
+	    margin: 0;
+	    padding: 0;
+	    display:inline-block;
+	    flex:0 1 auto;
+    }
+
+	a {
+	    display:block;
+	    margin:0;
+	    padding:0 1em;
+    	background-color: inherit;
+	    color:inherit;
+	    line-height: 3em;
+	    text-decoration:none;
+	    white-space: nowrap;
+	    cursor: pointer;
+	}
+
+	a:hover {
+    	background-color: inherit;
+	    color:inherit;
+	    text-decoration:none;
+	}
+
+	ul ul {
+	    display: none;
+	    position: absolute;
+	    top: 100%;
+	    top: calc(100% -2px);
+		box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.8);
+	}
+
+	ul li:hover > ul {
+		display: flex;
+		flex-direction: column;
+		z-index: 100;
+	}
+
+	ul ul li {
+	    display:block;
+	    width: 100%;
+	    position: relative;
+	}
+
+	ul ul ul {
+	    position: absolute;
+	    top:0;
+	    left:100%;
+	}
+
+	// Add down/right arrow
+	ul li > a:after  { 
+		font-family: "invisicons"; 
+		content:  ' \e802'; // inv-down
+	} 
+	ul ul li > a:after { 
+		content:  '\e805'; // inv-right
+		position: relative;
+		left: 0.3em;
+	}
+	li > a:only-child:after { content: '' !important; }
+
+
+	&.right > ul, ul.right {
+		justify-content:flex-end;
+		ul ul {
+		    left:auto;
+		    right:100%;
+		}
+		ul li > a:after {
+			content: '';
+			position: relative;
+			//padding: 0;
+		} 
+		ul li > a:before { 
+			content:  '\e804'; // inv-left
+			font-family: "invisicons"; 
+			position: absolute;
+			left: 0.3em;
+		}
+		li > a:only-child:before { content: '' !important; }
+	} 
+	&.center > ul, ul.center {
+		justify-content:center;
+	} 
+
+
+	&.collapse {
+		ul {
+			display: none;
+			flex-wrap:nowrap;
+			flex-direction:column;
+		}
+			
+		input#menu-toggle[type="checkbox"] {
+			display: none;
+		}
+		#menu-toggle-label {
+			cursor: pointer;
+		    padding:1em 1em;
+		}
+		#menu-toggle:checked ~ ul, ul.checked {
+			display: flex;
+		}
+
+		@media @sm-viewport {
+			// reshow as normal for larger screens
+			.label-toggle {
+				display: block;
+			}
+			#menu-toggle-label {
+				display: none;
+			}
+
+
+			// reset to default
+			ul { 
+				display: flex;
+				flex-wrap:wrap;
+				flex-direction:row;
+			}
+			ul ul {
+	    		display: none;
+	    	}
+
+		}
+	}
+
+}
+
+*/

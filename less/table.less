@@ -1,0 +1,17 @@
+/* tables */
+.table { 
+	display:table; border-collapse: collapse;
+	box-sizing: border-box;
+}
+.table>.row, .tr { box-sizing: border-box;
+	display:table-row; white-space: inherit; }
+.table .cell, .td { box-sizing: border-box;
+	display:table-cell; padding:0.1rem 0.72rem; white-space: inherit;}
+.stripe>.row:nth-of-type(odd),
+  .vert-stripe>.row>.cell:nth-of-type(odd) { background-color: #eee; }
+.outer-border { border:1px solid #aaa; }
+.border>.row>.cell { border:1px solid #aaa; }
+.vert-border>.row>.cell { border-right:1px solid #aaa; }
+.horz-border>.row>.cell,.horiz-border>.row>.cell { border-bottom:1px solid #aaa; }
+
+.table.scroll { overflow-x: auto; width:100%; }
