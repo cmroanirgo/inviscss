@@ -4,13 +4,13 @@
   "version": "0.2.0",
   "description": "A minimal css library",
   "scripts": {
-    "prep": "rm -rf dist && mkdir -p dist/css && cp -r demo dist/ && cp -r fonts dist/ && cp -r js dist/",
+    "prep": "mkdir -p dist && rm -rf dist/* && mkdir -p dist/css && cp -r demo dist/ && cp -r fonts dist/ && cp -r js dist/",
 
     "build:css": "lessc less/inviscss.less dist/css/inviscss.css --autoprefix",
     "build:css.min": "lessc less/inviscss.less --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"  dist/css/inviscss.min.css",
     "build:demo": "node build.js dist/demo/",
-    "build:base": "npm run prep && npm run build:css && npm run build:css.min && npm run build:demo",
-    "build": "echo 'building...' && npm run -s build:base && echo 'done' && open dist/demo/index.html"
+    "build": "npm run prep && npm run build:css && npm run build:css.min && npm run build:demo",
+    "build:open": "echo 'building...' && npm run -s build && echo 'done' && open dist/demo/index.html"
   },
   "devDependencies": {
     "less": "latest",

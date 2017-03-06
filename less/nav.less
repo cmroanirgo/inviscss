@@ -1,6 +1,7 @@
 /* Navigation */
 @z-modal: 100;
 
+/*
 body.modal-open {
     filter: blur(3px);	
 }
@@ -16,13 +17,51 @@ body.modal-open {
 		background-color:rgba(0,0,0,0.5);
 	//}
 }
+*/
+.menu {
+
+}
+
+.hide() {
+	height: 0;
+	opacity: 0;
+	visibility: hidden;
+}
+.show() {
+	height:auto;
+	opacity: 1;
+	visibility: visible;
+
+}
 nav,.nav {
+	/*
+	<nav class=''> // valid classes are: right|center collapse; 
+		<ul>
+			<li><a href=...>Item 1</a></li>
+			<li><a href=...>Item 2</a></li>
+			<li><a href=...>Sub Menu</a>
+				<ul>...
+				</ul>
+			</li>
+
+		</ul>
+	</nav>
+	*/
+	&.top {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items:center;
+		>* {
+			flex:0 1 auto;	
+		}
+	}
 
 	ul {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		align-items: center;
+		//align-items: center;
 		//align-content:flex-start;
 	    background-color: inherit;
 	    padding:0;
@@ -43,6 +82,7 @@ nav,.nav {
 
 	a {
 	    display:block;
+	    position: relative;
 	    margin:0;
 	    padding:0 1em;
     	background-color: inherit;
@@ -53,6 +93,13 @@ nav,.nav {
 	    cursor: pointer;
 	}
 
+	hr {
+		line-height: 1em;
+		margin:0;
+		padding: 0;
+		width: 100%;
+	}
+
 	a:hover {
     	background-color: inherit;
 	    color:inherit;
@@ -60,16 +107,18 @@ nav,.nav {
 	}
 
 	ul ul {
-	    display: none;
+		display: flex;
+		flex-direction: column;
 	    position: absolute;
 	    top: 100%;
 	    top: calc(100% -2px);
-		box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.8);
+		box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+		.hide();
+		overflow: hidden;
 	}
 
-	&.hover ul li:hover > ul, ul li.open > ul {
-		display: flex;
-		flex-direction: column;
+	/*&.hover ul li:hover > ul, */ul li.open > ul {
+		.show();
 		z-index: @z-modal;
 	}
 	
@@ -96,7 +145,6 @@ nav,.nav {
 		position: relative;
 		left: 0.3em;
 	}
-	li > a:only-child:after { content: '' !important; }
 
 
 	&.right > ul, ul.right {
@@ -109,18 +157,13 @@ nav,.nav {
 		    left:auto;
 		    right:100%;
 		}
-		ul li > a:after {
-			content: '';
-			position: relative;
-			//padding: 0;
-		} 
 		ul li > a:before { 
 			content:  '\e804'; // inv-left
 			font-family: "invisicons"; 
 			position: absolute;
 			left: 0.3em;
 		}
-		li > a:only-child:before { content: '' !important; }
+		ul li > a:after { content:''; }
 	} 
 	&.center > ul, ul.center {
 		justify-content:center;
@@ -128,49 +171,153 @@ nav,.nav {
 
 
 	&.collapse {
-		ul {
-			display: none;
+		& >ul {
+			display:none;
 			flex-wrap:nowrap;
 			flex-direction:column;
+			width:100%;
+		}
+		li {
+		    display:block;
+		    text-align: center;
+		}
+		ul ul {
+			position: relative;
+			top:0;
+		}
+		ul ul ul {
+			left:0;
 		}
 			
-		input#menu-toggle[type="checkbox"] {
-			display: none;
-		}
-		#menu-toggle-label {
+		.nav-toggle {
+		    display: inline-block;
 			cursor: pointer;
-		    padding:1em 1em;
+		    padding:0em 1em;
 		    line-height: 3em;
 		}
-		#menu-toggle:checked ~ ul, ul.checked {
-			display: flex;
+		.nav-toggle:after {
+			font-family: "invisicons";
+			content: '\f0c9'; // inv-menu
+		}
+		.nav-toggle.open ~ ul {
+			display:flex;
 		}
 
 		@media @sm-viewport {
-			// reshow as normal for larger screens
-			.label-toggle {
-				display: block;
-			}
-			#menu-toggle-label {
+			// hide on larger screens
+			.nav-toggle {
 				display: none;
 			}
 
-
-			// reset to default
-			ul { 
-				display: flex;
-				flex-wrap:wrap;
+			// reset nav to operate as per default
+			& >ul { 		
+				display: flex;		
 				flex-direction:row;
+				flex-wrap: wrap;
+			}
+			li {
+			    display:inline-block;
+			    text-align: left;
 			}
 			ul ul {
-	    		display: none;
+				position: absolute;
+				top:100%;
 	    	}
+			ul ul ul {
+				top:0;
+				left:100%;
+			}
 
 		}
 	}
 
 }
 
+nav.side {
+	ul {
+		flex-direction: column;
+		flex-wrap:nowrap;
+	}
+	li {
+	    display:block;
+	    width: 100%;
+	    text-align: left;
+	}
+	ul ul {
+		position: relative;
+		top:0;
+	}
+	ul ul ul {
+		left:0;
+	}
+		
+	li > a:after  { 
+		font-family: "invisicons"; 
+		content:  ' \e802'; // inv-down
+		position: absolute;
+		right: 0.3em;
+		left:auto;
+	} 
+
+	&.right {
+		justify-content:flex-end;
+		li {
+			text-align: right;
+		}
+		ul li > a:before { 
+			content:  '\e802'; // inv-down
+			font-family: "invisicons"; 
+			position: absolute;
+			left: 0.3em;
+		}
+		ul li > a:after { content:'' !important; }
+	}
+
+	@media @sm-viewport { // ie. NOT collapsed
+		&.popup ul ul {
+		    position: absolute;
+		    top: 0;
+		    left:100%;
+			ul {
+			    position: absolute;
+			    top: 0;
+			    left:100%;
+			}
+		}
+
+		// Add down/right arrow
+		&.popup ul {
+			li > a:after  { 
+				font-family: "invisicons"; 
+				content:  '\e805'; // inv-right
+			}
+		}	 
+
+
+		&.right.popup {
+			ul {
+				right: 0;
+				left: auto;			
+			}
+			ul ul {
+			    left:auto;
+			    right:100%;
+			}
+			ul li > a:before { 
+				content:  '\e804'; // inv-left
+			}
+		}
+
+	}
+}
+
+nav,.nav {
+	// cleanups
+	&.right,ul.right {
+		li > a:only-child:before { content: '' !important; }
+	}
+	li > a:only-child:after { content: '' !important; }	
+}
 
 
 /* Good. hover menusbar.

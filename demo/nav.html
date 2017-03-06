@@ -8,13 +8,14 @@
 <link rel="stylesheet/less" href="../less/inviscss.less" media="all" type="text/css" />
 <link rel="stylesheet" href="demo.css" media="all" type="text/css" />
 <style>
-#banner nav {position: absolute;left: 0; top: 0; background-color: purple;}
-#banner nav ul>li:hover, #banner #menu-toggle-label:hover { background-color: #f5d800; color:#000; }
-#banner nav ul ul { background-color: #f5d800; color:#000; border:1px solid #333; }
+#banner {padding:0;}
+#banner nav { xbackground-color: purple;}
+#banner nav ul>li:hover, #banner li.open, #banner .nav-toggle:hover { background-color: #f5d800; color:#000; }
+#banner nav ul ul { background-color: #f5d800; color:#000; border:1px solid #333; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.8);}
 #banner nav ul ul a:hover { background-color: black; color: white;}
 
-nav[id*="demo"]>ul>li { border:1px solid white; border-radius: 3px}
-nav[id*="demo"]>ul>li:hover, nav[id*="demo"] #menu-toggle-label:hover { border:1px solid #888; border-radius: 3px}
+nav[id*="demo"]>ul>li, nav[id*="demo"] .nav-toggle { border:1px solid transparent; border-radius: 3px}
+nav[id*="demo"]>ul>li:hover, nav[id*="demo"] .nav-toggle:hover { border-color:#888;}
 nav[id*="demo"] ul ul { background-color: #f7f7f7; color:#333; }
 nav[id*="demo"] a { color:black;}
 nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
@@ -24,40 +25,40 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 <div id="banner">
 	<nav class="collapse">
 		<ul>
-			<li><a href="#">Home</a></li>
+			<li><a href="#demo-home">Home</a></li>
 			<li>Stuff
-<!--				<ul>
-					<li><a href="#">Link 1</a></li>
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
 					<li>Link 2
 						<ul>
-							<li><a href="#">Link 1</a></li>
+							<li><a href="#demo-link1">Link 1</a></li>
 							<li>Link 2
 								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-				</ul>-->
-			</li>
-			<li><a>More Stuff</a>
-				<ul>
-					<li><a href="#">Link 1</a></li>
-					<li><a href="#">Sub Menu</a>
-						<ul>
-							<li><a href="#">Link 1</a></li>
-							<li><a href="#">Link 2</a>
-								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
 								</ul>
 							</li>
 						</ul>
 					</li>
 				</ul>
 			</li>
-			<li><a href="#">About</a></li>
+			<li><a>More Stuff</a>
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li><a href="#">Sub Menu</a>
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#demo-about">About</a></li>
 
 		</ul>
 	</nav>
@@ -68,19 +69,19 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 <section>
 <div class="container hr-after">
 <h2> Standard / Centered / Right</h2>
-<!--	<nav id="demo1">
+	<nav id="demo1">
 		<ul>
-			<li><a href="#">Home</a></li>
+			<li><a href="#demo-home">Home</a></li>
 			<li>Stuff
 				<ul>
-					<li><a href="#">Link 1</a></li>
+					<li><a href="#demo-link1">Link 1</a></li>
 					<li>Sub Menu
 						<ul>
-							<li><a href="#">Link 1</a></li>
+							<li><a href="#demo-link1">Link 1</a></li>
 							<li>Link 2
 								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -89,37 +90,37 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 			</li>
 			<li><a>More Stuff</a>
 				<ul>
-					<li><a href="#">Link 1</a></li>
-					<li><a href="#">Link 2</a>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li><a href="#demo-link2">Link 2</a>
 						<ul>
-							<li><a href="#">Link 1</a></li>
-							<li><a href="#">Link 2</a>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
 								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
 								</ul>
 							</li>
 						</ul>
 					</li>
 				</ul>
 			</li>
-			<li><a href="#">About</a></li>
+			<li><a href="#demo-about">About</a></li>
 
 		</ul>
 
 
 		<ul id="demo2" class="center">
-			<li><a href="#">Home</a></li>
+			<li><a href="#demo-home">Home</a></li>
 			<li>Stuff
 				<ul>
-					<li><a href="#">Link 1</a></li>
+					<li><a href="#demo-link1">Link 1</a></li>
 					<li>Link 2
 						<ul>
-							<li><a href="#">Link 1</a></li>
+							<li><a href="#demo-link1">Link 1</a></li>
 							<li>Sub Menu 2
 								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -128,35 +129,35 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 			</li>
 			<li><a>More Stuff</a>
 				<ul>
-					<li><a href="#">Link 1</a></li>
+					<li><a href="#demo-link1">Link 1</a></li>
 					<li><a href="#">Sub Menu</a>
 						<ul>
-							<li><a href="#">Link 1</a></li>
-							<li><a href="#">Link 2</a>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
 								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
 								</ul>
 							</li>
 						</ul>
 					</li>
 				</ul>
 			</li>
-			<li><a href="#">About</a></li>
+			<li><a href="#demo-about">About</a></li>
 
 		</ul>
 		<ul id="demo3" class="right">
-			<li><a href="#">Home</a></li>
+			<li><a href="#demo-home">Home</a></li>
 			<li>Stuff
 				<ul>
-					<li><a href="#">Link 1</a></li>
+					<li><a href="#demo-link1">Link 1</a></li>
 					<li>Link 2
 						<ul>
-							<li><a href="#">Link 1</a></li>
+							<li><a href="#demo-link1">Link 1</a></li>
 							<li>Link 2
 								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -165,43 +166,44 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 			</li>
 			<li><a>More Stuff</a>
 				<ul>
-					<li><a href="#">Link 1</a></li>
+					<li><a href="#demo-link1">Link 1</a></li>
 					<li><a href="#">Sub Menu</a>
 						<ul>
-							<li><a href="#">Link 1</a></li>
-							<li><a href="#">Link 2</a>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
 								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
 								</ul>
 							</li>
 						</ul>
 					</li>
 				</ul>
 			</li>
-			<li><a href="#">About</a></li>
+			<li><a href="#demo-about">About</a></li>
 
 		</ul>
 	</nav>
 </div>
 </section>
 
+<section>
 <div class="container hr-after">
 <h2> Collapsible</h2>
-<p>Just add <code>.collapse</code> to the &lt;nav&gt; element to reduce it to a hamburger (<span class="inv-menu"></span>) on smaller screens.
+<p>Just add <code>.collapse</code> to the &lt;nav&gt; element to reduce it to a hamburger (<span class="inv-menu"></span>) on smaller screens.</p>
 	<nav id="demo1" class="collapse">
 		<ul>
-			<li><a href="#">Home</a></li>
+			<li><a href="#demo-home">Home</a></li>
 			<li>Stuff
 				<ul>
-					<li><a href="#">Link 1</a></li>
+					<li><a href="#demo-link1">Link 1</a></li>
 					<li>Sub Menu
 						<ul>
-							<li><a href="#">Link 1</a></li>
+							<li><a href="#demo-link1">Link 1</a></li>
 							<li>Link 2
 								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -210,21 +212,21 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 			</li>
 			<li><a>More Stuff</a>
 				<ul>
-					<li><a href="#">Link 1</a></li>
-					<li><a href="#">Link 2</a>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li><a href="#demo-link2">Link 2</a>
 						<ul>
-							<li><a href="#">Link 1</a></li>
-							<li><a href="#">Link 2</a>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
 								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
 								</ul>
 							</li>
 						</ul>
 					</li>
 				</ul>
 			</li>
-			<li><a href="#">About</a></li>
+			<li><a href="#demo-about">About</a></li>
 
 		</ul>
 
@@ -232,22 +234,25 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 </div>
 </section>
 
+
+<section>
 <div class="container hr-after">
-<h2> Expand on hover</h2>
-<p>Just add <code>.hover</code> to the &lt;nav&gt; element. NB: The default 'click to activate' action is still present as it is required for usability on touch screen devices.
-	<nav id="demo1" class="hover">
+<h2> Vertical &amp; Popup Vertical</h2>
+<p>Add <code>.side</code> (or <code>.sidebar</code>, or <code>.side-something</code>) to the &lt;nav&gt; element for a vertical navigation menu.</p>
+<p>Add <code>.popup</code> to the &lt;nav class="side"&gt; element for popup menus on larger screens.</p>
+	<nav id="demoside1" class="side" style="float:left">
 		<ul>
-			<li><a href="#">Home</a></li>
+			<li><a href="#demo-home">Home</a></li>
 			<li>Stuff
 				<ul>
-					<li><a href="#">Link 1</a></li>
-					<li>Sub Menu
-						<ul>
-							<li><a href="#">Link 1</a></li>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li>Popup Sub Menu
+						<ul class="popup">
+							<li><a href="#demo-link1">Link 1</a></li>
 							<li>Link 2
 								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -256,25 +261,236 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 			</li>
 			<li><a>More Stuff</a>
 				<ul>
-					<li><a href="#">Link 1</a></li>
-					<li><a href="#">Link 2</a>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li><a href="#demo-link2">Link 2</a>
 						<ul>
-							<li><a href="#">Link 1</a></li>
-							<li><a href="#">Link 2</a>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
 								<ul>
-									<li><a href="#">Link 1</a></li>
-									<li><a href="#">Link 2</a></li>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
 								</ul>
 							</li>
 						</ul>
 					</li>
 				</ul>
 			</li>
-			<li><a href="#">About</a></li>
+			<li><a href="#demo-about">About</a></li>
 
 		</ul>
 
-	</nav>-->
+	</nav>
+	<nav id="demoside1" class="side popup"  style="float:left; margin-left:3em; border-left:4px solid #aaa">
+		<ul>
+			<li><a href="#demo-home">Popup Home</a></li>
+			<li>Stuff
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li>Sub Menu
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li>Link 2
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a>More Stuff</a>
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li><a href="#demo-link2">Link 2</a>
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#demo-about">About</a></li>
+
+		</ul>
+
+	</nav>
+	<nav id="demoside1" class="side popup collapse"  style="float:left; margin-left:3em; border-left:4px solid #aaf">
+		<ul>
+			<li><a href="#demo-home">Popup Home</a></li>
+			<li>Stuff
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li>Sub Menu
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li>Link 2
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a>More Stuff</a>
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li><a href="#demo-link2">Link 2</a>
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#demo-about">About</a></li>
+
+		</ul>
+
+	</nav>	
+</div>
+</section>
+
+
+
+<section>
+<div class="container hr-after">
+<h2>Right Vertical &amp; Popup</h2>
+<p>Add <code>.right</code> to the &lt;nav class="side"&gt; element for arrows on the left. In this demo, we use <code>float:right</code> to position the nav, but this is arbitary, as it is up to you to position the nav appropriately to your needs.</p>
+	<nav id="demoside1" class="side right" style="float:right">
+		<ul>
+			<li><a href="#demo-home">Home</a></li>
+			<li>Stuff
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li>Sub Menu
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li>Link 2
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a>More Stuff</a>
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li><a href="#demo-link2">Link 2</a>
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#demo-about">About</a></li>
+
+		</ul>
+
+	</nav>
+	<nav id="demoside1" class="side right popup" style="float:right;margin-right:3em; border-right:4px solid #aaa">
+		<ul>
+			<li><a href="#demo-home">Popup Home</a></li>
+			<li>Stuff
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li>Sub Menu
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li>Link 2
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a>More Stuff</a>
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li><a href="#demo-link2">Link 2</a>
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#demo-about">About</a></li>
+
+		</ul>
+
+	</nav>	
+
+
+	<nav id="demoside1" class="side right popup collapse" style="float:right;margin-right:3em; border-right:4px solid #afa">
+		<ul>
+			<li><a href="#demo-home">Popup Home</a></li>
+			<li>Stuff
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li>Sub Menu
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li>Link 2
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a>More Stuff</a>
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li><a href="#demo-link2">Link 2</a>
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#demo-about">About</a></li>
+
+		</ul>
+
+	</nav>		
 </div>
 </section>
 

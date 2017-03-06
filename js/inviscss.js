@@ -18,12 +18,12 @@ Copyright (c) kodespace.com, 2016
 		document.addEventListener('DOMContentLoaded', fn);
 		}
 	}
+	var debug = function(s) { console.log(s); }
 	function $$(where, selector, special_immediate_child_kludge) { 
 		if (!selector)
 			return document.querySelectorAll(where); 
 		else {
-			special_immediate_child_kludge = special_immediate_child_kludge || selector[0]='>';
-			if (special_immediate_child_kludge) {
+			if ( special_immediate_child_kludge || selector[0]=='>') {
 		    	var id_orig = where.id; // remember current element id
 		    	if (!id_orig)
 		    		// assign new unique id
@@ -45,44 +45,13 @@ Copyright (c) kodespace.com, 2016
 	}
 
 	function addClass(el, className) {
-		if (el.classList)
-		  el.classList.add(className);
-		else
-		  el.className += ' ' + className;
+	  el.classList.add(className);
 	}
 	function removeClass(el, className) {
-		if (el.classList) {
-			el.classList.remove(className);
-		} else {
-			var classes = el.className.split(' ');
-			var existingIndex = classes.indexOf(className);
-
-			if (existingIndex >= 0)
-				classes.splice(existingIndex, 1);
-
-			el.className = classes.join(' ');
-		}
+		el.classList.remove(className);
 	}
 	function hasClass(el, className) {
-		if (el.classList)
-			return el.classList.contains(className);
-		else
-			return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
-	}
-	function toggleClass(el, className) {
-		if (el.classList) {
-			el.classList.toggle(className);
-		} else {
-			var classes = el.className.split(' ');
-			var existingIndex = classes.indexOf(className);
-
-			if (existingIndex >= 0)
-				classes.splice(existingIndex, 1);
-			else
-				classes.push(className);
-
-			el.className = classes.join(' ');
-		}
+		return el.classList.contains(className);
 	}
 	function setAttr(el, attr, value) {
 		el.setAttribute(attr, value);
@@ -93,22 +62,8 @@ Copyright (c) kodespace.com, 2016
 	function insertHTML(el, where, str) {
 		el.insertAdjacentHTML(where, str);
 	}
-	/*function closest(el, selector, stopSelector) { // from http://stackoverflow.com/a/38149758/125525
-		var retval = null;
-		while (el) {
-			if (el.matches(selector)) {
-				retval = el;
-				break
-			} else if (stopSelector && el.matches(stopSelector)) {
-				break
-			}
-			el = el.parentElement;
-		}
-		return retval;
-	}*/
-	function parents(el, selector, stopSelector) { 
+	function getParents(el, selector, stopSelector) {  // may include self in result
 		var retval = [];
-		el = el.parentElement;
 		while (el) {
 			if (el.matches(selector)) {
 				retval.push(el);
@@ -122,16 +77,17 @@ Copyright (c) kodespace.com, 2016
 
 	var forEach = Array.prototype.forEach;
 
+/*
 	function createBackdrop(el, className, clickFn) {
-		return;
 		// if mobile we use a backdrop because click events don't delegate
+		modalClose();
 		var backdrop = document.createElement('div');
 		addClass(backdrop, 'modal-backdrop');
 		if (className && className.length)
 			addClass(backdrop, className);
 		//addClass(document.body, 'modal-open');
 		var parent = el.parentNode;
-		parent.insertBefore(backdrop, parent.firstChild);
+		parent.insertBefore(backdrop, null);
 		on(backdrop, 'click', clickFn)
 	}
 
@@ -141,79 +97,102 @@ Copyright (c) kodespace.com, 2016
 			el.remove(); 
 		});
 	}
+*/
 	function menuClearAll(e) {
-		console.log('Menu clearing')
-		if (e && e.which === 3) return; //? bootstrap does this?
-		forEach.call($$('[data-hasmenu]:not(:hover)'), function(el) {
-			console.log('> menu closed: ' + el.textContent.split('\n').slice(0,1).join(''))
+		debug('Menu clearing')
+		if (e && e.which === 3) return; 
+		forEach.call($$('.open[data-hasmenu]'), function(el) {
+			debug('< menu closed: ' + el.textContent.split('\n').slice(0,1).join(''))
 			removeClass(el, 'open');
 		})
-		modalClose();
+		menuOpen = false;
+		//modalClose();
 	}
 
-	function menuInit(elOpen, elMenu) {
+	var menuExists = false;
+	var menuOpen = false;
+	function menuInit(elOpen, elSubMenu) {
+		menuExists = true;
 		removeClass(elOpen, "open")
 		setAttr(elOpen, 'data-hasmenu', 'true');
-		on(elOpen, 'click', function(e) { return menuClick(e, elOpen, elMenu); }); 
+		on(elOpen, 'click', menuClick); 
 	}
 
-	function menuClick(e, elOpen, elMenu) {
-		//e.preventDefault();
-		console.log('Menu click begin: ' + elOpen.textContent.split('\n').slice(0,1).join(''))
+	function menuClick(e) {
+		var elOpen = this;
+		e.preventDefault();
+		e.stopPropagation();
+		debug('Menu click begin: ' + elOpen.textContent.split('\n').slice(0,1).join(''));
 		var isActive = hasClass(elOpen, 'open');
-		menuClearAll(e);
+		var parents = getParents(elOpen, '[data-hasmenu]'); // includes self
 		if (!isActive) {
-			createBackdrop(elOpen, 'clear', menuClearAll)
-			var p=elOpen;
-			console.log('> menu open: ' + p.textContent.split('\n').slice(0,1).join(''))
+			// close all open elements not part of parent tree
+			forEach.call(clone($$('.open[data-hasmenu]')), function(li) {
+				if (parents.indexOf(li)<0)
+					removeClass(li, 'open');
+			});
+			//createBackdrop(parents[parents.length-1].parentNode, 'clear', menuClearAll)
+			forEach.call(parents, function(li) {
+				addClass(li, 'open')
+			})
+			menuOpen = true;
+			debug('> menu open: ' + elOpen.textContent.split('\n').slice(0,1).join(''))
 		}
-		addClass(elOpen, 'open')
-		console.log('Menu click complete')
+		else {
+			removeClass(elOpen, 'open');
+			//if (!parents.length) // no other menus open
+			//	modalClose();
+			menuOpen = parents.length>1;
+			debug('< menu closed: ' + elOpen.textContent.split('\n').slice(0,1).join(''))
+
+		}
+		debug('Menu click complete')
 	}
 
 	ready(function() { // document.ready
 
-		// nav fix ups
+		// nav stuff
 		forEach.call($$('nav li,.nav li'), function(li) {
 			// Ensure <a> is a child of <li>
       		var text = (li.childNodes[0].nodeValue||'').trim();
-			if (!$$(li, '>a', true)) {
+			if (!$$(li, '>a', true).length && !$$(li, '>hr', true).length) {
 				li.childNodes[0].remove();
 				insertHTML(li, 'afterbegin', "<a>"+text+"</a>")
-				//console.log("inserted <a> around li "+li.id+": '" + text + "': " + li.innerHTML)
+				//debug("inserted <a> around li "+li.id+": '" + text + "': " + li.innerHTML)
 			}
-      		/*
-        	var id_orig = li.id; // remember current element id
-      		li.id = 'ID_' + parseInt(Math.random()*100000); // assign new unique id
-			if (!li.querySelector('#'+li.id+'>a')) {
-				li.childNodes[0].remove();
-				insertHTML(li, 'afterbegin', "<a>"+text+"</a>")
-				//console.log("inserted <a> around li "+li.id+": '" + text + "': " + li.innerHTML)
-			}
-			if (!!id_orig)
-				li.id = id_orig;
-			else
-				li.removeAttribute('id')*/
-
 			// add click handlers to all <li> with a child <ul>
-			forEach.call($$(li, ">ul", true), function(ul) { 
-				menuInit(li, ul);
-			});
+			var ul = $$(li, ">ul", true);
+			if (ul.length)
+				// add menu handling for submenus
+				menuInit(li, ul[0]);
+			else {
+				// not a submenu. add a 'click to cancel' handler
+				var clickable = $$(li, '>a', true);
+				if (clickable.length)
+					on(clickable[0], 'click', function(e) { e.stopPropagation(); menuClearAll(e); })
+			}
 		});
+		if (menuExists) {
+			on(window, 'click', menuClearAll);
+		}
 
 		// add nav collapse handlers
 		forEach.call($$("nav.collapse, .nav.collapse"), function(nav) {
-			if (!nav.querySelector('#menu-toggle')) {
+			if (!nav.querySelector('.nav-toggle')) {
 				// insert missing toggle button before the menu
 				/*
-<input type="checkbox" id="123" class="menu-toggle">
-      <label for="123" class="label-toggle inv-menu"></label>
-</input>
+					<span class="nav-toggle"></span>
 				*/
-				console.log("Added #menu-toggle")
-				var htmlString = "<input type=\"checkbox\" id=\"menu-toggle\"><label for=\"menu-toggle\" id=\"\" class=\"menu-toggle-label inv-menu\"></label></input>";
+				var htmlString = "<span class=\"nav-toggle\"></span>";
 				insertHTML(nav, 'afterbegin', htmlString);
 			}
+			var toggle = $$(nav, '.nav-toggle')[0];
+			on(toggle, 'click', function() {
+				if (!hasClass(toggle, 'open')) 
+					addClass(toggle, 'open');
+				else 
+					removeClass(toggle, 'open')
+			})
 		})
 
 
@@ -303,8 +282,8 @@ Copyright (c) kodespace.com, 2016
 				else
 					label.innerHTML = labelVal;
 			});
-	});
-	})
+		});
+	}) // ready
 
 
 
