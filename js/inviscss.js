@@ -177,6 +177,7 @@ Copyright (c) kodespace.com, 2016
 		}
 
 		// add nav collapse handlers
+		menuExists = false;
 		forEach.call($$("nav.collapse, .nav.collapse"), function(nav) {
 			if (!nav.querySelector('.nav-toggle')) {
 				// insert missing toggle button before the menu
@@ -187,13 +188,22 @@ Copyright (c) kodespace.com, 2016
 				insertHTML(nav, 'afterbegin', htmlString);
 			}
 			var toggle = $$(nav, '.nav-toggle')[0];
-			on(toggle, 'click', function() {
+			on(toggle, 'click', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
 				if (!hasClass(toggle, 'open')) 
 					addClass(toggle, 'open');
 				else 
 					removeClass(toggle, 'open')
 			})
+			menuExists = true; 
 		})
+		if (menuExists) {
+			on(window, 'click', function(e){
+				//debug('window click: nav-toggle closing')
+				forEach.call($$('.nav-toggle.open'),function(toggle) { removeClass(toggle, 'open');} );
+			});
+		}
 
 
 		// add nicer file uploading capabilities

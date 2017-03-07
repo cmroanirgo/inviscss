@@ -1,0 +1,112 @@
+/*
+InvisCSS Admin Demo Styling
+
+Use this as a base for your project, if you like it ;)
+*/
+
+body {
+	display: flex;
+  	flex-direction: column;
+  	background-color: #f7f7ff;
+  	color:#333;
+}
+
+
+#topnav {
+	background-color: #236;
+	color:white;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	align-items:center;
+}
+#topnav a,#topnav a:hover,#topnav a:visited,#topnav a:active {
+	color:inherit;
+	text-decoration: none;
+}
+
+#topnav #logo {
+	font-weight: bold;
+	font-style: italic;
+	font-size: 1.5em;
+	flex:0 1 auto;
+	padding:0 1em 0 0.5em;
+	display: block;
+}
+#topnav nav {
+	flex:0 1 auto;
+}
+#topnav .nav-toggle.open ~ ul {
+	position: absolute;
+	background-color: #236;
+	top:3em;
+	left:0;
+	z-index: 200;
+	box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.8);
+	width:80%;
+}
+#topnav .nav-toggle.open:after {
+	content: '\e800'; /* close */
+}
+#topnav li:hover, #topnav .nav-toggle:hover {
+	background-color: rgba(255,255,255,0.09)
+}
+#topnav nav ul ul {
+	background-color: #f7f7ff;
+	color:#333;
+	border:1px solid #888;
+}
+#topnav nav ul ul li:hover {
+	background-color: #acf;
+}
+
+.wrapper {
+	flex:1; /* sticky footers */
+	display: block;
+}
+#sidenav {
+	background-color: #acf;
+	flex:0 1 auto;
+	border-right:1px solid #88a;
+}
+#sidenav a {
+	padding-right: 2em; /* make a bit more space for the drop arrows */
+}
+#sidenav a:after {
+	right: 0.7em; /* the drop down arrow */
+}
+#sidenav li ul {
+	transition: opacity 0.5s linear;
+	margin-left:1em;
+}
+#sidenav li a:hover {
+	background-color: rgba(0,0,0,0.2)
+}
+#content {
+	flex:1 1 auto;
+	padding:2em 1em;
+}
+footer {
+	text-align: center;
+	color:#888;
+	font-size:0.8em;
+	line-height: 2em;
+}
+
+@media only screen and (min-width: 48em) {
+	#topnav {
+		flex-direction: row;
+	}
+	#topnav nav>ul {
+		position: relative;
+		width:auto;
+	}
+	/* fluid sidebar */
+	.wrapper {
+		display: flex;
+	  	flex-direction: row;
+	}
+	#sidenav {
+		padding:2em 0 0 0;
+	}
+}

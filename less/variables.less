@@ -2,18 +2,14 @@
 @use-normalize:			true; // set this to '0' to NOT include NormalizeCSS
 
 //Mobile First responsiveness. Invis CSS preferred
-@xs-min: 30;
-@sm-min: 48;
-@md-min: 64;
-@lg-min: 75;
-@screen-xs-min: unit(@xs-min, em);
-@screen-sm-min: unit(@sm-min, em);
-@screen-md-min: unit(@md-min, em);
-@screen-lg-min: unit(@lg-min, em);
+@screen-xs-min: 30em;
+@screen-sm-min: 48em;
+@screen-md-min: 64em;
+@screen-lg-min: 75em;
 
-@container-sm: calc(unit(@sm-min, em) + @gutter-width);
-@container-md: calc(unit(@md-min, em) + @gutter-width);
-@container-lg: calc(unit(@lg-min, em) + @gutter-width);
+@container-sm: calc(@screen-sm-min + @gutter-width);
+@container-md: calc(@screen-md-min + @gutter-width);
+@container-lg: calc(@screen-lg-min + @gutter-width);
 
 @container-fluid-xs: 98%;
 @container-fluid-sm: 95%;
@@ -26,11 +22,22 @@
 
 @root-font-size:        14px;	 // this is applied to <html> and is the 'root' used in 'rem' units below
 @link-hover-decoration: underline;
+@z-modal: 100;
 
 // for grid
 @gutter-width: 0; //1rem;
 @half-gutter-width: @gutter-width * 0.5;
 @gutter-compensation: @half-gutter-width * -1;
+
+// navigation
+@nav-padding-horz:		1em;
+@nav-line-height:		3em;
+
+// dropdown
+//@menu-line-height:	2em;
+
+// modals
+@modal-margin:			0.8rem; // 10px
 
 // buttons
 @color-primary:			#337ab7; 

@@ -1,5 +1,4 @@
 /* Navigation */
-@z-modal: 100;
 
 /*
 body.modal-open {
@@ -84,10 +83,10 @@ nav,.nav {
 	    display:block;
 	    position: relative;
 	    margin:0;
-	    padding:0 1em;
+	    padding:0 @nav-padding-horz; // 1em
     	background-color: inherit;
 	    color:inherit;
-	    line-height: 3em;
+	    line-height: @nav-line-height; // 3em
 	    text-decoration:none;
 	    white-space: nowrap;
 	    cursor: pointer;
@@ -112,9 +111,10 @@ nav,.nav {
 	    position: absolute;
 	    top: 100%;
 	    top: calc(100% -2px);
-		box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+	    min-width: 100%;
+		//box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
 		.hide();
-		overflow: hidden;
+		// overflow: hidden; <-- this is bad for 2nd level menus
 	}
 
 	/*&.hover ul li:hover > ul, */ul li.open > ul {
@@ -133,6 +133,7 @@ nav,.nav {
 	    position: absolute;
 	    top:0;
 	    left:100%;
+	    min-width: auto;
 	}
 
 	// Add down/right arrow
@@ -142,8 +143,10 @@ nav,.nav {
 	} 
 	ul ul li > a:after { 
 		content:  '\e805'; // inv-right
-		position: relative;
-		left: 0.3em;
+		//position: relative;
+		//left: 0.3em;
+		position: absolute;
+		right: 0.3em;
 	}
 
 
@@ -192,8 +195,8 @@ nav,.nav {
 		.nav-toggle {
 		    display: inline-block;
 			cursor: pointer;
-		    padding:0em 1em;
-		    line-height: 3em;
+		    padding:0em @nav-padding-horz;
+		    line-height: @nav-line-height;
 		}
 		.nav-toggle:after {
 			font-family: "invisicons";
@@ -243,6 +246,15 @@ nav.side {
 	    width: 100%;
 	    text-align: left;
 	}
+
+	li > a:after  { 
+		font-family: "invisicons"; 
+		content:  ' \e802'; // inv-down
+		position: absolute;
+		right: 0.3em;
+		left:auto;
+	} 
+	
 	ul ul {
 		position: relative;
 		top:0;
@@ -251,14 +263,6 @@ nav.side {
 		left:0;
 	}
 		
-	li > a:after  { 
-		font-family: "invisicons"; 
-		content:  ' \e802'; // inv-down
-		position: absolute;
-		right: 0.3em;
-		left:auto;
-	} 
-
 	&.right {
 		justify-content:flex-end;
 		li {
@@ -278,6 +282,7 @@ nav.side {
 		    position: absolute;
 		    top: 0;
 		    left:100%;
+		    min-width: auto;
 			ul {
 			    position: absolute;
 			    top: 0;
@@ -288,7 +293,6 @@ nav.side {
 		// Add down/right arrow
 		&.popup ul {
 			li > a:after  { 
-				font-family: "invisicons"; 
 				content:  '\e805'; // inv-right
 			}
 		}	 
