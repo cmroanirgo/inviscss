@@ -504,35 +504,25 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 <section>
 <div class="container hr-after">
 <h2>Menus</h2>
-<p>Add a button with <code>.dropdown-toggle</code> &amp; add a sibling &lt;ul&gt; tree for dropdown support. It must be placed in a <code>.btn-group</code> or have <code>position: relative;</code> style set.</p>
+<p>Add a button with <code>.dropdown-toggle</code> &amp; add a sibling &lt;ul&gt; tree for dropdown support. It must be placed in a <code>.btn-group</code> or have <code>position: relative;</code> style set. Sorry, submenus not supported just yet.</p>
 
-<div class="btn-group">
+<div style="position:relative">
 <button class="info dropdown-toggle">Menu Button</button>
 <ul>
 	<li><a href="#dropdown1">Dropdown Link 1</a></li>
-	<li>Dropdown Menu
-		<ul>
-			<li><a href="#link1">Sub Link 1</a></li>
-			<li><a href="#link2">Sub Link 2</a></li>
-		</ul>
-	</li>
-	<li><hr></li>
 	<li><a href="#dropdown2">Dropdown Link 2</a></li>
+	<li><hr></li>
+	<li><a href="#dropdown3">Dropdown Link 3</a></li>
 </ul>
 </div>
 <div class="btn-group">
 	<button class="info">Split Menu Button</button>
 	<button class="info dropdown-toggle"></button>
 	<ul>
-		<li><a href="#dropdown1">Split Link 1</a></li>
-		<li><a>Split Menu</a>
-			<ul>
-				<li><a href="#link1">Sub Link 1</a></li>
-				<li><a href="#link2">Sub Link 2</a></li>
-			</ul>
-		</li>
-		<li><hr></li>
-		<li><a href="#dropdown2">Split Link 2</a></li>
+	<li><a href="#dropdown1">Dropdown Link 1</a></li>
+	<li><a href="#dropdown2">Dropdown Link 2</a></li>
+	<li><hr></li>
+	<li><a href="#dropdown3">Dropdown Link 3</a></li>
 	</ul>
 </div>
 
