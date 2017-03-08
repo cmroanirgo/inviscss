@@ -8,11 +8,6 @@
 <link rel="stylesheet/less" href="../less/inviscss.less" media="all" type="text/css" />
 <link rel="stylesheet" href="demo.css" media="all" type="text/css" />
 <style>
-#banner {padding:0;}
-#banner nav { xbackground-color: purple;}
-#banner nav ul>li:hover, #banner li.open, #banner .nav-toggle:hover { background-color: #f5d800; color:#000; }
-#banner nav ul ul { background-color: #f5d800; color:#000; border:1px solid #333; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.8);}
-#banner nav ul ul a:hover { background-color: black; color: white;}
 
 nav[id*="demo"]>ul>li, nav[id*="demo"] .nav-toggle { border:1px solid transparent; border-radius: 3px}
 nav[id*="demo"]>ul>li:hover, nav[id*="demo"] .nav-toggle:hover { border-color:#888;}
@@ -31,39 +26,13 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 	<nav class="nav menubar collapse">
 		<ul>
 			<li><a href=".">Home</a></li>
-			<li>Stuff
+			<li>Demos
 				<ul>
-					<li><a href="#demo-link1">Link 1</a></li>
-					<li>Link 2
-						<ul>
-							<li><a href="#demo-link1">Link 1</a></li>
-							<li>Link 2
-								<ul>
-									<li><a href="#demo-link1">Link 1</a></li>
-									<li><a href="#demo-link2">Link 2</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
+					<li><a href="nav.html">Navigation and Menus</a></li>
+					<li><a href="admin.html">Admin Template</a></li>
 				</ul>
 			</li>
-			<li><a>More Stuff</a>
-				<ul>
-					<li><a href="#demo-link1">Link 1</a></li>
-					<li><a href="#">Sub Menu</a>
-						<ul>
-							<li><a href="#demo-link1">Link 1</a></li>
-							<li><a href="#demo-link2">Link 2</a>
-								<ul>
-									<li><a href="#demo-link1">Link 1</a></li>
-									<li><a href="#demo-link2">Link 2</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li><a href="#demo-about">About</a></li>
+			<li><a href="https://github.com/cmroanirgo/inviscss">About</a></li>
 
 		</ul>
 	</nav>
@@ -504,7 +473,7 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 <section>
 <div class="container hr-after">
 <h2>Menus</h2>
-<p>Add a button with <code>.dropdown-toggle</code> &amp; add a sibling &lt;ul&gt; tree for dropdown support. It must be placed in a <code>.btn-group</code> or have <code>position: relative;</code> style set. Sorry, submenus not supported just yet.</p>
+<p>Add a button with <code>.dropdown-toggle</code> &amp; add a sibling &lt;ul&gt; tree for dropdown support. It must be placed in a <code>.horz-group</code> or have <code>position: relative;</code> style set. Sorry, submenus not supported just yet.</p>
 
 <div style="position:relative">
 <button class="info dropdown-toggle">Menu Button</button>
@@ -515,7 +484,7 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 	<li><a href="#dropdown3">Dropdown Link 3</a></li>
 </ul>
 </div>
-<div class="btn-group">
+<div class="horz-group">
 	<button class="info">Split Menu Button</button>
 	<button class="info dropdown-toggle"></button>
 	<ul>

@@ -11,16 +11,29 @@
 </head>
 <body>
 <div id="banner">
+	<nav class="nav menubar collapse">
+		<ul>
+			<li><a href=".">Home</a></li>
+			<li>Demos
+				<ul>
+					<li><a href="nav.html">Navigation and Menus</a></li>
+					<li><a href="admin.html">Admin Template</a></li>
+				</ul>
+			</li>
+			<li><a href="https://github.com/cmroanirgo/inviscss">About</a></li>
+
+		</ul>
+	</nav>
 	<div class="container">
 		<h1 class="inv-invis">InvisCss</h1>
 	</div>
 </div>
 <section>
 <div class="container hr-after">
-	<h2 id="typography"><a href="#typography">Typography</a></h2>
-	<p>InvisCSS is designed to bring you the core of a good Css library without the cruft. That is, it's not filled with styles that are only used by developers and designers for their own websites. It's pretty much invisible. This is for <i>real</i> sites: 
+	<h2 id="intro"><a href="#intro">Introduction</a></h2>
+	<p>InvisCSS is designed to bring you the core of a good Css library without the cruft. That is, it's not filled with styles that are only used by developers and designers for their own websites. The default styling is minimal so that it's easier to extend and modify, by you. Unlike bootstrap and most CSS templates, which requires a developer to excessively 'opt-in' by specifying classes all over the place, InvisCSS uses a few simple 'opt-in' classes at the base of an HTML branch. InvisCSS is for <i>real</i> sites: 
 	<h3>Cleaner HTML</h3>
-	<ul><li>No more <code>class="btn btn-primary"</code>, or <code>class="form-control"</code> nonsense. Your HTML is clean and lean again. Although built with a Bootstrap audience in mind, you'll love the simplicity.</li></ul>
+	<ul><li>No more <code>class="classA classB classC"</code> nonsense at each and every level of your HTML. InvisCSS makes your HTML is clean and lean again, using widely used naming conventions. Although built with a Bootstrap audience in mind, you'll love the simplicity.</li></ul>
 	<h3>Smarter CSS</h3>
 	<ul>
 		<li>Use of <code>rem</code> units makes font scaling a snap.</li>
@@ -31,12 +44,112 @@
 
 	</p>
 
+	<p>
+		<h3>The Difference</h3>
+
+		<h4>A simple button</h4>
+		<p>bootstrap:
+		<pre><code>
+&lt;button class="btn btn-primary">Primary Button&lt;/button>
+		</code></pre>
+		</p>
+
+		<p>pure-css:
+		<pre><code>
+&lt;button class="pure-button pure-button-primary">Primary Button&lt;/button>
+		</code></pre>
+		</p>
+
+		<p>InvisCSS:
+		<pre><code>
+&lt;button class="primary">Primary Button&lt;/button>
+		</code></pre>
+		</p>
+
+		<h4>A navigation menu</h4>
+		<p>Not convinced? Perhaps a navigation bar at the top of a page will make it obvious:</p>
+		<p>This is what a <u>basic</u> navbar in looks like in bootstrap:
+		<pre><code>
+&lt;nav class="navbar navbar-default">
+  &lt;div class="container-fluid">
+    &lt;!-- Brand and toggle get grouped for better mobile display -->
+    &lt;div class="navbar-header">
+      &lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        &lt;span class="sr-only">Toggle navigation&lt;/span>
+        &lt;span class="icon-bar">&lt;/span>
+        &lt;span class="icon-bar">&lt;/span>
+        &lt;span class="icon-bar">&lt;/span>
+      &lt;/button>
+      &lt;a class="navbar-brand" href="#">Brand&lt;/a>
+    &lt;/div>
+
+    &lt;!-- Collect the nav links, forms, and other content for toggling -->
+    &lt;div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      &lt;ul class="nav navbar-nav">
+        &lt;li class="active">&lt;a href="#">Link &lt;span class="sr-only">(current)&lt;/span>&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#">Link&lt;/a>&lt;/li>
+        &lt;li class="dropdown">
+          &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown &lt;span class="caret">&lt;/span>&lt;/a>
+          &lt;ul class="dropdown-menu">
+            &lt;li>&lt;a href="#">Action&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Another action&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Something else here&lt;/a>&lt;/li>
+            &lt;li role="separator" class="divider">&lt;/li>
+            &lt;li>&lt;a href="#">Separated link&lt;/a>&lt;/li>
+            &lt;li role="separator" class="divider">&lt;/li>
+            &lt;li>&lt;a href="#">One more separated link&lt;/a>&lt;/li>
+          &lt;/ul>
+        &lt;/li>
+      &lt;/ul>
+    &lt;/div>&lt;!-- /.navbar-collapse -->
+  &lt;/div>&lt;!-- /.container-fluid -->
+&lt;/nav>
+		</code></pre>
+		</p>
+
+		<p>This is the equivalent InvisCSS (although operates a little differently):
+			<code><pre>
+&lt;div>
+  &lt;span id="brand">Brand&lt;/span>
+    &lt;nav class="nav menubar collapse">
+      &lt;ul>
+      &lt;li>&lt;a href="#">Link&lt;/a>&lt;/li>
+      &lt;li>Dropdown
+      	&lt;ul>
+          &lt;li>&lt;a href="#">Action&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="#">Another action&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="#">Something else here&lt;/a>&lt;/li>
+          &lt;li>&lt;hr>&lt;/li>
+          &lt;li>&lt;a href="#">Separated link&lt;/a>&lt;/li>
+          &lt;li>&lt;hr>&lt;/li>
+          &lt;li>&lt;a href="#">One more separated link&lt;/a>&lt;/li>
+          &lt;/ul>
+      &lt;/li>
+    &lt;/ul>
+  &lt;/nav>
+&lt;/div>
+
+			</pre></code>
+		</p>
+
+	</p>
+
 	<p>See also these demo pages:
 		<ul>
 			<li><a href="nav.html">Navigation &amp; Menus</a></li>
 			<li><a href="admin.html">Sample Admin</a></li>
 		</ul>
 	</p>
+
+	<h3>Normalise CSS</h3>
+	<p>We include NormalizeCSS by default so that you get consistent results across browsers. You can remove it easily by setting <code>@use-normalize: 0;</code></p>
+</div>
+</section>
+<section>
+<div class="container hr-after">
+	<h2 id="typography"><a href="#typography">Typography</a></h2>
+
+	<p>InvisCSS's styling is pretty much the default styling that you get after NormalizeCSS is finished:</p>
 	<h1>H1 Heading</h1>
 	<h2>H2 Heading</h2>
 	<h3>H3 Heading</h3>
@@ -44,10 +157,8 @@
 	<h5>H5 Heading</h5>
 
 	<blockquote>Block Quote</blockquote>
-	<p>A simple paragraph with a <a href="#">hyperlink</a>.</p>
+	<p>A simple paragraph with a <a href="#">hyperlink</a>. Keep on reading to see what InvisCSS brings to you:</p>
 
-	<h3>Normalise CSS</h3>
-	<p>We include NormalizeCSS by default so that you get consistent results across browsers. You can remove it easily by setting <code>@use-normalize: 0;</code></p>
 </div></section>
 
 <section>
@@ -72,7 +183,7 @@
 <div class="container hr-after">
 	<h2 id="grid"><a href="#grid">Flexbox Grid</a></h2>
 
-	<p>InvisCss uses a modified version of <a href="http://flexboxgrid.com"> FlexBox Grid</a> for grids. For anyone familiar with Bootstrap's Grid, you'll feel right at home.</p>
+	<p>InvisCss uses a modified version of <a href="http://flexboxgrid.com"> FlexBox Grid</a> for grids. For anyone familiar with <a href="getbootstrap.com">Bootstrap's Grid</a>, you'll feel right at home.</p>
 
 <div class="row">
   <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
@@ -299,11 +410,10 @@
 <p>* Requires Javascript</p>
 
 	<h2 id="buttons"><a href="#buttons">Buttons</a></h2>
-	<form class="aligned center"> 
+	<div class="center table"> 
 		<div class="row">
 			<label>Normal</label>
-			<div class="td"><button type="submit">Submit</button>
-				<button >Normal</button>
+			<div class="td"><input type="submit" value="Submit">
 				<button class="primary">Primary</button>
 				<button class="success">Success</button>
 				<button class="info">Info</button>
@@ -313,7 +423,6 @@
 		<div class="row small">
 			<label>Small</label>
 			<div class="td"><button type="submit">Submit</button>
-			<button >Normal</button>
 				<button class="primary">Primary</button>
 				<button class="success">Success</button>
 				<button class="info">Info</button>
@@ -323,19 +432,17 @@
 		<div class="row large">
 			<label>Large</label>
 			<div class="td"><button type="submit">Submit</button> 
-				<button >Normal</button> 
 				<button class="primary">Primary</button> 
 				<button class="success">Success</button> 
 				<button class="info">Info</button> 
 				<button class="warning">Warning</button> 
 				<button class="danger">Danger</button> </div>
 		</div>		
-	</form> 	
+	</div> 	
 		<div class="">
 			<h3>Grouped</h3>
 			<div class="horz-group">
 				<button type="submit">Submit</button> 
-				<button >Normal</button> 
 				<button class="primary">Primary</button> 
 				<button class="success">Success</button> 
 				<button class="info">Info</button> 
@@ -345,7 +452,6 @@
 			<div class="table">
 				<div class="td vert-group">
 					<button type="submit">Submit</button> 
-					<button >Normal</button> 
 					<button class="primary">Primary</button> 
 					<button class="warning">Warning</button> 
 					<button class="danger">Danger</button> 
@@ -354,7 +460,7 @@
 					<input type='text'  placeholder="Username">
 					<input type='password'  placeholder="Password">
 					<input type='password'  placeholder="Password Again">
-					<input type="submit">
+					<input type="submit" class="success">
 				</div>
 			</div>
 		</div>

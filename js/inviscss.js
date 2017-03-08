@@ -99,14 +99,13 @@ Copyright (c) kodespace.com, 2016
 	}
 */
 	function menuClearAll(e) {
-		debug('Menu clearing')
+		//debug('Menu clearing')
 		if (e && e.which === 3) return; 
 		forEach.call($$('.open[data-hasmenu]'), function(el) {
-			debug('< menu closed: ' + el.textContent.split('\n').slice(0,1).join(''))
+			//debug('< menu closed: ' + el.textContent.split('\n').slice(0,1).join(''))
 			removeClass(el, 'open');
 		})
 		menuOpen = false;
-		//modalClose();
 	}
 
 	var menuExists = false;
@@ -122,7 +121,7 @@ Copyright (c) kodespace.com, 2016
 		var elOpen = this;
 		e.preventDefault();
 		e.stopPropagation();
-		debug('Menu click begin: ' + elOpen.textContent.split('\n').slice(0,1).join(''));
+		//debug('Menu click begin: ' + elOpen.textContent.split('\n').slice(0,1).join(''));
 		var isActive = hasClass(elOpen, 'open');
 		var parents = getParents(elOpen, '[data-hasmenu]'); // includes self
 		if (!isActive) {
@@ -136,17 +135,17 @@ Copyright (c) kodespace.com, 2016
 				addClass(li, 'open')
 			})
 			menuOpen = true;
-			debug('> menu open: ' + elOpen.textContent.split('\n').slice(0,1).join(''))
+			//debug('> menu open: ' + elOpen.textContent.split('\n').slice(0,1).join(''))
 		}
 		else {
 			removeClass(elOpen, 'open');
 			//if (!parents.length) // no other menus open
 			//	modalClose();
 			menuOpen = parents.length>1;
-			debug('< menu closed: ' + elOpen.textContent.split('\n').slice(0,1).join(''))
+			//debug('< menu closed: ' + elOpen.textContent.split('\n').slice(0,1).join(''))
 
 		}
-		debug('Menu click complete')
+		//debug('Menu click complete')
 	}
 
 	ready(function() { // document.ready
