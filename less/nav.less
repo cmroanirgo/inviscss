@@ -1,22 +1,6 @@
 /* Navigation */
 
-/*
-body.modal-open {
-    filter: blur(3px);	
-}
-.modal-backdrop {
-	position: fixed;
-	left:0;
-	top:0;
-	right:0;
-	bottom:0;
-	z-index:(@z-modal)-1;
 
-	//&:not(.clear) { // used by menus to indicate no coloring of bg
-		background-color:rgba(0,0,0,0.5);
-	//}
-}
-*/
 .menu {
 
 }
@@ -32,8 +16,8 @@ body.modal-open {
 	visibility: visible;
 
 }
-nav,.nav {
-	/*
+
+/*
 	<nav class=''> // valid classes are: right|center collapse; 
 		<ul>
 			<li><a href=...>Item 1</a></li>
@@ -46,35 +30,23 @@ nav,.nav {
 		</ul>
 	</nav>
 	*/
-	&.top {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items:center;
-		>* {
-			flex:0 1 auto;	
-		}
-	}
 
-	ul {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		//align-items: center;
-		//align-content:flex-start;
-	    background-color: inherit;
-	    padding:0;
-	    margin:0;
-	    list-style: none;
-	    position: relative;
-	}
 
+.nav ul, .dropdown-toggle ~ ul {
+	// base navigational elements: ul, li and a
+	display: flex;
+    background-color: inherit;
+    padding:0;
+    margin:0;
+    list-style: none;
+    position: relative;
+}
 
  	//good. but needs <a> as a child. javascript helps fix this
+.nav, .dropdown-toggle ~ ul {
 	li {
 	    margin: 0;
 	    padding: 0;
-	    display:inline-block;
 	    flex:0 1 auto;
 	    position: relative;
     }
@@ -86,17 +58,9 @@ nav,.nav {
 	    padding:0 @nav-padding-horz; // 1em
     	background-color: inherit;
 	    color:inherit;
-	    line-height: @nav-line-height; // 3em
 	    text-decoration:none;
 	    white-space: nowrap;
 	    cursor: pointer;
-	}
-
-	hr {
-		line-height: 1em;
-		margin:0;
-		padding: 0;
-		width: 100%;
 	}
 
 	a:hover {
@@ -104,83 +68,186 @@ nav,.nav {
 	    color:inherit;
 	    text-decoration:none;
 	}
+}
 
-	ul ul {
-		display: flex;
-		flex-direction: column;
-	    position: absolute;
-	    top: 100%;
-	    top: calc(100% -2px);
-	    min-width: 100%;
-		//box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
-		.hide();
-		// overflow: hidden; <-- this is bad for 2nd level menus
+.nav.menubar {
+	>ul {
+		flex-direction: row;
+		flex-wrap: wrap;
 	}
-
-	/*&.hover ul li:hover > ul, */ul li.open > ul {
-		.show();
-		z-index: @z-modal;
+	>ul>li {
+	    display:inline-block;
 	}
-	
+	a {
+		line-height: @menubar-line-height; // 3em
+	}
+}
+.nav.sidebar, .dropdown-toggle ~ ul {
+	a {
+		line-height: @sidebar-line-height; // 2em
+	}
+}
 
-	ul ul li {
+.nav.menubar ul ul, .nav.sidebar ul, .dropdown-toggle ~ ul { 
+
+	// vertical menu
+	flex-direction: column;
+
+	li {
 	    display:block;
 	    width: 100%;
 	    position: relative;
 	}
+	hr { // seperator
+		//line-height: 1em;
+		margin:0;
+		padding: 0;
+		width: 100%;
+	}
+}
 
-	ul ul ul {
+.nav.menubar ul, .nav.sidebar, .dropdown-toggle ~ ul { 
+	// dropdown/accordian menu
+	li ul {
+		.hide();
+	}
+	li.open > ul {
+		.show();
+		z-index: @z-modal;
+	}
+}
+
+.dropdown-toggle ~ ul {
+	.hide();
+	position: absolute;
+	top: 100%;
+	left: 0;
+}
+.dropdown-toggle.open ~ ul {
+	.show();
+	z-index: @z-modal;
+}
+.dropdown-toggle:after {
+	font-family: "invisicons"; 
+	content:  ' \e802'; // inv-down
+}
+
+.nav.menubar>ul {
+	// Add down arrow, close to the text ONLY on first level UL
+	li > a:after  { 
+		font-family: "invisicons"; 
+		content:  ' \e802'; // inv-down
+	} 
+
+	ul {
+	    position: absolute;
+	    top: 100%;
+	    top: calc(100% - 2px);
+	    min-width: 100%;
+		// overflow: hidden; <-- this is bad for 2nd level menus
+	}
+}
+
+.nav.sidebar ul {
+	// Add down arrow, on the far RHS, for all UL
+	li > a:after  { 
+		font-family: "invisicons"; 
+		content:  ' \e802'; // inv-down
+		position: absolute;
+		right:0.3em;
+	} 
+}
+
+.popup() {
+	// begin popup/pop-right menu
+	ul {
 	    position: absolute;
 	    top:0;
 	    left:100%;
 	    min-width: auto;
 	}
 
-	// Add down/right arrow
-	ul li > a:after  { 
+	li > a:after { 
 		font-family: "invisicons"; 
-		content:  ' \e802'; // inv-down
-	} 
-	ul ul li > a:after { 
 		content:  '\e805'; // inv-right
-		//position: relative;
-		//left: 0.3em;
 		position: absolute;
 		right: 0.3em;
 	}
+}
+.nav.menubar>ul ul, .dropdown-toggle ~ ul {
+	.popup();
+}
+@media @sm-viewport {
+	.nav.sidebar.popup ul {
+		.popup();
+	}
+
+}
 
 
-	&.right > ul, ul.right {
-		justify-content:flex-end;
-		ul {
-			right: 0;
-			left: auto;			
+
+.nav ul.right, .nav.menubar.right>ul, .nav.sidebar.right {
+	justify-content:flex-end;
+
+	ul { // align accordian to the right edge
+		right: 0;
+		left: auto;			
+
+		li {
+			text-align: right;
 		}
-		ul ul {
-		    left:auto;
-		    right:100%;
-		}
-		ul li > a:before { 
-			content:  '\e804'; // inv-left
-			font-family: "invisicons"; 
-			position: absolute;
-			left: 0.3em;
-		}
-		ul li > a:after { content:''; }
-	} 
-	&.center > ul, ul.center {
-		justify-content:center;
-	} 
+	}
+}
+
+.nav.sidebar.right {
+	li > a:before { 
+		content:  '\e802'; // inv-down
+		font-family: "invisicons"; 
+		position: absolute;
+		left: 0.3em;
+	}
+}
+.right-popup() {
+	ul { // change popup to pop-left menu
+	    left:auto;
+	    right:100%;	
+	}
+	li > a:before { 
+		content:  '\e804'; // inv-left
+		font-family: "invisicons"; 
+		position: absolute;
+		left: 0.3em;
+	}
+}
+.nav ul.right ul, .nav.menubar.right>ul ul, .dropdown-toggle ~ ul.right {
+	.right-popup();
+}
+@media @sm-viewport {
+	.nav.sidebar.right.popup ul{
+		.right-popup();
+	}
+}
+.nav>ul.right ul, .nav.menubar.right>ul, .nav.sidebar.right>ul {
+	li > a:after { content:''; } // hide arrows on the right
+}
+.nav.menubar.center>ul, ul.center {
+	justify-content:center;
+} 
 
 
-	&.collapse {
-		& >ul {
-			display:none;
+.nav.collapse {
+	// mobile first. show hamburger & hide the menu
+	& >ul {
+		display:none;
+	}
+
+	&.menubar{
+		>ul {
 			flex-wrap:nowrap;
 			flex-direction:column;
 			width:100%;
 		}
-		li {
+		>ul>li {
 		    display:block;
 		    text-align: center;
 		}
@@ -191,34 +258,37 @@ nav,.nav {
 		ul ul ul {
 			left:0;
 		}
-			
+	}
+
+	.nav-toggle {
+	    display: inline-block;
+		cursor: pointer;
+	    padding:0em @nav-padding-horz;
+	    line-height: @menubar-line-height;
+	}
+	.nav-toggle:after {
+		font-family: "invisicons";
+		content: '\f0c9'; // inv-menu
+	}
+	.nav-toggle.open ~ ul {
+		display:flex;
+	}
+
+	@media @sm-viewport {
+		// hide on larger screens
 		.nav-toggle {
-		    display: inline-block;
-			cursor: pointer;
-		    padding:0em @nav-padding-horz;
-		    line-height: @nav-line-height;
+			display: none;
 		}
-		.nav-toggle:after {
-			font-family: "invisicons";
-			content: '\f0c9'; // inv-menu
-		}
-		.nav-toggle.open ~ ul {
-			display:flex;
-		}
+		& >ul{ display: flex;	}
 
-		@media @sm-viewport {
-			// hide on larger screens
-			.nav-toggle {
-				display: none;
-			}
+		// reset menubar to operate as per default
+		&.menubar{
 
-			// reset nav to operate as per default
-			& >ul { 		
-				display: flex;		
+			>ul { 		
 				flex-direction:row;
 				flex-wrap: wrap;
 			}
-			li {
+			>ul>li {
 			    display:inline-block;
 			    text-align: left;
 			}
@@ -230,247 +300,15 @@ nav,.nav {
 				top:0;
 				left:100%;
 			}
-
 		}
-	}
-
-}
-
-nav.side {
-	ul {
-		flex-direction: column;
-		flex-wrap:nowrap;
-	}
-	li {
-	    display:block;
-	    width: 100%;
-	    text-align: left;
-	}
-
-	li > a:after  { 
-		font-family: "invisicons"; 
-		content:  ' \e802'; // inv-down
-		position: absolute;
-		right: 0.3em;
-		left:auto;
-	} 
-	
-	ul ul {
-		position: relative;
-		top:0;
-	}
-	ul ul ul {
-		left:0;
-	}
-		
-	&.right {
-		justify-content:flex-end;
-		li {
-			text-align: right;
-		}
-		ul li > a:before { 
-			content:  '\e802'; // inv-down
-			font-family: "invisicons"; 
-			position: absolute;
-			left: 0.3em;
-		}
-		ul li > a:after { content:'' !important; }
-	}
-
-	@media @sm-viewport { // ie. NOT collapsed
-		&.popup ul ul {
-		    position: absolute;
-		    top: 0;
-		    left:100%;
-		    min-width: auto;
-			ul {
-			    position: absolute;
-			    top: 0;
-			    left:100%;
-			}
-		}
-
-		// Add down/right arrow
-		&.popup ul {
-			li > a:after  { 
-				content:  '\e805'; // inv-right
-			}
-		}	 
-
-
-		&.right.popup {
-			ul {
-				right: 0;
-				left: auto;			
-			}
-			ul ul {
-			    left:auto;
-			    right:100%;
-			}
-			ul li > a:before { 
-				content:  '\e804'; // inv-left
-			}
-		}
-
 	}
 }
 
-nav,.nav {
-	// cleanups
+.nav,.dropdown-toggle ~ ul {
+	// cleanups. hide arrows on things that shouldn't have them
 	&.right,ul.right {
 		li > a:only-child:before { content: '' !important; }
 	}
 	li > a:only-child:after { content: '' !important; }	
 }
 
-
-/* Good. hover menusbar.
-nav,.nav {
-
-	ul {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		align-items: center;
-		//align-content:flex-start;
-	    background-color: inherit;
-	    padding:0;
-	    margin:0;
-	    list-style: none;
-	    position: relative;
-	}
-
-
- 	//good. but needs <a> as a child. javascript helps fix this
-	li {
-	    margin: 0;
-	    padding: 0;
-	    display:inline-block;
-	    flex:0 1 auto;
-    }
-
-	a {
-	    display:block;
-	    margin:0;
-	    padding:0 1em;
-    	background-color: inherit;
-	    color:inherit;
-	    line-height: 3em;
-	    text-decoration:none;
-	    white-space: nowrap;
-	    cursor: pointer;
-	}
-
-	a:hover {
-    	background-color: inherit;
-	    color:inherit;
-	    text-decoration:none;
-	}
-
-	ul ul {
-	    display: none;
-	    position: absolute;
-	    top: 100%;
-	    top: calc(100% -2px);
-		box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.8);
-	}
-
-	ul li:hover > ul {
-		display: flex;
-		flex-direction: column;
-		z-index: 100;
-	}
-
-	ul ul li {
-	    display:block;
-	    width: 100%;
-	    position: relative;
-	}
-
-	ul ul ul {
-	    position: absolute;
-	    top:0;
-	    left:100%;
-	}
-
-	// Add down/right arrow
-	ul li > a:after  { 
-		font-family: "invisicons"; 
-		content:  ' \e802'; // inv-down
-	} 
-	ul ul li > a:after { 
-		content:  '\e805'; // inv-right
-		position: relative;
-		left: 0.3em;
-	}
-	li > a:only-child:after { content: '' !important; }
-
-
-	&.right > ul, ul.right {
-		justify-content:flex-end;
-		ul ul {
-		    left:auto;
-		    right:100%;
-		}
-		ul li > a:after {
-			content: '';
-			position: relative;
-			//padding: 0;
-		} 
-		ul li > a:before { 
-			content:  '\e804'; // inv-left
-			font-family: "invisicons"; 
-			position: absolute;
-			left: 0.3em;
-		}
-		li > a:only-child:before { content: '' !important; }
-	} 
-	&.center > ul, ul.center {
-		justify-content:center;
-	} 
-
-
-	&.collapse {
-		ul {
-			display: none;
-			flex-wrap:nowrap;
-			flex-direction:column;
-		}
-			
-		input#menu-toggle[type="checkbox"] {
-			display: none;
-		}
-		#menu-toggle-label {
-			cursor: pointer;
-		    padding:1em 1em;
-		}
-		#menu-toggle:checked ~ ul, ul.checked {
-			display: flex;
-		}
-
-		@media @sm-viewport {
-			// reshow as normal for larger screens
-			.label-toggle {
-				display: block;
-			}
-			#menu-toggle-label {
-				display: none;
-			}
-
-
-			// reset to default
-			ul { 
-				display: flex;
-				flex-wrap:wrap;
-				flex-direction:row;
-			}
-			ul ul {
-	    		display: none;
-	    	}
-
-		}
-	}
-
-}
-
-*/

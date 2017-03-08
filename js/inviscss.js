@@ -111,7 +111,7 @@ Copyright (c) kodespace.com, 2016
 
 	var menuExists = false;
 	var menuOpen = false;
-	function menuInit(elOpen, elSubMenu) {
+	function menuInit(elOpen) {
 		menuExists = true;
 		removeClass(elOpen, "open")
 		setAttr(elOpen, 'data-hasmenu', 'true');
@@ -126,7 +126,7 @@ Copyright (c) kodespace.com, 2016
 		var isActive = hasClass(elOpen, 'open');
 		var parents = getParents(elOpen, '[data-hasmenu]'); // includes self
 		if (!isActive) {
-			// close all open elements not part of parent tree
+			// close all open elements not part of parent tree (NB: Only works for ul>li style trees)
 			forEach.call(clone($$('.open[data-hasmenu]')), function(li) {
 				if (parents.indexOf(li)<0)
 					removeClass(li, 'open');
@@ -151,8 +151,8 @@ Copyright (c) kodespace.com, 2016
 
 	ready(function() { // document.ready
 
-		// nav stuff
-		forEach.call($$('nav li,.nav li'), function(li) {
+		// nav/menu stuff
+		forEach.call($$('.nav li,.dropdown-toggle ~ ul li'), function(li) {
 			// Ensure <a> is a child of <li>
       		var text = (li.childNodes[0].nodeValue||'').trim();
 			if (!$$(li, '>a', true).length && !$$(li, '>hr', true).length) {
@@ -164,7 +164,7 @@ Copyright (c) kodespace.com, 2016
 			var ul = $$(li, ">ul", true);
 			if (ul.length)
 				// add menu handling for submenus
-				menuInit(li, ul[0]);
+				menuInit(li);
 			else {
 				// not a submenu. add a 'click to cancel' handler
 				var clickable = $$(li, '>a', true);
@@ -172,13 +172,16 @@ Copyright (c) kodespace.com, 2016
 					on(clickable[0], 'click', function(e) { e.stopPropagation(); menuClearAll(e); })
 			}
 		});
+		forEach.call($$('.dropdown-toggle'), function(el) {
+			menuInit(el);
+		});
 		if (menuExists) {
 			on(window, 'click', menuClearAll);
 		}
 
 		// add nav collapse handlers
 		menuExists = false;
-		forEach.call($$("nav.collapse, .nav.collapse"), function(nav) {
+		forEach.call($$(".nav.collapse"), function(nav) {
 			if (!nav.querySelector('.nav-toggle')) {
 				// insert missing toggle button before the menu
 				/*

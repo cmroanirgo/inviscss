@@ -16,16 +16,21 @@
 
 nav[id*="demo"]>ul>li, nav[id*="demo"] .nav-toggle { border:1px solid transparent; border-radius: 3px}
 nav[id*="demo"]>ul>li:hover, nav[id*="demo"] .nav-toggle:hover { border-color:#888;}
-nav[id*="demo"] ul ul { background-color: #f7f7f7; color:#333; }
-nav[id*="demo"] a { color:black;}
+nav[id*="demo"] ul ul { background-color: #f7f7f7; border:1px solid #aaa;}
+nav[id*="demo"] a { color:#333;}
 nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
+
+.dropdown-toggle ~ ul { background-color: #f7f7f7;  }
+.dropdown-toggle ~ ul a { color:#333;}
+.dropdown-toggle ~ ul a:hover { background-color: #888; color:#f7f7f7; }
+
 </style>
 </head>
 <body>
 <div id="banner">
-	<nav class="collapse">
+	<nav class="nav menubar collapse">
 		<ul>
-			<li><a href="#demo-home">Home</a></li>
+			<li><a href=".">Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
@@ -69,9 +74,9 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 <section>
 <div class="container hr-after">
 <h2> Standard / Centered / Right</h2>
-	<nav id="demo1">
+	<nav id="demo1" class="nav menubar">
 		<ul>
-			<li><a href="#demo-home">Home</a></li>
+			<li><a href=".">Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
@@ -110,7 +115,7 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 
 
 		<ul id="demo2" class="center">
-			<li><a href="#demo-home">Home</a></li>
+			<li><a href=".">Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
@@ -147,7 +152,7 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 
 		</ul>
 		<ul id="demo3" class="right">
-			<li><a href="#demo-home">Home</a></li>
+			<li><a href=".">Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
@@ -191,9 +196,9 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 <div class="container hr-after">
 <h2> Collapsible</h2>
 <p>Just add <code>.collapse</code> to the &lt;nav&gt; element to reduce it to a hamburger (<span class="inv-menu"></span>) on smaller screens.</p>
-	<nav id="demo1" class="collapse">
+	<nav id="demo1" class="nav menubar collapse">
 		<ul>
-			<li><a href="#demo-home">Home</a></li>
+			<li><a href=".">Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
@@ -238,11 +243,11 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 <section>
 <div class="container hr-after">
 <h2> Vertical &amp; Popup Vertical</h2>
-<p>Add <code>.side</code> (or <code>.sidebar</code>, or <code>.side-something</code>) to the &lt;nav&gt; element for a vertical navigation menu.</p>
-<p>Add <code>.popup</code> to the &lt;nav class="side"&gt; element for popup menus on larger screens.</p>
-	<nav id="demoside1" class="side" style="float:left">
+<p>Add <code>.nav .sidebar</code> to a block level element for a vertical navigation menu.</p>
+<p>Add <code>.popup</code> for popup menus on larger screens, rather than the default accordion style.</p>
+	<nav id="demoside1" class="nav sidebar" style="float:left">
 		<ul>
-			<li><a href="#demo-home">Home</a></li>
+			<li><a href=".">Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
@@ -280,9 +285,9 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 		</ul>
 
 	</nav>
-	<nav id="demoside1" class="side popup"  style="float:left; margin-left:3em; border-left:4px solid #aaa">
+	<nav id="demoside1" class="nav sidebar popup"  style="float:left; margin-left:3em; border-left:4px solid #aaa">
 		<ul>
-			<li><a href="#demo-home">Popup Home</a></li>
+			<li><a href=".">Popup Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
@@ -320,9 +325,9 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 		</ul>
 
 	</nav>
-	<nav id="demoside1" class="side popup collapse"  style="float:left; margin-left:3em; border-left:4px solid #aaf">
+	<nav id="demoside1" class="nav sidebar popup collapse"  style="float:left; margin-left:3em; border-left:4px solid #aaf">
 		<ul>
-			<li><a href="#demo-home">Popup Home</a></li>
+			<li><a href=".">Collapsible Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
@@ -369,9 +374,9 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 <div class="container hr-after">
 <h2>Right Vertical &amp; Popup</h2>
 <p>Add <code>.right</code> to the &lt;nav class="side"&gt; element for arrows on the left. In this demo, we use <code>float:right</code> to position the nav, but this is arbitary, as it is up to you to position the nav appropriately to your needs.</p>
-	<nav id="demoside1" class="side right" style="float:right">
+	<nav id="demoside1" class="nav sidebar right" style="float:right">
 		<ul>
-			<li><a href="#demo-home">Home</a></li>
+			<li><a href=".">Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
@@ -409,9 +414,9 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 		</ul>
 
 	</nav>
-	<nav id="demoside1" class="side right popup" style="float:right;margin-right:3em; border-right:4px solid #aaa">
+	<nav id="demoside1" class="nav sidebar right popup" style="float:right;margin-right:3em; border-right:4px solid #aaa">
 		<ul>
-			<li><a href="#demo-home">Popup Home</a></li>
+			<li><a href=".">Popup Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
@@ -451,9 +456,9 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 	</nav>	
 
 
-	<nav id="demoside1" class="side right popup collapse" style="float:right;margin-right:3em; border-right:4px solid #afa">
+	<nav id="demoside1" class="nav sidebar right popup collapse" style="float:right;margin-right:3em; border-right:4px solid #afa">
 		<ul>
-			<li><a href="#demo-home">Popup Home</a></li>
+			<li><a href=".">Collapsible Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
@@ -493,6 +498,48 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 	</nav>		
 </div>
 </section>
+
+
+
+<section>
+<div class="container hr-after">
+<h2>Menus</h2>
+<p>Add a button with <code>.dropdown-toggle</code> &amp; add a sibling &lt;ul&gt; tree for dropdown support. It must be placed in a <code>.btn-group</code> or have <code>position: relative;</code> style set.</p>
+
+<div class="btn-group">
+<button class="info dropdown-toggle">Menu Button</button>
+<ul>
+	<li><a href="#dropdown1">Dropdown Link 1</a></li>
+	<li>Dropdown Menu
+		<ul>
+			<li><a href="#link1">Sub Link 1</a></li>
+			<li><a href="#link2">Sub Link 2</a></li>
+		</ul>
+	</li>
+	<li><hr></li>
+	<li><a href="#dropdown2">Dropdown Link 2</a></li>
+</ul>
+</div>
+<div class="btn-group">
+	<button class="info">Split Menu Button</button>
+	<button class="info dropdown-toggle"></button>
+	<ul>
+		<li><a href="#dropdown1">Split Link 1</a></li>
+		<li><a>Split Menu</a>
+			<ul>
+				<li><a href="#link1">Sub Link 1</a></li>
+				<li><a href="#link2">Sub Link 2</a></li>
+			</ul>
+		</li>
+		<li><hr></li>
+		<li><a href="#dropdown2">Split Link 2</a></li>
+	</ul>
+</div>
+
+</div>
+</section>
+
+
 
 <!--build:rm-begin
  	DO NOT EDIT
