@@ -23,7 +23,8 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 </head>
 <body>
 <div id="banner">
-	<nav class="nav menubar collapse">
+	<span class="nav-toggle" data-target="#banner nav"> </span>
+	<nav class="nav menubar">
 		<ul>
 			<li><a href=".">Home</a></li>
 			<li>Demos
@@ -163,9 +164,10 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 
 <section>
 <div class="container hr-after">
-<h2> Collapsible</h2>
-<p>Just add <code>.collapse</code> to the &lt;nav&gt; element to reduce it to a hamburger (<span class="inv-menu"></span>) on smaller screens.</p>
-	<nav id="demo1" class="nav menubar collapse">
+<h2>Collapsible</h2>
+<p>Just add a sibling element with <code>.nav-toggle</code> and <code>data-target</code> to reduce one or more navs to a hamburger menu (<span class="inv-menu"></span>) on smaller screens.</p>
+	<span class="nav-toggle" data-target="#demo-collapse1"> </span>
+	<nav id="demo-collapse1" class="nav menubar">
 		<ul>
 			<li><a href=".">Home</a></li>
 			<li>Stuff
@@ -294,46 +296,6 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 		</ul>
 
 	</nav>
-	<nav id="demoside1" class="nav sidebar popup collapse"  style="float:left; margin-left:3em; border-left:4px solid #aaf">
-		<ul>
-			<li><a href=".">Collapsible Home</a></li>
-			<li>Stuff
-				<ul>
-					<li><a href="#demo-link1">Link 1</a></li>
-					<li>Sub Menu
-						<ul>
-							<li><a href="#demo-link1">Link 1</a></li>
-							<li>Link 2
-								<ul>
-									<li><a href="#demo-link1">Link 1</a></li>
-									<li><a href="#demo-link2">Link 2</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li><a>More Stuff</a>
-				<ul>
-					<li><a href="#demo-link1">Link 1</a></li>
-					<li><a href="#demo-link2">Link 2</a>
-						<ul>
-							<li><a href="#demo-link1">Link 1</a></li>
-							<li><a href="#demo-link2">Link 2</a>
-								<ul>
-									<li><a href="#demo-link1">Link 1</a></li>
-									<li><a href="#demo-link2">Link 2</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li><a href="#demo-about">About</a></li>
-
-		</ul>
-
-	</nav>	
 </div>
 </section>
 
@@ -342,7 +304,7 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 <section>
 <div class="container hr-after">
 <h2>Right Vertical &amp; Popup</h2>
-<p>Add <code>.right</code> to the &lt;nav class="side"&gt; element for arrows on the left. In this demo, we use <code>float:right</code> to position the nav, but this is arbitary, as it is up to you to position the nav appropriately to your needs.</p>
+<p>Add <code>.right</code> to the &lt;nav class="nav sidebar"&gt; element for arrows on the left. In this demo, we use <code>float:right</code> to position the nav, but this is arbitary, as it is up to you to position the nav appropriately to your needs.</p>
 	<nav id="demoside1" class="nav sidebar right" style="float:right">
 		<ul>
 			<li><a href=".">Home</a></li>
@@ -425,46 +387,6 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 	</nav>	
 
 
-	<nav id="demoside1" class="nav sidebar right popup collapse" style="float:right;margin-right:3em; border-right:4px solid #afa">
-		<ul>
-			<li><a href=".">Collapsible Home</a></li>
-			<li>Stuff
-				<ul>
-					<li><a href="#demo-link1">Link 1</a></li>
-					<li>Sub Menu
-						<ul>
-							<li><a href="#demo-link1">Link 1</a></li>
-							<li>Link 2
-								<ul>
-									<li><a href="#demo-link1">Link 1</a></li>
-									<li><a href="#demo-link2">Link 2</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li><a>More Stuff</a>
-				<ul>
-					<li><a href="#demo-link1">Link 1</a></li>
-					<li><a href="#demo-link2">Link 2</a>
-						<ul>
-							<li><a href="#demo-link1">Link 1</a></li>
-							<li><a href="#demo-link2">Link 2</a>
-								<ul>
-									<li><a href="#demo-link1">Link 1</a></li>
-									<li><a href="#demo-link2">Link 2</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li><a href="#demo-about">About</a></li>
-
-		</ul>
-
-	</nav>		
 </div>
 </section>
 

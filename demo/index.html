@@ -11,6 +11,7 @@
 </head>
 <body>
 <div id="banner">
+	<span class="nav-toggle" data-target="#banner nav"> </span>
 	<nav class="nav menubar collapse">
 		<ul>
 			<li><a href=".">Home</a></li>
@@ -110,8 +111,9 @@
 		<p>This is the equivalent InvisCSS (although operates a little differently):
 			<code><pre>
 &lt;div>
+  &lt;span class="nav-toggle" data-target=".nav">Brand&lt;/span>
   &lt;span id="brand">Brand&lt;/span>
-    &lt;nav class="nav menubar collapse">
+    &lt;nav class="nav menubar">
       &lt;ul>
       &lt;li>&lt;a href="#">Link&lt;/a>&lt;/li>
       &lt;li>Dropdown
@@ -130,6 +132,7 @@
 &lt;/div>
 
 			</pre></code>
+			Note that multiple targets can be targetted too, using <code>class="nav-toggle" data-target="#selector1,#selector2 .nav"</code> as an example. See the menu and sidebar being controlled in the <a href="admin.html">Admin Demo</a>.
 		</p>
 
 	</p>

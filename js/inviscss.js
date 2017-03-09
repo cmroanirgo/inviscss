@@ -84,12 +84,17 @@ Copyright (c) kodespace.com, 2016
 		}
 		return retval;
 	}
+	function getTargets(el) {
+		var targets = getAttr(el, 'data-target');
+		debug('target(s): ' + targets);
+		if (targets)
+			return $$(targets);
+		return [];
+	}
 
 	var forEach = Array.prototype.forEach;
 
-/*
 	function createBackdrop(el, className, clickFn) {
-		// if mobile we use a backdrop because click events don't delegate
 		modalClose();
 		var backdrop = document.createElement('div');
 		addClass(backdrop, 'modal-backdrop');
@@ -107,7 +112,7 @@ Copyright (c) kodespace.com, 2016
 			el.remove(); 
 		});
 	}
-*/
+
 	function menuClearAll(e) {
 		//debug('Menu clearing')
 		if (e && e.which === 3) return; 
@@ -157,13 +162,6 @@ Copyright (c) kodespace.com, 2016
 
 		}
 		//debug('Menu click complete')
-	}
-	function getTargets(el) {
-		var targets = getAttr(el, 'data-target');
-		debug('target(s): ' + targets);
-		if (targets)
-			return $$(targets);
-		return [];
 	}
 
 	ready(function() { // document.ready
@@ -219,25 +217,6 @@ Copyright (c) kodespace.com, 2016
 			})
 			
 		});
-
-		/*forEach.call($$(".nav.collapse"), function(nav) {
-			if (!nav.querySelector('.nav-toggle')) {
-				// insert missing toggle button before the menu
-				//	<span class="nav-toggle"></span>
-				var htmlString = "<span class=\"nav-toggle\"></span>";
-				insertHTML(nav, 'afterbegin', htmlString);
-			}
-			var toggle = $$(nav, '.nav-toggle')[0];
-			on(toggle, 'click', function(e) {
-				e.preventDefault();
-				e.stopPropagation();
-				if (!hasClass(toggle, 'open')) 
-					addClass(toggle, 'open');
-				else 
-					removeClass(toggle, 'open')
-			})
-			menuExists = true; 
-		})*/
 
 		if (menuExists) {
 			on(window, 'click', function(e){
