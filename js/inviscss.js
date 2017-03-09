@@ -53,8 +53,18 @@ Copyright (c) kodespace.com, 2016
 	function hasClass(el, className) {
 		return el.classList.contains(className);
 	}
+	function toggleClass(el, className, setValue) {
+		if (setValue === undefined || typeof setValue !== "boolean")
+			setValue = !hasClass(el, className);
+		if (setValue) addClass(el, className)
+		else removeClass(el, className)
+		return setValue;
+	}
 	function setAttr(el, attr, value) {
 		el.setAttribute(attr, value);
+	}
+	function getAttr(el, attr, value) {
+		return el.getAttribute(attr);
 	}
 	function on(el, name, fn) {
 		el.addEventListener(name, fn);
@@ -110,6 +120,7 @@ Copyright (c) kodespace.com, 2016
 
 	var menuExists = false;
 	var menuOpen = false;
+
 	function menuInit(elOpen) {
 		menuExists = true;
 		removeClass(elOpen, "open")
@@ -147,8 +158,17 @@ Copyright (c) kodespace.com, 2016
 		}
 		//debug('Menu click complete')
 	}
+	function getTargets(el) {
+		var targets = getAttr(el, 'data-target');
+		debug('target(s): ' + targets);
+		if (targets)
+			return $$(targets);
+		return [];
+	}
 
 	ready(function() { // document.ready
+		addClass(document.body, 'js'); // this hides and moves the existing input & restyles the input entirely
+		removeClass(document.body, 'no-js')
 
 		// nav/menu stuff
 		forEach.call($$('.nav li,.dropdown-toggle ~ ul li'), function(li) {
@@ -180,12 +200,30 @@ Copyright (c) kodespace.com, 2016
 
 		// add nav collapse handlers
 		menuExists = false;
-		forEach.call($$(".nav.collapse"), function(nav) {
+		forEach.call($$(".nav-toggle"), function(toggle) {
+			debug('starting toggle');
+			var targets = getTargets(toggle);
+			removeClass(toggle, 'open'); // closed by default
+			forEach.call(targets, function(targetEl) {
+				debug('registering toggle' + targetEl.id);
+				addClass(targetEl, 'nav-collapse');
+			})
+
+			on(toggle, 'click', function(e){
+				var open = toggleClass(toggle, 'open');
+				debug('nav toggling ' + open);
+				forEach.call(targets, function(targetEl) {
+					debug('toggling ' + targetEl.id);
+					toggleClass(targetEl, 'open', open)
+				});	
+			})
+			
+		});
+
+		/*forEach.call($$(".nav.collapse"), function(nav) {
 			if (!nav.querySelector('.nav-toggle')) {
 				// insert missing toggle button before the menu
-				/*
-					<span class="nav-toggle"></span>
-				*/
+				//	<span class="nav-toggle"></span>
 				var htmlString = "<span class=\"nav-toggle\"></span>";
 				insertHTML(nav, 'afterbegin', htmlString);
 			}
@@ -199,7 +237,8 @@ Copyright (c) kodespace.com, 2016
 					removeClass(toggle, 'open')
 			})
 			menuExists = true; 
-		})
+		})*/
+
 		if (menuExists) {
 			on(window, 'click', function(e){
 				//debug('window click: nav-toggle closing')
@@ -234,7 +273,6 @@ Copyright (c) kodespace.com, 2016
 			*/
 			var htmlString = "<label for=\""+id+"\" class=\"file-notice\"><span class=\"inv-upload\">"+chooseString+"</span></label>"
 			insertHTML(input, 'afterend', htmlString);
-			addClass(input, 'js'); // this hides and moves the existing input & restyles the input entirely
 
 			var label = input.nextElementSibling,
 			labelVal = label.innerHTML;

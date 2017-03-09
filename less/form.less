@@ -75,7 +75,7 @@ input[type="color"] {
 /* File Specialisations */
 /* TODO combine input.form-control and .file-drop */
 
-input.form-control.js[type="file"] { /* the .js is added via javascript */
+.js input.form-control[type="file"] { /* the .js is added via javascript */
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
@@ -84,7 +84,7 @@ input.form-control.js[type="file"] { /* the .js is added via javascript */
     z-index: -1;
 }
 
-input.form-control.js[type="file"] + label {
+.js input.form-control[type="file"] + label {
     max-width: 80%;
     text-overflow: ellipsis;
     white-space: nowrap;

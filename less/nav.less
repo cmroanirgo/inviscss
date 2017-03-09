@@ -51,6 +51,7 @@
 	    flex:0 1 auto;
 	    position: relative;
 	    border-collapse: collapse;
+	    display: block;
     }
 
 	a {
@@ -78,7 +79,7 @@
 		flex-wrap: wrap;
 	}
 	>ul>li {
-	    display:inline-block;
+	    //display:inline-block;
 	}
 	a {
 		line-height: @menubar-line-height; // 3em
@@ -96,7 +97,7 @@
 	flex-direction: column;
 
 	li {
-	    display:block;
+	    //display:block;
 	    width: 100%;
 	    position: relative;
 	}
@@ -236,11 +237,29 @@
 	justify-content:center;
 } 
 
+.js .nav-toggle {
+    //display: inline-block;
+	cursor: pointer;
+    padding:0em @nav-padding-horz;
+    line-height: @menubar-line-height;
 
-.nav.collapse {
-	// mobile first. show hamburger & hide the menu
-	& >ul {
+	&:after {
+		font-family: "invisicons";
+		content: '\f0c9'; // inv-menu
+	}
+
+	@media @sm-viewport {
+		// hide on larger screens
+		display: none;
+	}
+
+}
+.js .nav-collapse {
+	& ul {
 		display:none;
+	}
+	&.open ul {
+		display:flex;
 	}
 
 	&.menubar{
@@ -250,7 +269,62 @@
 			width:100%;
 		}
 		>ul>li {
-		    display:block;
+		    //display:block;
+		    text-align: center;
+		}
+		ul ul {
+			position: relative;
+			top:0;
+		}
+		ul ul ul {
+			left:0;
+		}
+	}
+	@media @sm-viewport {
+		& ul{ display: flex; }
+
+		// reset menubar to operate as per default
+		&.menubar{
+
+			>ul { 		
+				flex-direction:row;
+				flex-wrap: wrap;
+			}
+			>ul>li {
+			    //display:inline-block;
+			    text-align: left;
+			}
+			ul ul {
+				position: absolute;
+				top:100%;
+	    	}
+			ul ul ul {
+				top:0;
+				left:100%;
+			}
+		}
+	}
+}
+
+
+/*
+.js .nav.collapse {
+	// mobile first. show hamburger & hide the menu
+	& >ul {
+		display:none;
+	}
+	&.open > ul {
+		display:flex;
+	}
+
+	&.menubar{
+		>ul {
+			flex-wrap:nowrap;
+			flex-direction:column;
+			width:100%;
+		}
+		>ul>li {
+		    //display:block;
 		    text-align: center;
 		}
 		ul ul {
@@ -291,7 +365,7 @@
 				flex-wrap: wrap;
 			}
 			>ul>li {
-			    display:inline-block;
+			    //display:inline-block;
 			    text-align: left;
 			}
 			ul ul {
@@ -305,6 +379,7 @@
 		}
 	}
 }
+*/
 
 .nav,.dropdown-toggle ~ ul {
 	// cleanups. hide arrows on things that shouldn't have them
