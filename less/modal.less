@@ -1,7 +1,8 @@
 /* Modal */
 
 body.modal-open {
-    filter: blur(3px);	
+    //filter: blur(3px);	
+	overflow: hidden;
 }
 .modal-backdrop {
 	position: fixed;
@@ -12,7 +13,7 @@ body.modal-open {
 	z-index:(@z-modal)-1;
 
 	&:not(.clear) { 
-		background-color:rgba(0,0,0,0.5);
+		background-color:rgba(0,0,0,0.7);
 	}
 }
 
@@ -21,13 +22,68 @@ body.modal-open {
 	z-index: @z-modal;
 	display: none; // all modals are hidden by default
 	outline: 0;
-	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: relative;
 
-	&.open {
-		display: 
-		position: relative;
-		width: auto;
-		margin: @modal-margin;
+	/*// When fading in the modal, animate it to slide down
+	&.fade .modal-dialog {
+		.translate(0, -25%);
+		.transition-transform(~"0.3s ease-out");
+	}*/
+
+  	&.open {
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		left:5%;
+		right:5%;
+		max-width: 95%;
+		min-width: 90%;
+		@media @sm-viewport {
+			left:13%;
+			right:13%;
+			max-width: 90%;
+			min-width: 74%;
+		}
+		@media @md-viewport {
+			left:30%;
+			right:30%;
+			max-width: 80%;
+			min-width: 40%;
+
+		}
+
 	}
 }
 
+.modal-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #888;
+	position: relative;
+	h2 {
+		flex:1 1 100%;
+	}
+	.close {
+		cursor: pointer;
+		padding: 0.5em;
+		position: absolute;
+		top:1px;
+		right:1px;
+	}
+}
+
+.modal-body {
+	position: relative;
+	flex:1;
+}
+
+// Footer (for actions)
+.modal-footer {
+	position: relative;
+	text-align: right; // right align buttons
+	border-top: 1px solid #888;
+}

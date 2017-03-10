@@ -43,15 +43,17 @@ body {
 	clear:both;
 	width: 100%;
 }
-.xxx#topnav .nav-toggle.open ~ ul {
+.modal {
 	position: absolute;
-	background-color: #236;
-	top:3em;
-	left:0;
-	z-index: 200;
-	box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.8);
-	width:80%;
+	background-color: #f7f7f7;
+	border-radius: 7px;
+	box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.8);
 }
+.modal >* { padding: 0 1em; }
+.modal-header h2 { font-size: 1.1em; padding: 0;}
+.modal-body { padding: 0.5em 1em 1em 1em; }
+.modal-footer { padding: 1em; }
+
 #topnav .nav-toggle.open:after {
 	content: '\e800'; /* close */
 }

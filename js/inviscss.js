@@ -19,6 +19,7 @@ Copyright (c) kodespace.com, 2016
 		}
 	}
 	var debug = function(s) { console.log(s); }
+
 	function $$(where, selector, special_immediate_child_kludge) { 
 		if (!selector)
 			return document.querySelectorAll(where); 
@@ -37,6 +38,13 @@ Copyright (c) kodespace.com, 2016
 				return where.querySelectorAll(selector); 
 		}
 	}
+
+	function $$each(where, selector, special_immediate_child_kludge, fn) {
+		if (typeof selector === 'function') { fn = selector; selector = special_immediate_child_kludge = undefined; }
+		else if (typeof special_immediate_child_kludge === 'function') { fn = special_immediate_child_kludge; special_immediate_child_kludge = undefined; }
+		forEach.call($$(where, selector, special_immediate_child_kludge), fn);
+	}
+
 	function clone(arrayIsh) {
 		var ar = [];
 		for (var i=0; i<arrayIsh.length; i++)
@@ -96,16 +104,20 @@ Copyright (c) kodespace.com, 2016
 
 	function createBackdrop(el, className, clickFn) {
 		modalClose();
+		modalOpen();
 		var backdrop = document.createElement('div');
 		addClass(backdrop, 'modal-backdrop');
 		if (className && className.length)
 			addClass(backdrop, className);
 		//addClass(document.body, 'modal-open');
-		var parent = el.parentNode;
+		var parent = el ; //el.parentNode;
 		parent.insertBefore(backdrop, null);
 		on(backdrop, 'click', clickFn)
 	}
 
+	function modalOpen() {
+		addClass(document.body, 'modal-open')
+	}
 	function modalClose() {
 		removeClass(document.body, 'modal-open')
 		forEach.call(clone($$('.modal-backdrop')), function(el) { 
@@ -116,7 +128,7 @@ Copyright (c) kodespace.com, 2016
 	function menuClearAll(e) {
 		//debug('Menu clearing')
 		if (e && e.which === 3) return; 
-		forEach.call($$('.open[data-hasmenu]'), function(el) {
+		$$each('.open[data-hasmenu]', function(el) {
 			//debug('< menu closed: ' + el.textContent.split('\n').slice(0,1).join(''))
 			removeClass(el, 'open');
 		})
@@ -142,7 +154,7 @@ Copyright (c) kodespace.com, 2016
 		var parents = getParents(elOpen, '[data-hasmenu]'); // includes self
 		if (!isActive) {
 			// close all open elements not part of parent tree (NB: Only works for ul>li style trees)
-			forEach.call(clone($$('.open[data-hasmenu]')), function(li) {
+			$$each('.open[data-hasmenu]', function(li) {
 				if (parents.indexOf(li)<0)
 					removeClass(li, 'open');
 			});
@@ -168,8 +180,47 @@ Copyright (c) kodespace.com, 2016
 		addClass(document.body, 'js'); // this hides and moves the existing input & restyles the input entirely
 		removeClass(document.body, 'no-js')
 
+		// modal
+		var evModalClose = new Event('modal-close');
+		var evModalOK = new Event('modal-ok');
+		var evModalOpen = new Event('modal-open');
+		$$each('.modal-toggle', function(toggle) {
+			var target = getTargets(toggle);
+			target = target.length ? target[0] : null;
+			if (!target) return;
+			removeClass(target, 'open');
+
+			on(toggle, 'click', function(e) {
+				e.preventDefault();
+				addClass(target, 'open');
+				evModalOpen.relatedTarget = toggle;
+				target.dispatchEvent(evModalOpen)
+				createBackdrop(document.body, '', function(e){
+					removeClass(target, 'open');
+					modalClose();
+					target.dispatchEvent(evModalClose)
+				})
+			});
+
+			$$each(target, '.close', function(closer) {
+				on(closer, 'click', function(e) {
+					removeClass(target, 'open');
+					modalClose();
+					target.dispatchEvent(evModalClose);
+				})
+			})
+			$$each(target, '.modal-ok', function(closer) {
+				on(closer, 'click', function(e) {
+					removeClass(target, 'open');
+					modalClose();
+					target.dispatchEvent(evModalOK)
+				})
+			})
+		})
+
+		menuExists = false;
 		// nav/menu stuff
-		forEach.call($$('.nav li,.dropdown-toggle ~ ul li'), function(li) {
+		$$each('.nav li,.dropdown-toggle ~ ul li', function(li) {
 			// Ensure <a> is a child of <li>
       		var text = (li.childNodes[0].nodeValue||'').trim();
 			if (!$$(li, '>a', true).length && !$$(li, '>hr', true).length) {
@@ -189,7 +240,7 @@ Copyright (c) kodespace.com, 2016
 					on(clickable[0], 'click', function(e) { e.stopPropagation(); menuClearAll(e); })
 			}
 		});
-		forEach.call($$('.dropdown-toggle'), function(el) {
+		$$each('.dropdown-toggle', function(el) {
 			menuInit(el);
 		});
 		if (menuExists) {
@@ -198,7 +249,7 @@ Copyright (c) kodespace.com, 2016
 
 		// add nav collapse handlers
 		menuExists = false;
-		forEach.call($$(".nav-toggle"), function(toggle) {
+		$$each(".nav-toggle", function(toggle) {
 			debug('starting toggle');
 			var targets = getTargets(toggle);
 			removeClass(toggle, 'open'); // closed by default
@@ -221,13 +272,13 @@ Copyright (c) kodespace.com, 2016
 		if (menuExists) {
 			on(window, 'click', function(e){
 				//debug('window click: nav-toggle closing')
-				forEach.call($$('.nav-toggle.open'),function(toggle) { removeClass(toggle, 'open');} );
+				$$each('.nav-toggle.open', function(toggle) { removeClass(toggle, 'open');} );
 			});
 		}
 
 
 		// add nicer file uploading capabilities
-		forEach.call($$('input.form-control[type="file"]'), function(input) {
+		$$each('input.form-control[type="file"]', function(input) {
 			/*
 			<input id="file1" type="file" 
 				multiple 
@@ -274,7 +325,7 @@ Copyright (c) kodespace.com, 2016
 			on(input, 'blur', function() { input.classList.remove( 'has-focus' ); });
 		})
 
-		forEach.call($$('.file-drop input[type="file"]'), function(input) {
+		$$each('.file-drop input[type="file"]', function(input) {
 			setAttr(input, 'required', 'required'); 
 			if (input.parentNode.children.length==1) {
 				// auto add success labels, if needed

@@ -44,6 +44,54 @@
 	</nav>
 	<div id="content" class="container-fixed">
 		<p>This is the content</p>
+
+
+
+
+		<!--
+
+		Modal Test
+
+		-->
+		<div class="horz-group pull-right">
+			<input type="submit" class="primary" value="Save" />
+			<button type="button" class="primary dropdown-toggle"></button>
+			<ul>
+				<li><a href="#" 
+					class="modal-toggle"
+					data-filename="readme.txt" 					
+					data-target="#file_delete"><span title="delete" class="fa fa-trash-o"></span> Delete</a>
+				</li>
+			</ul>
+		</div>
+		<div class="modal fade" id="file_delete" tabindex="-1">
+        	<div class="modal-header">
+                <h2>Confirm Delete</h2>
+                <i class="inv-cancel close"></i>
+            </div>
+            <div class="modal-body">
+            	<p>Really delete '<span id="modal_filename"></span>'?</p>
+            	<p>This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close">Cancel</button>
+                <a class="button danger modal-ok">Delete</a>
+            </div>
+		</div>
+		<script>
+			function el(id) { return document.getElementById(id) }
+			var fd = el('file_delete');
+			fd.addEventListener('modal-open', function(e) {
+				var filename = e.relatedTarget.getAttribute('data-filename');
+				this.setAttribute('data-filename', filename)
+				el('modal_filename').innerHTML = filename;
+			})
+			fd.addEventListener('modal-ok', function(e) {
+				alert("Delete the file..." + this.getAttribute('data-filename'))
+			})
+		</script>
+
+
 	</div>
 </div>
 <footer>
