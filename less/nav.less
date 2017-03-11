@@ -18,8 +18,8 @@
 	*/
 
 
-.nav ul, .dropdown-toggle ~ ul {
-	// base navigational elements: ul, li and a
+.nav ul, .dropdown-toggle ~ ul, .tabs {
+	// base navigational element: ul
 	display: flex;
     background-color: inherit;
     padding:0;
@@ -29,8 +29,8 @@
     border-collapse: collapse;
 }
 
- 	//good. but needs <a> as a child. javascript helps fix this
-.nav, .dropdown-toggle ~ ul {
+ 	//navigation children. Needs <a> as a child of <li>. javascript helps fix this
+.nav, .dropdown-toggle ~ ul, .tabs {
 	li {
 	    margin: 0;
 	    padding: 0;
@@ -59,25 +59,29 @@
 	}
 }
 
-.nav.menubar {
-	>ul {
-		flex-direction: row;
-		flex-wrap: wrap;
+// horizontal menu
+.nav.menubar>ul, .tabs {
+	flex-direction: row;
+	flex-wrap: wrap;
+
+	>li {
+	    //display:inline-block; 
 	}
-	>ul>li {
-	    //display:inline-block;
-	}
+
 	a {
 		line-height: @menubar-line-height; // 3em
 	}
 }
+
 .nav.sidebar, .dropdown-toggle ~ ul {
-	a {
+	a { // smaller line height for sidebar & dropdown menus
 		line-height: @sidebar-line-height; // 2em
 	}
 }
 
-.nav.menubar ul ul, .nav.sidebar ul, .dropdown-toggle ~ ul { 
+.nav.menubar ul ul, // 2nd level menu = 1st level dropdown for menubar
+.nav.sidebar ul, // toplevel accordian for sidebar
+.dropdown-toggle ~ ul { // dropdown
 
 	// vertical menu
 	flex-direction: column;
@@ -95,6 +99,7 @@
 	}
 }
 
+// hide all 2nd tier dropdowns by default
 .nav.menubar ul, .nav.sidebar, .dropdown-toggle ~ ul { 
 	// dropdown/accordian menu
 	li ul {
@@ -106,7 +111,7 @@
 	}
 }
 
-.dropdown-toggle ~ ul {
+.dropdown-toggle ~ ul { // the toplevel is also hidden for dropdowns
 	.hide();
 	position: absolute;
 	top: 100%;
@@ -292,81 +297,6 @@
 	}
 }
 
-
-/*
-.js .nav.collapse {
-	// mobile first. show hamburger & hide the menu
-	& >ul {
-		display:none;
-	}
-	&.open > ul {
-		display:flex;
-	}
-
-	&.menubar{
-		>ul {
-			flex-wrap:nowrap;
-			flex-direction:column;
-			width:100%;
-		}
-		>ul>li {
-		    //display:block;
-		    text-align: center;
-		}
-		ul ul {
-			position: relative;
-			top:0;
-		}
-		ul ul ul {
-			left:0;
-		}
-	}
-
-	.nav-toggle {
-	    display: inline-block;
-		cursor: pointer;
-	    padding:0em @nav-padding-horz;
-	    line-height: @menubar-line-height;
-	}
-	.nav-toggle:after {
-		font-family: "invisicons";
-		content: '\f0c9'; // inv-menu
-	}
-	.nav-toggle.open ~ ul {
-		display:flex;
-	}
-
-	@media @sm-viewport {
-		// hide on larger screens
-		.nav-toggle {
-			display: none;
-		}
-		& >ul{ display: flex;	}
-
-		// reset menubar to operate as per default
-		&.menubar{
-
-			>ul { 		
-				flex-direction:row;
-				flex-wrap: wrap;
-			}
-			>ul>li {
-			    //display:inline-block;
-			    text-align: left;
-			}
-			ul ul {
-				position: absolute;
-				top:100%;
-	    	}
-			ul ul ul {
-				top:0;
-				left:100%;
-			}
-		}
-	}
-}
-*/
-
 .nav,.dropdown-toggle ~ ul {
 	// cleanups. hide arrows on things that shouldn't have them
 	&.right,ul.right {
@@ -374,4 +304,42 @@
 	}
 	li > a:only-child:after { content: '' !important; }	
 }
+
+
+
+/* tabs */
+
+/*
+<ul class="tabs"> 
+<li class="active"><a href="#page1">Tab 1</a></li>
+<li><a href="#page2">Tab 2</a></li>
+</ul>
+<div class="tabs-content">
+	<div id="page1">
+		Page 1
+	</div>
+	<div id="page2">
+		Page 2
+	</div>
+</div>
+*/
+.tabs {
+	> .active {
+		border:1px solid @border-color;
+		border-bottom: none;
+	 	border-top-right-radius: @border-radius;
+	 	border-top-left-radius: @border-radius;
+	}
+}
+.tab-content {
+	padding: 0 @nav-padding-horz;
+
+	>* {
+		.hide();
+	}
+	>.active {
+		.show();
+	}
+}
+
 

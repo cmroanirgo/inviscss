@@ -24,12 +24,13 @@ Copyright (c) kodespace.com, 2016
 		if (!selector)
 			return document.querySelectorAll(where); 
 		else {
-			if ( special_immediate_child_kludge || selector[0]=='>') {
+			if ( special_immediate_child_kludge || selector[0]=='>' || selector[0]=='~' || selector[0]=='+') {
 		    	var id_orig = where.id; // remember current element id
 		    	if (!id_orig)
 		    		// assign new unique id
 		  			where.id = 'ID_' + parseInt(Math.random()*100000); 
-				var ret = where.querySelectorAll('#'+where.id+selector);
+		  		var x = selector[0]!='>' ? (where.parentElement || document) : where; // ~ and + selectors need to use the parent
+				var ret = x.querySelectorAll('#'+where.id+selector);
 				if (id_orig != where.id)
 					where.removeAttribute('id');
 				return ret;
@@ -177,8 +178,8 @@ Copyright (c) kodespace.com, 2016
 	}
 
 	ready(function() { // document.ready
-		addClass(document.body, 'js'); // this hides and moves the existing input & restyles the input entirely
-		removeClass(document.body, 'no-js')
+		addClass(document.body, 'js'); 
+		removeClass(document.body, 'no-js');
 
 		// modal
 		var evModalClose = new Event('modal-close');
@@ -247,22 +248,53 @@ Copyright (c) kodespace.com, 2016
 			on(window, 'click', menuClearAll);
 		}
 
+		// tab handling
+		$$each('.tabs', function(tab) {
+			//debug('got tabs')
+			var tab_content = $$(tab, '~ .tab-content', true);
+			if (!tab_content.length) {debug('WARNING! No .tab-content found at same level as .tabs'); return;}
+			//debug('got sibling tab-content')
+			tab_content = tab_content[0];
+			$$each(tab, '>li>a', true, function(a) {
+				on(a, 'click', function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					// mark the parent li as active
+					$$each(tab, '>.active', function(el) {
+						removeClass(el, 'active')
+					})
+					addClass(a.parentElement, 'active');
+
+					// mark the associated tab content block as active
+					var href = getAttr(a, 'href')
+					//debug('tab activating: ' + href)
+					$$each(tab_content, '>.active', function(el) {
+						removeClass(el, 'active')
+					})
+					$$each(tab_content, '>' + href, function(el) {
+						addClass(el, 'active')
+					})
+				})
+			})
+
+		})
+
 		// add nav collapse handlers
 		menuExists = false;
 		$$each(".nav-toggle", function(toggle) {
-			debug('starting toggle');
+			//debug('starting toggle');
 			var targets = getTargets(toggle);
 			removeClass(toggle, 'open'); // closed by default
 			forEach.call(targets, function(targetEl) {
-				debug('registering toggle' + targetEl.id);
+				//debug('registering toggle' + targetEl.id);
 				addClass(targetEl, 'nav-collapse');
 			})
 
 			on(toggle, 'click', function(e){
 				var open = toggleClass(toggle, 'open');
-				debug('nav toggling ' + open);
+				//debug('nav toggling ' + open);
 				forEach.call(targets, function(targetEl) {
-					debug('toggling ' + targetEl.id);
+					//debug('toggling ' + targetEl.id);
 					toggleClass(targetEl, 'open', open)
 				});	
 			})

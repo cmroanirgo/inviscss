@@ -4,11 +4,16 @@ InvisCSS Admin Demo Styling
 Use this as a base for your project, if you like it ;)
 */
 
+@bg-color: 		#f7f7ff;
+@bg-modal: 		#fafafa; // whitish
+@color: 		#333;
+@border-color: 	#aaa;
+
 body {
 	display: flex;
   	flex-direction: column;
-  	background-color: #f7f7ff;
-  	color:#333;
+  	background-color: @bg-color;
+  	color:@color;
 }
 
 
@@ -45,7 +50,7 @@ body {
 }
 .modal {
 	position: absolute;
-	background-color: #f7f7f7;
+	background-color: @bg-modal;
 	border-radius: 7px;
 	box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.8);
 }
@@ -61,9 +66,9 @@ body {
 	background-color: rgba(255,255,255,0.09)
 }
 #topnav nav ul ul {
-	background-color: #f7f7ff;
-	color:#333;
-	border:1px solid #888;
+	background-color: @bg-color;
+	color:@color;
+	border:1px solid @border-color;
 }
 #topnav nav ul ul li:hover {
 	background-color: #9ebeed;
@@ -99,6 +104,29 @@ footer {
 	color:#555;
 	font-size:0.9em;
 	line-height: 2em;
+}
+
+.shadow() {
+	box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.2);
+
+}
+.dropdown-toggle ~ ul {
+	background-color: @bg-modal;
+	border:1px solid @border-color;
+	.shadow();
+}
+.tabs { position: relative;}
+.tabs>.active {
+	position: relative;
+	top:1px;  
+	background-color: @bg-modal;
+	border-bottom:1px solid @bg-modal;
+}
+.tab-content {
+	background-color: @bg-modal;
+	border:1px solid @border-color;
+	padding: 1em;
+	.shadow();
 }
 
 @media only screen and (min-width: 48em) {
