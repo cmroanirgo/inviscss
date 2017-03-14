@@ -19,7 +19,10 @@ function execCmd(cmd, cb){ // from: https://gist.github.com/millermedeiros/47240
 
     var child_process = require('child_process');
     console.log('executing: ' + cmd);
-	var p = child_process.exec(cmd, {cwd:__dirname});
+    var opts = {cwd:__dirname};
+    if (cmd.env)
+    	opts.env = cmd.env;
+	var p = child_process.exec(cmd, opts);
 	p.stdout.on('data', (data) => {
 	  console.log(data);
 	});
@@ -52,35 +55,53 @@ function execSeries(cmds, cb) {
     execNext();
 };
 
-// remove references to less in the demo html
-getFiles(path.join(__dirname, 'dist', 'demo'), '.html').forEach(function(file) {
+function lessToCss(file) {
 	var html = fs.readFileSync(file, 'utf8');
 	//html = html.replace('<link rel="stylesheet/less" href="../less/inviscss.less" media="all" type="text/css" />', '<link rel="stylesheet" href="../css/inviscss.min.css" media="all" type="text/css" />');
 	//html = html.replace('rel="stylesheet/less" href="../less/inviscss.less"', 'rel="stylesheet" href="../css/inviscss.min.css"');
 	html = html.replace(/rel="stylesheet\/less"/g, 'rel="stylesheet"');
 	html = html.replace(/less\//g, 'css/');
-	html = html.replace(/themes\//g, 'css/');
 	html = html.replace(/\.less/g, '.min.css');
 	html = html.replace(/<!--build:rm-begin[\w\W]*?build:rm-end-->/g, '');
 	fs.writeFileSync(file, html);
-});
+}
 
 var cmds = [ ];
-function less(lessname) {
-	var dst = path.join('dist', 'css', path.basename(lessname, '.less'));
+var themes = [ ];
+function registerLess(lessname, dest) {
+	var dst = path.join(dest || path.join(out_dir, 'css'), path.basename(lessname, '.less'));
 
 	cmds.push('node ' + path.join('node_modules','.bin','lessc') + ' ' + lessname + ' ' + dst + '.css ' + process.env.npm_package_config_less_options)
 	cmds.push('node ' + path.join('node_modules','.bin','lessc') + ' ' + lessname + ' ' + dst + '.min.css ' + process.env.npm_package_config_less_min_options)
+
+	if (lessname.indexOf('inviscss-')>=0) {
+		var theme_name = path.basename(lessname, '.less');
+		cmds.push('npm config set inviscss:theme ' + theme_name + ' && npm run prep:dist && npm config delete inviscss:theme')
+	}
 };
+
+const out_dir = 'docs';
+// remove references to less in the demo html
+lessToCss(path.join(__dirname, out_dir, 'index.html'))
+getFiles(path.join(__dirname, out_dir, 'demo'), '.html').forEach(lessToCss);
+
+
 //console.log(process.env)
-less('less/inviscss.less');
+registerLess('less/inviscss.less');
 
 // also compile the theme files
+var themes_dist = path.join(__dirname, out_dir, 'themes');
+try { fs.mkdirSync(themes_dist) } catch(e) {}
 getFiles(path.join(__dirname, 'themes'), '.less').forEach(function(file) {
-	less(file);	
+	registerLess(file, themes_dist);	
 })
 
 execSeries(cmds, function(err) {
-	if (err) console.error(err);
+	if (err) return console.error(err);
+
 })
+
+// zip up what we've got
+
+
 })();

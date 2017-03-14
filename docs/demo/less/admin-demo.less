@@ -1,0 +1,161 @@
+/*
+InvisCSS Admin Demo Styling
+
+Use this as a base for your project, if you like it ;)
+*/
+
+@bg-color: 		#f7f7ff;
+@bg-modal: 		#fafafa; // whitish
+@color: 		#333;
+@border-color: 	#aaa;
+
+body {
+	display: flex;
+  	flex-direction: column;
+  	background-color: @bg-color;
+  	color:@color;
+}
+
+
+#topnav {
+	background-color: #236;
+	color:white;
+	/*display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items:center;*/
+}
+#topnav a,#topnav a:hover,#topnav a:visited,#topnav a:active {
+	color:inherit;
+	text-decoration: none;
+}
+
+#topnav .nav-toggle {
+	float:right;
+}
+#topnav #logo {
+	//flex:0 1 auto;
+	float:left;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 1.5em;
+	line-height: 2em;
+	padding:0 1em 0 0.5em;
+}
+#topnav nav {
+//	align-items: center;
+	//flex:0 1 auto;
+	clear:both;
+	width: 100%;
+}
+.modal {
+	position: absolute;
+	background-color: @bg-modal;
+	border-radius: 7px;
+	box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.8);
+}
+.modal >* { padding: 0 1em; }
+.modal-header h2 { font-size: 1.1em; padding: 0;}
+.modal-body { padding: 0.5em 1em 1em 1em; }
+.modal-footer { padding: 1em; }
+
+#topnav .nav-toggle.open:after {
+	content: '\e800'; /* close */
+}
+#topnav li:hover, #topnav .nav-toggle:hover {
+	background-color: rgba(255,255,255,0.09)
+}
+#topnav nav ul ul {
+	background-color: @bg-color;
+	color:@color;
+	border:1px solid @border-color;
+}
+#topnav nav ul ul li:hover {
+	background-color: #9ebeed;
+}
+
+.wrapper {
+	flex:1; /* sticky footers */
+	display: block;
+}
+#sidenav {
+	background-color: #9ebeed;
+	flex:0 1 auto;
+}
+#sidenav a {
+	padding-right: 2em; /* make a bit more space for the drop arrows */
+}
+#sidenav a:after {
+	right: 0.7em; /* the drop down arrow */
+}
+#sidenav li ul {
+	transition: opacity 0.5s linear;
+	margin-left:1em;
+}
+#sidenav li a:hover {
+	background-color: rgba(0,0,0,0.2)
+}
+#content {
+	flex:1 1 auto;
+	padding:1em 1em;
+}
+footer {
+	text-align: center;
+	color:#555;
+	font-size:0.9em;
+	line-height: 2em;
+}
+
+.shadow() {
+	box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.2);
+
+}
+.dropdown-toggle ~ ul {
+	background-color: @bg-modal;
+	border:1px solid @border-color;
+	.shadow();
+}
+.tabs { position: relative;}
+.tabs>.active {
+	position: relative;
+	top:1px;  
+	background-color: @bg-modal;
+	border-bottom:1px solid @bg-modal;
+}
+.tab-content {
+	background-color: @bg-modal;
+	border:1px solid @border-color;
+	padding: 1em;
+	.shadow();
+}
+
+@media only screen and (min-width: 48em) {
+	#topnav {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	#topnav #logo {
+		width: auto;
+	}
+	#topnav nav {
+		width: auto;
+		float:right;
+		clear:none;
+	}
+	#topnav nav>ul {
+		position: relative;
+		width:auto;
+	}
+	/* fluid sidebar */
+	.wrapper {
+		display: flex;
+	  	flex-direction: row;
+	}
+	#content {
+		padding:2em 1em;
+	}
+	#sidenav {
+		padding:2em 0 0 0;
+		border-right:1px solid #879ec5;
+	}
+}

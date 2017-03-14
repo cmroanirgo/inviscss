@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Invis CSS | Navigation Demo</title>
+<link id="theme-link" rel="stylesheet" href="../themes/inviscss-clean-pale.min.css" media="all" type="text/css" />
+<style>
+#themes>div>a {
+	display:block;
+	margin:1em;
+	padding:0;
+	border:1px solid #aaa;
+	border-radius: 4px;
+	position: relative;
+	background-color: white;
+	color:#333;
+}
+#themes>div>a:hover {
+	color:black;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5)
+}
+#themes>div>a>h2 {
+	z-index:1;
+	display: block;
+	font-size: 1.1em;
+	line-height:2em;
+	text-align: center;
+	padding: 0 1em;
+	margin: 0;
+}
+#themes>div>a>img {
+	z-index:0;
+	display: block;
+	width:100%;
+}
+#themes>div>a>.description {
+	display: none;
+	position:absolute;
+	top:50%;
+	left:0;
+	width: 200px;
+	padding:1em;
+	border:1px solid #aaa;
+	overflow-y:auto;
+	background-color: white;
+	color:#333;
+	z-index: 3;
+}
+#themes>div>a.active{
+	background-color: #aaa;
+	border:3px solid black;
+}
+#themes>div>a:hover .description {
+	display:block;	
+}
+
+</style>
+</head>
+<body>
+<div id="banner">
+	<span class="nav-toggle" data-target="#banner nav"> </span>
+	<nav class="nav menubar">
+		<ul>
+			<li><a href=".">Home</a></li>
+			<li>Demos
+				<ul>
+					<li><a href="nav.html">Navigation and Menus</a></li>
+					<li><a href="admin.html">Admin Template</a></li>
+				</ul>
+			</li>
+			<li><a href="themes.html">Themes</a></li>
+			<li><a href="https://github.com/cmroanirgo/inviscss">About</a></li>
+
+		</ul>
+	</nav>
+	<div class="container">
+		<h1 class="inv-invis">InvisCss Responsive Themes</h1>
+		<h2 id="currentTheme" class="pull-right">Please enable Javascript</h2>
+		
+	</div>
+</div>
+<section>
+<div id="themes" class="container hr-after row">
+
+</div>
+</section>
+
+
+<section><div class="container">
+	<h2>Typography</h2>
+
+	<p>InvisCSS is always responsive as you can see on this page. These themes just add a little dash of color to the base styling to assist you in launching your new web project. It is recommended to have a look at the demos to find out the capabilities of InvisCSS. </p>
+	<h1>H1 Heading</h1>
+	<h2>H2 Heading</h2>
+	<h3>H3 Heading</h3>
+
+	<blockquote>Block Quote</blockquote>
+	<p>A simple paragraph with a <a href="#">hyperlink</a>. Keep on reading to see what InvisCSS brings to you:</p>
+
+	<div>
+		<h2>Modal</h2>
+		<button class="modal-toggle" data-target="#modal_demo">Click me to show a modal</button>
+		<div class="horz-group">
+			<button class="dropdown-toggle">Click for menu</button>
+			<ul>
+				<li><a href="#">Link 1</a></li>
+				<li><a href="#">Link 2</a></li>
+				<li><a href="#">Link 3</a></li>
+				<li><hr></li>
+				<li><a href="#">Link 4</a></li>
+			</ul>
+		</div>
+		<!--
+
+		Modal Test
+
+		-->
+
+		<div class="modal fade" id="modal_demo" tabindex="-1">
+        	<div class="modal-header">
+                <h2>Modal Dialog</h2>
+                <i class="inv-cancel close"></i>
+            </div>
+            <div class="modal-body">
+            	<p>This is a sample modal dialog.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close">Cancel</button>
+                <a class="button danger modal-ok">Delete</a>
+            </div>
+		</div>
+		
+		<h2>Sidebar</h2>
+		<nav class="nav sidebar hr-after" style="max-width:250px;">
+			<ul>
+				<li><a href="#">Link 1</a></li>
+				<li>Stuff
+					<ul>
+						<li><a href="#demo-link1">Link 1</a></li>
+						<li>Sub Menu
+							<ul>
+								<li><a href="#demo-link1">Link 1</a></li>
+								<li>Link 2
+									<ul>
+										<li><a href="#demo-link1">Link 1</a></li>
+										<li><a href="#demo-link2">Link 2</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a>More Stuff</a>
+					<ul>
+						<li><a href="#demo-link1">Link 1</a></li>
+						<li><a href="#demo-link2">Link 2</a>
+							<ul>
+								<li><a href="#demo-link1">Link 1</a></li>
+								<li><a href="#demo-link2">Link 2</a>
+									<ul>
+										<li><a href="#demo-link1">Link 1</a></li>
+										<li><a href="#demo-link2">Link 2</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a href="#demo-about">About</a></li>
+
+			</ul>	
+		</nav>
+
+		<h2>Menubar</h2>
+		<nav class="nav menubar hr-after">
+			<ul>
+				<li><a href="#">Menubar</a></li>
+				<li>Stuff
+					<ul>
+						<li><a href="#demo-link1">Link 1</a></li>
+						<li>Sub Menu
+							<ul>
+								<li><a href="#demo-link1">Link 1</a></li>
+								<li>Link 2
+									<ul>
+										<li><a href="#demo-link1">Link 1</a></li>
+										<li><a href="#demo-link2">Link 2</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a>More Stuff</a>
+					<ul>
+						<li><a href="#demo-link1">Link 1</a></li>
+						<li><a href="#demo-link2">Link 2</a>
+							<ul>
+								<li><a href="#demo-link1">Link 1</a></li>
+								<li><a href="#demo-link2">Link 2</a>
+									<ul>
+										<li><a href="#demo-link1">Link 1</a></li>
+										<li><a href="#demo-link2">Link 2</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a href="#demo-about">About</a></li>
+
+			</ul>
+		</nav>
+	</div>
+	<div class="clear"></div>
+
+	<h2>Form</h2>
+	<form class="aligned"> 
+		<div class="row"> 
+			<label for="exampleInputEmail1">Email address</label> 
+			<input id="exampleInputEmail1" placeholder="Email" type="email"> 
+		</div> 
+		<div class="row small" > 
+			<label for="exampleText">Small Text</label> 
+			<input id="exampleText" placeholder="Text" type="text"> 
+		</div> 
+		<div class="row has-error"> 
+			<label for="exampleInputPassword1">Password With Error</label> 
+			<input id="exampleInputPassword1" placeholder="Password" type="password"> 
+		</div> 
+		<div class="row large"> 
+			<label for="exampleInputPassword2">Large Password</label> 
+			<input id="exampleInputPassword2" placeholder="Password" type="password"> 
+		</div> 
+		<div class="row">
+			<label for="exampleInputFile">File input*</label> 
+			<input id="exampleInputFile" type="file" class="form-control">  
+		</div> 
+		<div class="row">
+			<label for="exampleInputFile2">File drop*</label> 
+			<div class="file-drop">
+				<input id="exampleInputFile2" type="file" multiple>  
+				<div class="file-notice">
+					<span class="success inv-upload">Drop Files or Click Here...</span>
+					<span class="default inv-upload">Drop Files or Click Here...</span>
+				</div>
+			</div>
+		</div> 
+		<div class="row"><label for>Number</label><input type="number" min="1" max="10"> </div>
+		<div class="row"><label for>Date</label><input type="date" > </div>
+		<div class="row"><label for>DateTime</label><input type="datetime" > </div>
+		<div class="row"><label for>Time</label><input type="time" > </div>
+		<div class="row"><label for>Search</label><input type="search" class="input-1"> </div>
+
+		<div class="row"> 
+			<span class="td"><!--this pushes the checkboxes right. You could also use <label for>&nbsp;</label> here instead--></span> 
+			<label class="checkbox"> <input type="checkbox"> Check me out </label> <br/>
+			<label class="radio"> <input type="radio" name="group1" id="r1" value="a">  radio1 </label> <br/>
+			<label class="radio"> <input type="radio" name="group1" id="r2" value="b">radio2 </label> 
+		</div> 
+		<div class="row">
+			<label> </label><button type="submit">Submit</button> 
+		</div>
+	</form> 
+
+
+	<p>Buttons
+		<input type="submit" value="Submit">
+		<button class="primary">Primary</button>
+		<button class="success">Success</button>
+		<button class="info">Info</button>
+		<button class="warning">Warning</button>
+		<button class="danger">Danger</button> 
+	</p>
+
+</div></section>
+<script>
+var themes = [
+//	{name:'naked'     , description:'bare-bones raw styling with almost no coloring or fonts. Don\'t use this theme unless building your own' },
+	{name:'clean-pale', description:'Has minimal styling to support themes with pale coloring' },
+	{name:'clean-dark', description:'Has minimal styling to support themes with dark coloring' },
+	{name:'strappy'   , description:'A Bootstrap-like theme' },
+	{name:'strappy-dark', description:'A Bootstrap-like theme with a black menubar' },
+	{name:'office-blue', description:'An office-ready blue theme with a hint of shadows' },
+	{name:'office-red', description:'An office-ready red theme with a hint of shadows' },
+	{name:'ultra-blue', description:'Too blue to be true' },
+	{name:'nature'    , description:'A clean and green theme' },
+];
+var defaultTheme = themes[0].name;
+var currentTheme = getHashParam(defaultTheme);
+console.log('current theme: ' + currentTheme);
+function el(id) { return document.getElementById(id); }
+function qsa(s) { return document.querySelectorAll(s); }
+function getAttr(el, name) { return el.getAttribute(name); }
+function setAttr(el, name, value) { el.setAttribute(name, value); }
+function getHashParam(defValue) {  
+	try { 
+		return window.location.hash.substr(1) || defValue; }
+		catch(e) {
+			return defValue;
+		}
+}
+
+function buildThemes() {
+	var container = el('themes');
+	var current = currentTheme;
+	var currentFound = themes.some(function(theme) {
+		return theme.name==current;
+	});
+	if (!currentFound)
+		currentTheme = current = defaultTheme;
+	themes.forEach(function(theme) {
+		var cls = theme.name==current ? " active" : "" ;
+		var html = 				
+				"<div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2"+cls+"\">\n"+
+				"	<a id=\"{{theme}}\" href=\"#{{theme}}\" data-style=\"{{theme}}\">\n"+
+				"		<h2>{{theme}}</h2>\n"+
+				"		<img src=\"images/{{theme}}-preview.png\">\n"+
+				"		<p class=\"description\">{{description}}</p>\n"+
+				"	</a>\n"+
+				"</div>\n";
+		html = html.replace(/\{\{theme\}\}/g, theme.name).replace(/\{\{description\}\}/g, theme.description);
+		container.insertAdjacentHTML('beforeend', html);
+	})
+}
+function applyTheme(theme) {
+	console.log('Applying theme: ' + theme)
+	setAttr(el('theme-link'), 'href', '../themes/inviscss-'+theme+".min.css");
+	el('currentTheme').innerText = 'Current Theme: ' + theme;
+	var links = qsa('#themes>div>a');
+	for (var i=0; i<links.length; i++)
+		links[i].classList.remove('active');
+	el(theme).classList.add('active');
+}
+
+//var currentTheme = getParam('theme');
+
+buildThemes(currentTheme);
+var links = qsa('#themes>div>a');
+for (var i=0; i<links.length; i++) {
+	links[i].addEventListener('click', function(e) {
+		//e.preventDefault();
+		//applyTheme(getAttr(this, 'data-style'));
+		window.location.href = this.href;
+		window.location.reload(false); 
+	})
+}
+applyTheme(currentTheme);
+
+</script>
+
+
+
+<script src="../js/inviscss.js" type="text/javascript"></script>
+
+
+</body>

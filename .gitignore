@@ -1,5 +1,5 @@
 node_modules
-dist
+dist*
 Design
 demo/css
 demo/fonts

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Invis CSS | Admin</title>
+<link rel="stylesheet" href="../css/inviscss.min.css" media="all" type="text/css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" media="all" type="text/css" />
+<link rel="stylesheet" href="css/admin-demo.min.css" media="all" type="text/css" />
+</head>
+<body>
+<div id="topnav">
+	<span id="logo"><a href="."><i class="inv-invis"></i> Invis Admin</a></span>
+	<span class="nav-toggle" data-target="#topnav>nav,#sidenav"> </span>
+	<nav  class="nav menubar right"><ul>
+		<li><a href="#nav1"><i class="fa fa-car"></i> Nav 1</a></li>
+		<li><a href="#nav1"><i class="fa fa-plane"></i> Nav 2</a></li>
+		<li><a href="themes.html"><i class="fa fa-image"></i> Theme</a></li>
+		<li><a href="#nav1"><i class="fa fa-user"></i> Administrator</a>
+			<ul>
+				<li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+				<li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+				<li><hr></li>
+				<li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
+			</ul>
+		</li>
+	</ul>
+	</nav>
+</div>
+<div class="wrapper">
+	<nav id="sidenav" class="nav sidebar">
+		<ul>
+			<li><a href='#home'><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+			<li><a href='#link1'><i class="fa fa-male fa-fw"></i> Link 1</a>
+				<ul>
+					<li><a href="#sublink"><i class="fa fa-book fa-fw"></i> Sub Link 1</a></li>
+					<li><a href="#sublink"><i class="fa fa-bookmark fa-fw"></i> Sub Link 2</a></li>
+					<li><a href="#sublink"><i class="fa fa-print fa-fw"></i> Sub Link 3</a></li>
+				</ul>
+			</li>
+			<li><a href='#link1'><i class="fa fa-list fa-fw"></i> Link 2</a></li>
+			<li><a href='#link2'><i class="fa fa-flag fa-fw"></i> Link 3</a></li>
+		</ul>
+	</nav>
+	<div id="content" class="container-fixed">
+		<p>This is the content</p>
+		
+		<div class="horz-group pull-right">
+			<input type="submit" class="primary" value="Save" />
+			<button type="button" class="primary dropdown-toggle"></button>
+			<ul>
+				<li><a href="#" 
+					class="modal-toggle"
+					data-filename="readme.txt" 					
+					data-target="#file_delete"><span title="delete" class="fa fa-trash-o"></span> Delete</a>
+				</li>
+			</ul>
+		</div>
+
+		<ul class="tabs">
+		  <li class="active"><a href="#tab-home">Home</a></li>
+		  <li><a href="#tab-profile">Profile</a></li>
+		  <li><a href="#tab-messages">Messages</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="tab-home" class="active">
+				Home
+			</div>
+			<div id="tab-profile">
+				Profile
+			</div>
+			<div id="tab-messages">
+				Messages
+			</div>
+		</div>
+
+
+		<!--
+
+		Modal Test
+
+		-->
+
+		<div class="modal fade" id="file_delete" tabindex="-1">
+        	<div class="modal-header">
+                <h2>Confirm Delete</h2>
+                <i class="inv-cancel close"></i>
+            </div>
+            <div class="modal-body">
+            	<p>Really delete '<span id="modal_filename"></span>'?</p>
+            	<p>This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close">Cancel</button>
+                <a class="button danger modal-ok">Delete</a>
+            </div>
+		</div>
+		<script>
+			function el(id) { return document.getElementById(id) }
+			var fd = el('file_delete');
+			fd.addEventListener('modal-open', function(e) {
+				var filename = e.relatedTarget.getAttribute('data-filename');
+				this.setAttribute('data-filename', filename)
+				el('modal_filename').innerHTML = filename;
+			})
+			fd.addEventListener('modal-ok', function(e) {
+				alert("Delete the file..." + this.getAttribute('data-filename'))
+			})
+		</script>
+
+
+	</div>
+</div>
+<footer>
+	Powered by Invis CSS. <i class="fa fa-github"></i>
+</footer>
+
+
+<script src="../js/inviscss.js" type="text/javascript"></script>
+</body>
