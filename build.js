@@ -62,7 +62,9 @@ function lessToCss(file) {
 	html = html.replace(/rel="stylesheet\/less"/g, 'rel="stylesheet"');
 	html = html.replace(/less\//g, 'css/');
 	html = html.replace(/\.less/g, '.min.css');
+	html = html.replace(/inviscss\.js/g, 'inviscss.min.js');
 	html = html.replace(/<!--build:rm-begin[\w\W]*?build:rm-end-->/g, '');
+	html = html.replace(/\{\{package_version\}\}/g, process.env.npm_package_version);
 	fs.writeFileSync(file, html);
 }
 
@@ -71,8 +73,10 @@ var themes = [ ];
 function registerLess(lessname, dest) {
 	var dst = path.join(dest || path.join(out_dir, 'css'), path.basename(lessname, '.less'));
 
-	cmds.push('node ' + path.join('node_modules','.bin','lessc') + ' ' + lessname + ' ' + dst + '.css ' + process.env.npm_package_config_less_options)
-	cmds.push('node ' + path.join('node_modules','.bin','lessc') + ' ' + lessname + ' ' + dst + '.min.css ' + process.env.npm_package_config_less_min_options)
+	if (lessname.indexOf('theme-base')<0) { // ignore files like 'theme-base.less'
+		cmds.push('node ' + path.join('node_modules','.bin','lessc') + ' ' + lessname + ' ' + dst + '.css ' + process.env.npm_package_config_less_options)
+		cmds.push('node ' + path.join('node_modules','.bin','lessc') + ' ' + lessname + ' ' + dst + '.min.css ' + process.env.npm_package_config_less_min_options)
+	}
 
 	if (lessname.indexOf('inviscss-')>=0) {
 		var theme_name = path.basename(lessname, '.less');
@@ -88,6 +92,7 @@ getFiles(path.join(__dirname, out_dir, 'demo'), '.html').forEach(lessToCss);
 
 //console.log(process.env)
 registerLess('less/inviscss.less');
+registerLess('demo/less/admin-demo.less', path.join(__dirname, out_dir, 'demo', 'css'));
 
 // also compile the theme files
 var themes_dist = path.join(__dirname, out_dir, 'themes');
