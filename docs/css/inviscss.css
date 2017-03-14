@@ -1917,6 +1917,7 @@ button:hover {
 .nav a,
 .dropdown-toggle ~ ul a,
 .tabs a {
+  outline: 0;
   display: block;
   position: relative;
   margin: 0;

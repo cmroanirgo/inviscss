@@ -1926,6 +1926,7 @@ button:hover {
 .nav a,
 .dropdown-toggle ~ ul a,
 .tabs a {
+  outline: 0;
   display: block;
   position: relative;
   margin: 0;
@@ -2367,8 +2368,7 @@ footer,
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.2);
 }
 .nav.menubar ul ul,
-.dropdown-toggle ~ ul,
-.tabs {
+.dropdown-toggle ~ ul {
   background-color: #fafafa;
   color: #333;
 }
@@ -2417,6 +2417,20 @@ footer,
 }
 .nav.sidebar:not(.popup) li ul {
   padding-left: 1em;
+}
+.tabs {
+  position: relative;
+}
+.tabs > .active {
+  position: relative;
+  top: 1px;
+  background-color: #fafafa;
+  border-bottom: 1px solid #fafafa;
+}
+.tab-content {
+  background-color: #fafafa;
+  border: 1px solid #aaa;
+  padding: 1em;
 }
 @media only screen and (min-width: 48em) {
   .nav.sidebar.popup ul ul {
