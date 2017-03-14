@@ -90,31 +90,104 @@
 <!--build:rm-begin-->
 <section><div class="container">
 	<p>Click to make a preview image:</p>
-	<div id="imager" style="font-size:0.75em; border:1px solid black; overflow:none; width:200px">
+	<div id="imager" style="font-size:0.75em; border:1px solid black; overflow:none; width:250px; max-height:200px;">
 		<div>
 			<nav class="nav menubar right"><ul>
-				<li class="open">Item 1</li>
-				<li>Item 1</li>
+				<li class="open">Nav 1</li>
+				<li>Nav 2</li>
 				<li><a><i class="inv-invis"></i></a></li>
 			</ul></nav>
 			<nav class="nav sidebar pull-left" style="min-height:100%; padding-top:2em"><ul>
-				<li class="open">Item 1</li>
-				<li>Item 1</li>
+				<li class="open">Side 1</li>
+				<li>Side 2</li>
 
 			</ul>
 			</nav>
 			<button class="primary pull-right" style="margin-right:1em">Button</button>
 			<h2><a>InvisCSS</a></h2>
-			<p>These themes are designed to be more of a launching pad to assist in the development of your own colouring and styles, rather than being an exhaustive implementation.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur viverra lectus in blandit commodo. Aliquam erat volutpat. Nam ut risus non risus malesuada consectetur scelerisque in ligula. Curabitur ut efficitur lorem. Nunc justo sapien, varius vel dui eu, ultrices sagittis magna. Aenean vitae mi mi. Integer urna dolor, sollicitudin eget venenatis sed, aliquet a metus. Ut at nulla a lacus aliquam suscipit quis in dolor. Maecenas sed pharetra ipsum, vel accumsan dolor. Curabitur eleifend imperdiet ante hendrerit placerat.</p>
 		</div>
 	</div>
 </div></section>
 <script src="../dom-to-image.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+
+/**
+ * @param {Blob} file - File or Blob object. This parameter is required.
+ * @param {string} fileName - Optional file name e.g. "image.png"
+
+// from http://muaz-khan.blogspot.com.au/2012/10/save-files-on-disk-using-javascript-or.html
+// eg:
+
+
+var html = "<!DOCTYPE html>\n" +
+            "<html><body>Hi There!</body></html>";
+
+var textFile = new Blob([html], { 
+   type: 'text/html'
+});
+invokeSaveAsDialog(textFile, 'results.html');
+
+ */
+function invokeSaveAsDialog(file, fileName) {
+    if (!file) {
+        throw 'Blob object is required.';
+    }
+
+    if (!file.type) {
+        file.type = 'text/html';
+    }
+
+    var fileExtension = file.type.split('/')[1];
+
+    if (fileName && fileName.indexOf('.') !== -1) {
+        var splitted = fileName.split('.');
+        fileName = splitted[0];
+        fileExtension = splitted[1];
+    }
+
+    var fileFullName = (fileName || (Math.round(Math.random() * 9999999999) + 888888888)) + '.' + fileExtension;
+
+    if (typeof navigator.msSaveOrOpenBlob !== 'undefined') {
+        return navigator.msSaveOrOpenBlob(file, fileFullName);
+    } else if (typeof navigator.msSaveBlob !== 'undefined') {
+        return navigator.msSaveBlob(file, fileFullName);
+    }
+
+    var hyperlink = document.createElement('a');
+    hyperlink.href = URL.createObjectURL(file);
+    hyperlink.target = '_blank';
+    hyperlink.download = fileFullName;
+
+    if (!!navigator.mozGetUserMedia) {
+        hyperlink.onclick = function() {
+            (document.body || document.documentElement).removeChild(hyperlink);
+        };
+        (document.body || document.documentElement).appendChild(hyperlink);
+    }
+
+    var evt = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+    });
+
+    hyperlink.dispatchEvent(evt);
+
+    if (!navigator.mozGetUserMedia) {
+        URL.revokeObjectURL(hyperlink.href);
+    }
+}
+
+
 var imageSrc = document.getElementById('imager');
 imageSrc.addEventListener('click', function() {
 	var bgColor = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
-	domtoimage.toPng(this.children[0], {bgcolor:bgColor})
+	domtoimage.toBlob(this.children[0], {bgcolor:bgColor})
+    .then(function (blob) {
+        invokeSaveAsDialog(blob, currentTheme+'-preview.png');
+    });
+	/*domtoimage.toPng(this.children[0], {bgcolor:bgColor})
 	    .then (function (dataUrl) {
 	        var img = new Image();
 	        img.src = dataUrl;
@@ -123,7 +196,7 @@ imageSrc.addEventListener('click', function() {
 	    .catch(function (error) {
 	        console.error('oops, something went wrong!', error);
 	    });
-
+	*/
 })
 
 </script>
@@ -258,6 +331,40 @@ imageSrc.addEventListener('click', function() {
 	</div>
 	<div class="clear"></div>
 
+	<h2>Tabbed</h2>
+	<ul class="tabs">
+		  <li class="active"><a href="#tab-home">Home</a></li>
+		  <li><a href="#tab-profile">Form</a></li>
+		  <li><a href="#tab-messages">Messages</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="tab-home" class="active">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida risus eu semper elementum. Vivamus non sagittis tellus. Cras leo arcu, volutpat nec varius quis, vehicula in dolor. In diam orci, tempor vel elit a, posuere ullamcorper leo. Nullam mollis posuere urna, nec pretium felis eleifend vel. Donec accumsan tempus magna vel elementum. Donec dapibus magna vulputate nibh malesuada ultrices vel eget augue. Sed pulvinar augue ut porta ultrices. Morbi a risus vitae quam lacinia iaculis. Morbi tincidunt augue quis posuere ultricies. In quis eleifend libero. </p>
+			</div>
+			<div id="tab-profile">
+				<form class="aligned">
+					<div class="row"> <label for"form-name">Name</label><input id="form-name" placeholder="Name" type='text'></div>
+					<div class="row"> <label for"form-password">Password</label><input id="form-password" placeholder="Password" type="password"></div>
+					<div class="row"> <label for"form-email">Email</label><input id="form-email" placeholder="Email" type="email"></div>
+					<div class="row"> <label></label><input type="submit" class="primary" value="Submit"></div>
+				</form>
+			</div>
+			<div id="tab-messages">
+				Messages
+			</div>
+		</div>
+
+
+	<p>Buttons
+		<input type="submit" value="Submit">
+		<button class="primary">Primary</button>
+		<button class="success">Success</button>
+		<button class="info">Info</button>
+		<button class="warning">Warning</button>
+		<button class="danger">Danger</button> 
+	</p>
+
+
 	<h2>Form</h2>
 	<form class="aligned"> 
 		<div class="row"> 
@@ -306,16 +413,6 @@ imageSrc.addEventListener('click', function() {
 			<label> </label><button type="submit">Submit</button> 
 		</div>
 	</form> 
-
-
-	<p>Buttons
-		<input type="submit" value="Submit">
-		<button class="primary">Primary</button>
-		<button class="success">Success</button>
-		<button class="info">Info</button>
-		<button class="warning">Warning</button>
-		<button class="danger">Danger</button> 
-	</p>
 
 </div></section>
 <script>

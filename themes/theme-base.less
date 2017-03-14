@@ -31,7 +31,11 @@
 @color-sidebar: 	@color;
 @sidebar-shadow:	false;
 
+
 @bg-modal:			@bg-popup;
+@bg-tabs:			@bg-modal;
+@tabs-shadow:		false;
+
 @font-family:		~"Helvetica, Arial, sans-serif";
 @color-footer:		lighten(@color, 20%);
 
@@ -70,7 +74,7 @@ footer,.footer {
 	background-color: @bg-sidebar; color:@color-sidebar; 
 	& when (@sidebar-shadow = true) { .shadow-vh(); }
 }
-.nav.menubar ul ul, .dropdown-toggle ~ ul, .tabs { background-color: @bg-popup;  color:@color-popup; }
+.nav.menubar ul ul, .dropdown-toggle ~ ul { background-color: @bg-popup;  color:@color-popup; }
 .dropdown-toggle ~ ul a { color:@color-popup;}
 .dropdown-toggle ~ ul a:hover { background-color: @bg-popup-hover;  }
 
@@ -109,6 +113,20 @@ footer,.footer {
 .nav.sidebar:not(.popup) li ul {
 	//transition: opacity 0.5s linear;
 	padding-left:1em;
+}
+
+.tabs { position: relative;}
+.tabs>.active {
+	position: relative;
+	top:1px;  
+	background-color: @bg-tabs;
+	border-bottom:1px solid @bg-modal;
+}
+.tab-content {
+	background-color: @bg-tabs;
+	border:1px solid @border-color;
+	padding: 1em;
+	& when (@tabs-shadow = true) { .shadow-vh(); }
 }
 
 @media @sm-viewport {
