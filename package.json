@@ -1,16 +1,16 @@
 {
   "private": true,
   "name": "inviscss",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "A minimal css library",
-  "config" : { 
-  	"less_options": "--autoprefix",
-  	"less_min_options": "--autoprefix --clean-css=\"--s1 --advanced\"",
-  	"theme": "inviscss-clean-pale"
+  "config": {
+    "less_options": "--autoprefix",
+    "less_min_options": "--autoprefix --clean-css=\"--s1 --advanced\"",
+    "theme": "inviscss-clean-pale"
   },
   "scripts": {
-  	"prep:dist": "mkdir -p dist && rm -rf dist/* && mkdir -p dist/css && cp -r fonts dist/ && cp -r js dist/ && cp docs/themes/$npm_package_config_theme.* dist/css/ && rm dist-zip/$npm_package_config_theme-$npm_package_version.zip 2> /dev/null || true && zip -rq dist-zip/$npm_package_config_theme-$npm_package_version.zip dist/*",
-  	"prep": "mkdir -p dist-zip && rm -rf dist-zip/* &&  mkdir -p docs && rm -rf docs/* && mkdir -p docs/css && cp -r demo docs/ && cp -r fonts docs/ && cp -r js docs/ && cp index.html docs/",
+    "prep:dist": "mkdir -p dist && rm -rf dist/* && mkdir -p dist/css && cp -r fonts dist/ && cp -r js dist/ && cp docs/themes/$npm_package_config_theme.* dist/css/ && rm dist-zip/$npm_package_config_theme-$npm_package_version.zip 2> /dev/null || true && zip -rq dist-zip/$npm_package_config_theme-$npm_package_version.zip dist/*",
+    "prep": "mkdir -p dist-zip && rm -rf dist-zip/* &&  mkdir -p docs && rm -rf docs/* && mkdir -p docs/css && cp -r demo docs/ && cp -r fonts docs/ && cp -r js docs/ && cp index.html docs/",
     "xbuild:css": "lessc less/inviscss.less dist/css/inviscss.css --autoprefix && lessc demo/less/admin-demo.less dist/demo/css/admin-demo.css --autoprefix",
     "xbuild:css.min": "lessc less/inviscss.less --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"  dist/css/inviscss.min.css  && lessc demo/less/admin-demo.less dist/demo/css/admin-demo.min.css --autoprefix  --clean-css=\"--s1 --advanced --compatibility=ie9\"",
     "build:make": "node build.js",
@@ -36,6 +36,5 @@
     "url": "https://github.com/cmroanirgo/inviscss/issues"
   },
   "homepage": "https://github.com/cmroanirgo/inviscss#readme",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
