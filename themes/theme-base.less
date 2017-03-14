@@ -1,0 +1,161 @@
+/*! theme: clean-pale
+  _____            _      _____  _____ _____ 
+ |_   _|          (_)    / ____|/ ____/ ____|
+   | |  _ ____   ___ ___| |    | (___| (___  
+   | | | '_ \ \ / / / __| |     \___ \\___ \ 
+  _| |_| | | \ V /| \__ \ |____ ____) |___) |
+ |_____|_| |_|\_/ |_|___/\_____|_____/_____/ 
+Copyright (c) kodespace.com, 2016
+*/
+
+
+
+@import "../less/inviscss.less";
+
+@bg-color: 		#ffffff; //body bg
+@color: 		#333;
+@link-color:            #888;
+@link-hover-color:      darken(@link-color, 15%);
+
+@bg-popup: 			@bg-color; 
+@bg-popup-hover:	darken(@bg-popup, 10%);
+@color-popup:		@color;
+@popup-shadow:		false;
+
+@border-color:		#aaa;
+//@root-font-size:        14px;	 // this is applied to <html> and is the 'root' used in 'rem' units below
+//@link-hover-decoration: underline;
+//@border-radius:		4px;
+//@input-color:		default;
+//@input-bg-color:	default;
+//@nav-padding-horz:		1em;
+//@menubar-line-height:	3em;
+//@sidebar-line-height:	2em;
+
+@bg-menubar:		@bg-color;
+@bg-menubar-hover:  darken(@bg-menubar, 10%);
+@color-menubar: 	@color;
+@menubar-shadow:	false;
+
+@bg-sidebar:		@bg-color;
+@bg-sidebar-hover:  darken(@bg-sidebar, 10%);
+@color-sidebar: 	@color;
+@sidebar-shadow:	false;
+
+@bg-modal:			@bg-popup;
+@font-family:		~"Helvetica, Arial, sans-serif";
+@color-footer:		lighten(@color, 20%);
+
+.shadow-v() {
+	box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
+}
+.shadow-vh() {
+	box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+body {
+	background-color: @bg-color;
+	color:@color;
+	font-family: @font-family;
+};
+
+a { color: @link-color;}
+a:hover { color: @link-hover-color;}
+h2 a:hover { text-decoration: none; }
+h2[id] a:hover:after {
+	content: " \000020 \0000b6"; /*&para;*/
+}
+
+footer,.footer {
+	text-align: center;
+	color:@color-footer;
+	font-size:0.9em;
+	line-height: 2em;
+}
+
+.nav.menubar { 
+	background-color: @bg-menubar; color:@color-menubar; 
+	& when (@menubar-shadow = true) { .shadow-v(); }
+}
+.nav.sidebar { 
+	background-color: @bg-sidebar; color:@color-sidebar; 
+	& when (@sidebar-shadow = true) { .shadow-vh(); }
+}
+.nav.menubar ul ul, .dropdown-toggle ~ ul, .tabs { background-color: @bg-popup;  color:@color-popup; }
+.dropdown-toggle ~ ul a { color:@color-popup;}
+.dropdown-toggle ~ ul a:hover { background-color: @bg-popup-hover;  }
+
+.nav.menubar ul ul, .dropdown-toggle ~ ul {
+	& when (@popup-shadow = true) { 
+		.shadow-vh(); 
+	}
+}
+.nav.menubar>ul>li, .nav-toggle {
+	background-color: @bg-menubar;
+	color: @color-menubar;
+}
+.nav.menubar>ul>li:hover, .nav-toggle:hover {
+	background-color: @bg-menubar-hover;
+}
+.nav.menubar ul ul, .dropdown-toggle ~ ul {
+	border:1px solid @border-color;
+	transition: opacity 0.15s linear;
+}
+.nav.menubar ul ul li:hover {
+	background-color: @bg-popup-hover;
+}
+.nav.sidebar {
+	background-color: @bg-sidebar;
+	color: @color-sidebar;
+}
+.nav.sidebar li>a:hover {
+	background-color: @bg-sidebar-hover;
+}
+.nav.sidebar a {
+	padding-right: 2em; /* make a bit more space for the drop arrows */
+}
+.nav.sidebar a:after {
+	right: 0.7em; /* the drop down arrow */
+}
+.nav.sidebar:not(.popup) li ul {
+	//transition: opacity 0.5s linear;
+	padding-left:1em;
+}
+
+@media @sm-viewport {
+	.nav.sidebar.popup ul ul {
+		background-color: @bg-popup;  color:@color-popup; 
+		border:1px solid @border-color;
+		transition: opacity 0.15s linear;
+		& when (@popup-shadow = true) { 
+			.shadow-vh(); 
+		}
+	}
+
+}
+
+
+.modal {
+	position: absolute;
+	background-color: @bg-modal;
+	top:10%;
+	border-radius: 7px;
+	box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.8);
+}
+.modal >* { padding: 0 1em; }
+.modal-header h2 { font-size: 1.1em; padding: 0;}
+.modal-body { padding: 0.5em 1em 1em 1em; }
+.modal-footer { padding: 1em; }
+
+.tabs { position: relative;}
+.tabs>.active {
+	position: relative;
+	top:1px;  
+	background-color: @bg-modal;
+	border-bottom:1px solid @bg-modal;
+}
+.tab-content {
+	background-color: @bg-modal;
+	border:1px solid @border-color;
+	padding: 1em;
+}

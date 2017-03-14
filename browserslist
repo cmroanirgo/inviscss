@@ -1,5 +1,9 @@
-> 0.9%
-last 3 versions
-safari 8
+> 0.5%
+last 3 FireFox versions
+# chrome 33 for dolphin browser
+Chrome >= 33
+Edge >= 12
+safari >= 8
 not UCAndroid > 1
-not ie_mob > 1
+ie_mob >= 11
+Android >= 4 

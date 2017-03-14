@@ -13,6 +13,8 @@
     vertical-align: middle;
     box-sizing: border-box;
     margin-bottom: 0.72em;
+    & when not (@input-color = unset) { color: @input-color; }
+    & when not (@input-bg-color = unset) { background-color: @input-bg-color; }
 }
 
 
@@ -241,7 +243,8 @@ input[type="radio"],
 .has-error textarea, textarea.has-error,
 .has-error select, select.has-error {
   border-color:darken(@color-danger, 15%); // @color-danger:          #d9534f;
-  background-color: lighten(@color-danger, 40%);
+  & when     (@input-bg-color = unset) { background-color: lighten(@color-danger, 40%); }
+  & when not (@input-bg-color = unset) { background-color: multiply(@input-bg-color, lighten(@color-danger, 20%)); }
 }
 
 // Alternate buttons
@@ -250,11 +253,15 @@ input[type="radio"],
   color:@text-color; background-color:@bg-color; border-color:@border-color;
 }
 .button, button, [type="submit"] {
-  cursor:pointer;
-  padding:0.5em 1em;
-  margin:0.25em 0;
-  border-radius: @border-radius;
-  border:1px solid @border-color;
+	cursor:pointer;
+	padding:0.5em 1em;
+	margin:0.25em 0;
+	border-radius: @border-radius;
+	border:1px solid @border-color;
+	
+	& when not (@input-color = unset) { color: @input-color; }
+	& when not (@input-bg-color = unset) { background-color: @input-bg-color; }
+
 	&:hover:not(:active) {
   		box-shadow: inset 0 -1px 3px rgba(0,0,0,0.1), inset 0 3px 3px rgba(255,255,255,0.1), 0 0 5px rgba(0,0,0,0.2);
   	}	

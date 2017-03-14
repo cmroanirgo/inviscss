@@ -1,0 +1,46 @@
+/*! theme: clean-dark
+  _____            _      _____  _____ _____ 
+ |_   _|          (_)    / ____|/ ____/ ____|
+   | |  _ ____   ___ ___| |    | (___| (___  
+   | | | '_ \ \ / / / __| |     \___ \\___ \ 
+  _| |_| | | \ V /| \__ \ |____ ____) |___) |
+ |_____|_| |_|\_/ |_|___/\_____|_____/_____/ 
+Copyright (c) kodespace.com, 2016
+*/
+@import "theme-base.less";
+
+@bg-color: 		#333; //body bg
+@bg-popup: 		#222; 
+@color: 		#ccc;
+@link-color:	white;
+@link-hover-color: #fff0e0;
+
+// override invscss variables
+@border-color:		lighten(@bg-color, 10%);
+@input-color:		#111;
+@input-bg-color:	#ccc;
+
+@bg-menubar: #111;
+@bg-menubar-hover:  lighten(@bg-menubar, 10%);
+@color-menubar: white;
+
+@bg-sidebar:		@bg-color;
+@bg-sidebar-hover:  lighten(@bg-color, 10%);
+@color-sidebar: 	@link-color;
+.nav.sidebar {
+	border:1px solid lighten(@bg-color, 10%);
+	border-radius: 3px;
+}
+
+
+@color-primary:			darken(#337ab7, 15%);
+@color-success:         darken(#5cb85c, 15%);
+@color-info:            darken(#5bc0de, 15%);
+@color-warning:         darken(#f0ad4e, 15%);
+@color-danger:          darken(#d9534f, 15%);
+
+@btn-default-color:             darken(#333, 15%);
+
+.has-error, .has-error * {
+  color: lighten(@color-danger, 25%);
+}

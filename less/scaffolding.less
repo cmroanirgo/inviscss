@@ -27,7 +27,7 @@ p, ul, ol {
 }
 
 .container:before, .container:after  { content: ""; display: table; } 
-.container:after, .row:after  { clear: both; } 
+.container:after, .row:after, .clear  { clear: both; } 
 
 .pull-left { float:left }
 .pull-right { float:right }
@@ -50,7 +50,7 @@ hr, .hr-before:before, .hr-after:after {
   margin-top:1.5rem;
   margin-bottom:1.5rem;
   border:0;
-  border-top:1px solid #aaa;
+  border-top:1px solid @border-color;
 }
 .hr-before:before, .hr-after:after {
   display:block !important;

@@ -1,0 +1,49 @@
+/*! theme: clean-pale
+  _____            _      _____  _____ _____ 
+ |_   _|          (_)    / ____|/ ____/ ____|
+   | |  _ ____   ___ ___| |    | (___| (___  
+   | | | '_ \ \ / / / __| |     \___ \\___ \ 
+  _| |_| | | \ V /| \__ \ |____ ____) |___) |
+ |_____|_| |_|\_/ |_|___/\_____|_____/_____/ 
+Copyright (c) kodespace.com, 2016
+*/
+
+
+
+@import "theme-base.less";
+
+@bg-color: 		#ffffff; //body bg
+@color: 		#333;
+@link-color:            #888;
+@link-hover-color:      darken(@link-color, 15%);
+
+@bg-popup: 			@bg-color; 
+@bg-popup-hover:	darken(@bg-popup, 10%);
+@color-popup:		@color;
+
+@border-color:		#aaa;
+//@root-font-size:        14px;	 // this is applied to <html> and is the 'root' used in 'rem' units below
+//@link-hover-decoration: underline;
+//@border-radius:		4px;
+//@input-color:		default;
+//@input-bg-color:	default;
+//@nav-padding-horz:		1em;
+//@menubar-line-height:	3em;
+//@sidebar-line-height:	2em;
+
+@bg-menubar:		@bg-color;
+@bg-menubar-hover:  darken(@bg-menubar, 10%);
+@color-menubar: 	@color;
+
+@bg-sidebar:		@bg-color;
+@bg-sidebar-hover:  darken(@bg-sidebar, 10%);
+@color-sidebar: 	@color;
+
+@bg-modal:			@bg-popup;
+@font-family:		~"Helvetica, Arial, sans-serif";
+@color-footer:		lighten(@color, 20%);
+
+@color-primary:         @bg-sidebar-hover; // @bg-menubar;
+@btn-primary-color:		@color;
+@btn-primary-border:    darken(@link-color, 15%);
+

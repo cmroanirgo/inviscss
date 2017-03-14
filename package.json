@@ -3,13 +3,17 @@
   "name": "inviscss",
   "version": "0.2.0",
   "description": "A minimal css library",
+  "config" : { 
+  	"less_options": "--autoprefix",
+  	"less_min_options": "--autoprefix --clean-css=\"--s1 --advanced\""
+  },
   "scripts": {
-    "prep": "mkdir -p dist && rm -rf dist/* && mkdir -p dist/css && cp -r demo dist/ && cp -r fonts dist/ && cp -r js dist/",
-
-    "build:css": "lessc less/inviscss.less dist/css/inviscss.css --autoprefix && lessc demo/less/admin-demo.less dist/demo/css/admin-demo.css --autoprefix",
-    "build:css.min": "lessc less/inviscss.less --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"  dist/css/inviscss.min.css  && lessc demo/less/admin-demo.less dist/demo/css/admin-demo.min.css --autoprefix  --clean-css=\"--s1 --advanced --compatibility=ie9\"",
-    "build:demo": "node build.js dist/demo/",
-    "build": "npm run prep && npm run build:css && npm run build:css.min && npm run build:demo",
+  	"prep": "mkdir -p dist && rm -rf dist/* && mkdir -p dist/css && cp -r demo dist/ && cp -r fonts dist/ && cp -r js dist/",
+    "xbuild:css": "lessc less/inviscss.less dist/css/inviscss.css --autoprefix && lessc demo/less/admin-demo.less dist/demo/css/admin-demo.css --autoprefix",
+    "xbuild:css.min": "lessc less/inviscss.less --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"  dist/css/inviscss.min.css  && lessc demo/less/admin-demo.less dist/demo/css/admin-demo.min.css --autoprefix  --clean-css=\"--s1 --advanced --compatibility=ie9\"",
+    "build:make": "node build.js",
+    "xbuild": "npm run prep && npm run build:css && npm run build:css.min && npm run build:demo",
+    "build": "npm run prep && npm run build:make",
     "build:open": "echo 'building...' && npm run -s build && echo 'done' && open dist/demo/index.html"
   },
   "devDependencies": {
