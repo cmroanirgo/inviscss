@@ -192,8 +192,7 @@ Copyright (c) kodespace.com, 2016
 			if (!target) return;
 			removeClass(target, 'open');
 
-			on(toggle, 'click', function(e) {
-				e.preventDefault();
+			function open(target) {
 				addClass(target, 'open');
 				evModalOpen.relatedTarget = toggle;
 				target.dispatchEvent(evModalOpen)
@@ -202,21 +201,37 @@ Copyright (c) kodespace.com, 2016
 					modalClose();
 					target.dispatchEvent(evModalClose)
 				})
+			}
+			function close(target, ev) {
+				removeClass(target, 'open');
+				modalClose();
+				if (!!ev) target.dispatchEvent(ev);
+			}
+			on(toggle, 'click', function(e) {
+				e.preventDefault();
+				open(target);
 			});
 
 			$$each(target, '.close', function(closer) {
 				on(closer, 'click', function(e) {
-					removeClass(target, 'open');
-					modalClose();
-					target.dispatchEvent(evModalClose);
+					close(target, evModalClose);
 				})
 			})
 			$$each(target, '.modal-ok', function(closer) {
 				on(closer, 'click', function(e) {
-					removeClass(target, 'open');
-					modalClose();
-					target.dispatchEvent(evModalOK)
+					close(target, evModalOK);
 				})
+			})
+			on(target, 'invis-close-modal', function(e) {
+				if (hasClass(target, 'open')) {
+					close(target, evModalClose)
+				} 
+			})
+			on(target, 'invis-open-modal', function(e) {
+				if (!hasClass(target, 'open')) {
+					open(target)
+				}
+
 			})
 		})
 
