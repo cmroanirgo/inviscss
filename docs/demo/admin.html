@@ -99,6 +99,7 @@
             <div class="modal-footer">
                 <button type="button" class="close">Cancel</button>
                 <a class="button danger modal-ok">Delete</a>
+                <a class="button danger custom-closer">Delayed Delete</a>
             </div>
 		</div>
 		<script>
@@ -111,6 +112,10 @@
 			})
 			fd.addEventListener('modal-ok', function(e) {
 				alert("Delete the file..." + this.getAttribute('data-filename'))
+			})
+			document.querySelector('.custom-closer').addEventListener('click', function(){
+				alert("The modal will disappear after clicking OK to delete " + fd.getAttribute('data-filename'));
+				fd.dispatchEvent(new Event('invis-close-modal'));
 			})
 		</script>
 
