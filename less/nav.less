@@ -39,18 +39,21 @@
 	    border-collapse: collapse;
 	    display: block;
     }
-
-	a {
-		outline:0;
-	    display:block;
+    li>*:not(ul) {
+	    display:block; // Block level needed to make full height. flex is useful when using eg. horz-group
 	    position: relative;
+	    white-space: nowrap;
+	    cursor: pointer;
+    }
+    li>*:not(ul):not(div) {
 	    margin:0;
 	    padding:0 @nav-padding-horz; // 1em
+	}
+	a {
+		outline:0;
     	background-color: inherit;
 	    color:inherit;
 	    text-decoration:none;
-	    white-space: nowrap;
-	    cursor: pointer;
 	}
 
 	a:hover {
@@ -69,13 +72,13 @@
 	    //display:inline-block; 
 	}
 
-	a {
+	li>*:not(ul) {
 		line-height: @menubar-line-height; // 3em
 	}
 }
 
 .nav.sidebar, .dropdown-toggle ~ ul {
-	a { // smaller line height for sidebar & dropdown menus
+	li>*:not(ul) { // smaller line height for sidebar & dropdown menus
 		line-height: @sidebar-line-height; // 2em
 	}
 }
@@ -92,7 +95,7 @@
 	    width: 100%;
 	    position: relative;
 	}
-	hr { // seperator
+	li>hr { // separator
 		//line-height: 1em;
 		margin:0;
 		padding: 0;
@@ -103,7 +106,7 @@
 // hide all 2nd tier dropdowns by default
 .nav.menubar ul, .nav.sidebar, .dropdown-toggle ~ ul { 
 	// dropdown/accordian menu
-	li ul {
+	li>ul {
 		.hide();
 	}
 	li.open > ul {
@@ -129,12 +132,12 @@
 
 .nav.menubar>ul {
 	// Add down arrow, close to the text ONLY on first level UL
-	li > a:after  { 
+	li > *:not(ul):after  { // was li>a:after
 		font-family: "invisicons"; 
 		content:  ' \e802'; // inv-down
 	} 
 
-	ul {
+	li>ul {
 	    position: absolute;
 	    top: 100%;
 	    top: calc(100% - 2px);
@@ -145,7 +148,7 @@
 
 .nav.sidebar ul {
 	// Add down arrow, on the far RHS, for all UL
-	li > a:after  { 
+	li > *:not(ul):after  { // was li>a:after
 		font-family: "invisicons"; 
 		content:  ' \e802'; // inv-down
 		position: absolute;
@@ -162,18 +165,18 @@
 	    min-width: auto;
 	}
 
-	li > a:after { 
+	li > *:not(ul):after { 
 		font-family: "invisicons"; 
 		content:  '\e805'; // inv-right
 		position: absolute;
 		right: 0.3em;
 	}
 }
-.nav.menubar>ul ul, .dropdown-toggle ~ ul {
+.nav.menubar>ul ul, .dropdown-toggle ~ ul, .nav.sidebar.popup:not(.collapse) ul {
 	.popup();
 }
 @media @sm-viewport {
-	.nav.sidebar.popup ul {
+	.nav.sidebar.popup.collapse ul {
 		.popup();
 	}
 
@@ -189,13 +192,13 @@
 		left: auto;			
 
 		li {
-			text-align: right;
+			//text-align: right;
 		}
 	}
 }
 
 .nav.sidebar.right {
-	li > a:before { 
+	li > *:first-child:before { // was li > a:before 
 		content:  '\e802'; // inv-down
 		font-family: "invisicons"; 
 		position: absolute;
@@ -207,7 +210,7 @@
 	    left:auto;
 	    right:100%;	
 	}
-	li > a:before { 
+	li > *:first-child:before { 
 		content:  '\e804'; // inv-left
 		font-family: "invisicons"; 
 		position: absolute;
@@ -223,7 +226,7 @@
 	}
 }
 .nav>ul.right ul, .nav.menubar.right>ul ul, .nav.sidebar.right>ul {
-	li > a:after { content:''; } // hide arrows on the right
+	li > *:not(ul):after { content:''; } // hide arrows on the right
 }
 .nav.menubar.center>ul, ul.center {
 	justify-content:center;
@@ -301,9 +304,9 @@
 .nav,.dropdown-toggle ~ ul {
 	// cleanups. hide arrows on things that shouldn't have them
 	&.right,ul.right {
-		li > a:only-child:before { content: '' !important; }
+		li > *:only-child:before { content: '' !important; }
 	}
-	li > a:only-child:after { content: '' !important; }	
+	li > *:only-child:after { content: '' !important; }	
 }
 
 

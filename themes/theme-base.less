@@ -90,6 +90,9 @@ footer,.footer {
 .nav.menubar>ul>li:hover, .nav-toggle:hover {
 	background-color: @bg-menubar-hover;
 }
+.nav.menubar .dropdown-toggle:hover {
+	background-color: lighten(@bg-menubar-hover, 10%);
+}
 .nav.menubar ul ul, .dropdown-toggle ~ ul {
 	border:1px solid @border-color;
 	transition: opacity 0.15s linear;

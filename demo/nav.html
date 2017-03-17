@@ -9,8 +9,9 @@
 <link rel="stylesheet" href="demo.css" media="all" type="text/css" />
 <style>
 
-nav[id*="demo"]>ul>li, nav[id*="demo"] .nav-toggle { border:1px solid transparent; border-radius: 3px}
+nav[id*="demo"]>ul>li, nav[id*="demo"] .nav-toggle, .dropdown-toggle { border:1px solid transparent; border-radius: 3px}
 nav[id*="demo"]>ul>li:hover, nav[id*="demo"] .nav-toggle:hover { border-color:#888;}
+nav[id*="demo"] .dropdown-toggle:hover { border-left-color: #888; }
 nav[id*="demo"] ul ul { background-color: #f7f7f7; border:1px solid #aaa;}
 nav[id*="demo"] a { color:#333;}
 nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
@@ -64,21 +65,14 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 					</li>
 				</ul>
 			</li>
-			<li><a>More Stuff</a>
-				<ul>
-					<li><a href="#demo-link1">Link 1</a></li>
-					<li><a href="#demo-link2">Link 2</a>
-						<ul>
-							<li><a href="#demo-link1">Link 1</a></li>
-							<li><a href="#demo-link2">Link 2</a>
-								<ul>
-									<li><a href="#demo-link1">Link 1</a></li>
-									<li><a href="#demo-link2">Link 2</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-				</ul>
+			<li><div class="horz-group">
+					<a href="#split-main">Split Button</a>
+					<a class="dropdown-toggle"></a>
+					<ul>
+						<li><a href="#demo-link1">Link 1</a></li>
+						<li><a href="#demo-link2">Link 2</a></li>
+					</ul>
+				</div>
 			</li>
 			<li><a href="#demo-about">About</a></li>
 
@@ -216,7 +210,9 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 <div class="container hr-after">
 <h2> Vertical &amp; Popup Vertical</h2>
 <p>Add <code>.nav .sidebar</code> to a block level element for a vertical navigation menu.</p>
-<p>Add <code>.popup</code> for popup menus on larger screens, rather than the default accordion style.</p>
+<p>Add <code>.popup</code> for popup menus, rather than the default accordion style.</p>
+<p>Add <code>.popup.collapse</code> for popup menus on larger screens, which become accordion style on smaller screen.</p>
+
 	<nav id="demoside1" class="nav sidebar" style="float:left">
 		<ul>
 			<li><a href=".">Home</a></li>
@@ -260,6 +256,46 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 	<nav id="demoside1" class="nav sidebar popup"  style="float:left; margin-left:3em; border-left:4px solid #aaa">
 		<ul>
 			<li><a href=".">Popup Home</a></li>
+			<li>Stuff
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li>Sub Menu
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li>Link 2
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a>More Stuff</a>
+				<ul>
+					<li><a href="#demo-link1">Link 1</a></li>
+					<li><a href="#demo-link2">Link 2</a>
+						<ul>
+							<li><a href="#demo-link1">Link 1</a></li>
+							<li><a href="#demo-link2">Link 2</a>
+								<ul>
+									<li><a href="#demo-link1">Link 1</a></li>
+									<li><a href="#demo-link2">Link 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#demo-about">About</a></li>
+
+		</ul>
+
+	</nav>
+	<nav id="demoside1" class="nav sidebar popup collapse"  style="float:left; margin-left:3em; border-left:4px solid #aa0">
+		<ul>
+			<li><a href=".">Collapsing Home</a></li>
 			<li>Stuff
 				<ul>
 					<li><a href="#demo-link1">Link 1</a></li>
