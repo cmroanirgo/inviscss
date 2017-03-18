@@ -214,11 +214,11 @@
 
 <p>Also provided is a generic, but also responsive, flex system. Start with a surrounding div having <code>.flex</code> (or <code>.row</code>):</p>
 <div id="flex-demo">
-	<span><code>.flex</code></span>
-	<div class="flex">
+	<span><code>.flex.spaced-sm</code></span>
+	<div class="flex spaced-sm">
 		<div>Item 1</div><div>Item 2</div><div>Item 3</div>
 	</div>
-	<span><code>.flex.start-xs</code></span>
+	<span><code>.flex.start-xs</code> NB: .start-xs is implied through browser defaults &amp; isn't necessary.</span> 
 	<div class="flex start-xs">
 		<div>Item 1</div><div class="flex-grow-sm">.flex-grow-sm</div><div>Item 3</div>
 	</div>
@@ -226,8 +226,8 @@
 	<div class="flex center-xs reverse-md">
 		<div>Item 1</div><div>Item 2</div><div>Item 3</div>
 	</div>
-	<span><code>.flex.end-xs.start-md.center-lg</code></span>
-	<div class="flex end-xs start-md center-lg">
+	<span><code>.flex.end-sm.start-md.center-lg</code></span>
+	<div class="flex end-sm start-md center-lg">
 		<div>Item 1</div><div>Item 2</div><div>Item 3</div>
 	</div>
 	<span><code>.flex.spaced-sm.wrap-xs</code> &amp; responsive reordered</span>
