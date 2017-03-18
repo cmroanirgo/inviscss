@@ -132,16 +132,14 @@ footer,.footer {
 	& when (@tabs-shadow = true) { .shadow-vh(); }
 }
 
-@media @sm-viewport {
-	.nav.sidebar.popup ul ul {
-		background-color: @bg-popup;  color:@color-popup; 
-		border:1px solid @border-color;
-		transition: opacity 0.15s linear;
-		& when (@popup-shadow = true) { 
-			.shadow-vh(); 
-		}
-	}
 
+.nav.sidebar.popup ul ul {
+	background-color: @bg-popup;  color:@color-popup; 
+	border:1px solid @border-color;
+	transition: opacity 0.15s linear;
+	& when (@popup-shadow = true) { 
+		.shadow-vh(); 
+	}
 }
 
 

@@ -10,8 +10,9 @@ body { font-family: Helvetica, Arial, sans-serif}
 #banner nav ul ul a:hover { background-color: black; color: white;}
 
 #grid-demo .row { margin:5px 0;}
-#grid-demo .row>div             { padding: 0.7em; text-align:center; }
-#grid-demo .row>div:not(.nobar) { background-color:#eee; border:1px solid #ddd; border-radius: 4px;}
+#grid-demo .row>div, #flex-demo .flex>* { padding: 0.7em; text-align:center; }
+#flex-demo>span { display:block; margin-top: 1em;}
+#grid-demo .row>div:not(.nobar), #flex-demo .flex div:not(.nobar) { background-color:rgba(0,0,0,0.125); border:1px solid rgba(0,0,0,0.1875); border-radius: 4px;}
 .dropdown-toggle ~ ul { background-color: #f7f7f7;  }
 .dropdown-toggle ~ ul a { color:#333;}
 .dropdown-toggle ~ ul a:hover { background-color: #888; color:#f7f7f7; }

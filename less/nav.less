@@ -106,10 +106,10 @@
 // hide all 2nd tier dropdowns by default
 .nav.menubar ul, .nav.sidebar, .dropdown-toggle ~ ul { 
 	// dropdown/accordian menu
-	li>ul {
+	li>ul, li>.dropdown-toggle>ul {
 		.hide();
 	}
-	li.open > ul {
+	li.open > ul, li.open>.dropdown-toggle>ul {
 		.show();
 		z-index: @z-modal;
 	}
@@ -172,11 +172,11 @@
 		right: 0.3em;
 	}
 }
-.nav.menubar>ul ul, .dropdown-toggle ~ ul, .nav.sidebar.popup:not(.collapse) ul {
+.nav.menubar>ul ul, .dropdown-toggle ~ ul, .nav.sidebar.popup:not(.auto-accordian) ul {
 	.popup();
 }
 @media @sm-viewport {
-	.nav.sidebar.popup.collapse ul {
+	.nav.sidebar.popup.auto-accordian ul {
 		.popup();
 	}
 
@@ -217,11 +217,11 @@
 		left: 0.3em;
 	}
 }
-.nav ul.right ul, .nav.menubar.right>ul ul, .dropdown-toggle ~ ul.right {
+.nav ul.right ul, .nav.menubar.right>ul ul, .dropdown-toggle ~ ul.right, .nav.sidebar.right.popup:not(.auto-accordian) ul {
 	.right-popup();
 }
 @media @sm-viewport {
-	.nav.sidebar.right.popup ul{
+	.nav.sidebar.right.popup.auto-accordian ul{
 		.right-popup();
 	}
 }

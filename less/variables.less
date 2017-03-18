@@ -7,6 +7,12 @@
 @screen-md-min: 64em;
 @screen-lg-min: 75em;
 
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:              calc(@screen-sm-min - 1px);
+@screen-sm-max:              calc(@screen-md-min - 1px);
+@screen-md-max:              calc(@screen-lg-min - 1px);
+
+
 @container-sm: calc(@screen-sm-min + @gutter-width);
 @container-md: calc(@screen-md-min + @gutter-width);
 @container-lg: calc(@screen-lg-min + @gutter-width);
@@ -31,7 +37,8 @@
 @input-bg-color:	unset;
 
 // for grid
-@gutter-width: 0; //1rem;
+@grid-columns:              12;
+@gutter-width: 	0; //1rem;
 @half-gutter-width: @gutter-width * 0.5;
 @gutter-compensation: @half-gutter-width * -1;
 
