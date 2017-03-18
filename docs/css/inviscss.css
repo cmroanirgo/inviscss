@@ -721,8 +721,8 @@ useful for double sidebars:
           flex-direction: row;
   /*browser default*/
 }
-.row.horizontal-reverse-xs,
-.flex.horizontal-reverse-xs {
+.row.reverse-xs,
+.flex.reverse-xs {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
   -webkit-flex-direction: row-reverse;
@@ -921,8 +921,8 @@ useful for double sidebars:
             flex-direction: row;
     /*browser default*/
   }
-  .row.horizontal-reverse-sm,
-  .flex.horizontal-reverse-sm {
+  .row.reverse-sm,
+  .flex.reverse-sm {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
     -webkit-flex-direction: row-reverse;
@@ -1122,8 +1122,8 @@ useful for double sidebars:
             flex-direction: row;
     /*browser default*/
   }
-  .row.horizontal-reverse-md,
-  .flex.horizontal-reverse-md {
+  .row.reverse-md,
+  .flex.reverse-md {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
     -webkit-flex-direction: row-reverse;
@@ -1323,8 +1323,8 @@ useful for double sidebars:
             flex-direction: row;
     /*browser default*/
   }
-  .row.horizontal-reverse-lg,
-  .flex.horizontal-reverse-lg {
+  .row.reverse-lg,
+  .flex.reverse-lg {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
     -webkit-flex-direction: row-reverse;

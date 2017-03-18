@@ -11,7 +11,7 @@ body { font-family: Helvetica, Arial, sans-serif}
 
 #grid-demo .row { margin:5px 0;}
 #grid-demo .row>div, #flex-demo .flex>* { padding: 0.7em; text-align:center; }
-#flex-demo>span { display:block; margin-top: 1em;}
+#flex-demo>span { display:block; margin-top: 1em; box-sizing:border-box;}
 #grid-demo .row>div:not(.nobar), #flex-demo .flex div:not(.nobar) { background-color:rgba(0,0,0,0.125); border:1px solid rgba(0,0,0,0.1875); border-radius: 4px;}
 .dropdown-toggle ~ ul { background-color: #f7f7f7;  }
 .dropdown-toggle ~ ul a { color:#333;}
