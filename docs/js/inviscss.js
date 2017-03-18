@@ -240,9 +240,9 @@ Copyright (c) kodespace.com, 2016
 		$$each('.nav li,.dropdown-toggle ~ ul li', function(li) {
 			// Ensure <a> is a child of <li>
       		var text = (li.childNodes[0].nodeValue||'').trim();
-			if (!$$(li, '>a', true).length && !$$(li, '>hr', true).length) {
+			if (!$$(li, '>*:not(ul)', true).length && !$$(li, '>hr', true).length) {
 				li.childNodes[0].remove();
-				insertHTML(li, 'afterbegin', "<a>"+text+"</a>")
+				insertHTML(li, 'afterbegin', "<a href=\"#\">"+text+"</a>")
 				//debug("inserted <a> around li "+li.id+": '" + text + "': " + li.innerHTML)
 			}
 			// add click handlers to all <li> with a child <ul>
@@ -252,7 +252,7 @@ Copyright (c) kodespace.com, 2016
 				menuInit(li);
 			else {
 				// not a submenu. add a 'click to cancel' handler
-				var clickable = $$(li, '>a', true);
+				var clickable = $$(li, '>*:not(ul)', true);
 				if (clickable.length)
 					on(clickable[0], 'click', function(e) { e.stopPropagation(); menuClearAll(e); })
 			}

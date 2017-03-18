@@ -14,9 +14,10 @@
 	<span class="nav-toggle" data-target="#banner nav"> </span>
 	<nav class="nav menubar collapse">
 		<ul>
-			<li><a href="../">Home</a></li>
+			<li><a href="..">Home</a></li>
 			<li>Demos
 				<ul>
+					<li><a href=".">Getting Started</a></li>
 					<li><a href="nav.html">Navigation and Menus</a></li>
 					<li><a href="admin.html">Admin Template</a></li>
 				</ul>
@@ -211,6 +212,42 @@
   <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
 </div>
 
+<p>Also provided is a generic, but also responsive, flex system. Start with a surrounding div having <code>.flex</code> (or <code>.row</code>):</p>
+<div id="flex-demo">
+	<span><code>.flex</code></span>
+	<div class="flex">
+		<div>Item 1</div><div>Item 2</div><div>Item 3</div>
+	</div>
+	<span><code>.flex.start-xs</code></span>
+	<div class="flex start-xs">
+		<div>Item 1</div><div class="flex-grow-sm">.flex-grow-sm</div><div>Item 3</div>
+	</div>
+	<span><code>.flex.center-xs.reverse-md</code></span>
+	<div class="flex center-xs reverse-md">
+		<div>Item 1</div><div>Item 2</div><div>Item 3</div>
+	</div>
+	<span><code>.flex.end-xs.start-md.center-lg</code></span>
+	<div class="flex end-xs start-md center-lg">
+		<div>Item 1</div><div>Item 2</div><div>Item 3</div>
+	</div>
+	<span><code>.flex.spaced-sm.wrap-xs</code> &amp; responsive reordered</span>
+	<div class="flex spaced-md wrap-xs">
+		<div>Item 1</div><div class="last-md">.last-md</div><div>Item 3</div>
+		<div class="col-sm-2">.col-sm-2</div><div>Item 5</div><div>Item 6</div>
+		<div>Item 7</div><div>Item 8</div><div class="first-xs">.first-xs</div>
+		<div>Item 10</div><div>Item 11</div><div>Item 12</div>
+	</div>
+
+	<span><code>.flex.top-xs.middle-sm.baseline-md.bottom-lg</code></span>
+	<div class="flex top-xs middle-sm baseline-md bottom-lg">
+		<div style="height:1.5em;">Item 1</div><div style="padding-top:4em;line-height:0.5em">Item 2</div><div style="height:2em;">Item 3</div>
+	</div>
+
+	<span><code>.flex.vertical-xs.vertical-reverse-sm.horizontal-md</code></span>
+	<div class="flex vertical-xs vertical-reverse-sm horizontal-md">
+		<div>Item 1</div><div>Item 2</div><div>Item 3</div>
+	</div>
+</div>
 </section>
 
 <section>
