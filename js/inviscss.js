@@ -47,6 +47,35 @@ Copyright (c) kodespace.com, 2016
 		forEach.call($$(where, selector, special_immediate_child_kludge), fn);
 	}
 
+	function selectorMatches(el, selector) { // From: https://davidwalsh.name/element-matches-selector
+		var p = Element.prototype;
+		var f = p.matches || p.webkitMatchesSelector || p.mozMatchesSelector || p.msMatchesSelector || function(s) {
+			return [].indexOf.call(document.querySelectorAll(s), this) !== -1;
+		};
+		return f.call(el, selector);
+	}
+
+	function $$dynamic(where, selector, fn) {		
+		if (typeof selector === 'function') { fn = selector; selector = where; where=document.body; }
+		// Add a MutationObserver, allowing dynamic 'listening' of selectors
+		var MutationObserver   = window.MutationObserver || window.WebKitMutationObserver;
+		var _observer          = new MutationObserver(mutationHandler);
+	    _observer.observe(where, { childList: true, characterData:true, attributes:true, subtree: true });
+	    function mutationHandler(mutations) {
+    		//debug('mutationHandler...')
+	    	mutations.forEach(function(mutation) {
+	    		if (!mutation.addedNodes) return;
+	    		//debug('mutation type:' + mutation.type)
+	    		forEach.call(mutation.addedNodes, function(node) {
+    				if (selectorMatches(node, selector))
+    					fn.call(node, node)
+	    		});
+	    	})
+	    }
+		$$each(where, selector, fn);
+		return _observer;
+	}
+
 	function clone(arrayIsh) {
 		var ar = [];
 		for (var i=0; i<arrayIsh.length; i++)
@@ -232,32 +261,34 @@ Copyright (c) kodespace.com, 2016
 			fn.call(el, el);
 	}
 
-	function handleCloseable(className) {
-		var selector = '.' + className;
+	function closeAndRemove(el, className) {
 		var evClose = new Event(className + '-close');
-		$$each(selector, function(el) { 
-			$$each(el, ".close", function(closeBtn) {
-				on(closeBtn, 'click', function(e) {
-					e.preventDefault();
-					//el.parentNode.removeChild( el ); // detach from parent, jQuery does this
-					forEach.call(getTargets(el), function(target) {
-						target.dispatchEvent(evClose);
-					})
-					handleFade(el, function() {
-						el.remove();	
-					});
-					
-				})
+		//el.parentNode.removeChild( el ); // detach from parent, jQuery does this
+		forEach.call(getTargets(el, [el]), function(target) {
+			target.dispatchEvent(evClose);
+		})
+		handleFade(el, function() {
+			el.remove();	
+		});
+	}
+	function __handleCloseable(el, className) {
+		$$each(el, ".close", function(closeBtn) {
+			on(closeBtn, 'click', function(e) {
+				e.preventDefault();
+				closeAndRemove(el, className)					
 			})
+		})
+	}	
+	function handleCloseable(className, selector) {
+		selector = selector || '.' + className;
+		$$each(selector, function(el) { 
+			__handleCloseable(el, className)
 		})
 	}
 
 	ready(function() { // document.ready
 		addClass(document.body, 'js'); 
 		removeClass(document.body, 'no-js');
-
-		// alerts
-		handleCloseable('alert');
 
 		// modal
 		var evModalClose = new Event('modal-close');
@@ -489,6 +520,36 @@ Copyright (c) kodespace.com, 2016
 					label.innerHTML = labelVal;
 			});
 		});
+
+
+		// alerts
+		handleCloseable('alert', '.alert:not(.timeout)');
+		$$dynamic('.alert.timeout', function(alert) {
+			__handleCloseable(alert, 'alert')
+
+			// add timeout capabilities
+			var hovered = false;
+			var timeout;
+			on(alert, "mouseover", function() { hovered = true; stopTimer(); })
+			on(alert, "mouseout", function() { hovered = false; startTimer(); }) // restart the timer when mouse exits
+			on(alert, "alert-close", function() { stopTimer(); }) // alert closed manually
+			function stopTimer() {
+				if (timeout) {
+					//debug('alert: stopTimer')
+					clearTimeout(timeout);
+				}
+				timeout = 0;
+			}
+			function startTimer() {
+				//debug('alert: startTimer')
+				timeout = setTimeout(function() {
+				if (!hovered)
+					closeAndRemove(alert, 'alert')
+				},  getAttr(alert, 'data-timeout')||5000);
+			}
+			setTimeout(startTimer, 100); // start the *actual* timer in just a little bit. ie. give the user a tiny window to actually notice the alert!
+		})
+
 	}) // ready
 
 

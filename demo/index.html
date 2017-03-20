@@ -508,6 +508,22 @@
   ...
 &lt;/div>
 	</code></pre>
+
+	<h2>Timed Alerts</h2>
+	<p>By adding <code>.timeout</code> and optional <code>data-timeout="2500"</code>, you can choose to automatically close the alert. The timeout value is in milli-seconds.</p>
+	<a id="alert_injector" class="button primary" href="#">Try It!</a>
+	<script type="text/javascript">
+		document.getElementById('alert_injector').addEventListener('click', function(e) {
+			e.preventDefault();
+			this.insertAdjacentHTML('afterend', '<div class="alert success fade timeout" data-timeout="3000">This alert will disappear soon...But you can hover over me to stay longer.<i class="inv-cancel close"></i></div>');
+		})
+	</script>
+	<pre><code>
+&lt;div class="alert success fade timeout" data-timeout="3000">
+  ...
+&lt;/div>
+	</code></pre>
+
 </div>
 </section>
 
