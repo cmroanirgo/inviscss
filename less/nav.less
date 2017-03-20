@@ -4,7 +4,7 @@
 
 
 /*
-	<nav class=''> // valid classes are: right|center collapse; 
+	<nav class=''> 
 		<ul>
 			<li><a href=...>Item 1</a></li>
 			<li><a href=...>Item 2</a></li>
@@ -20,6 +20,7 @@
 
 .nav ul, .dropdown-toggle ~ ul, .tabs {
 	// base navigational element: ul
+	box-sizing:border-box;
 	display: flex;
     background-color: inherit;
     padding:0;
@@ -75,6 +76,13 @@
 	li>*:not(ul) {
 		line-height: @menubar-line-height; // 3em
 	}
+	.horz-group {
+		>*:not(ul) { 
+			display: inline-block;
+		    padding-left: @nav-padding-horz/2;
+		    padding-right: @nav-padding-horz/2;
+		};
+	}
 }
 
 .nav.sidebar, .dropdown-toggle ~ ul {
@@ -96,10 +104,8 @@
 	    position: relative;
 	}
 	li>hr { // separator
-		//line-height: 1em;
 		margin:0;
 		padding: 0;
-		width: 100%;
 	}
 }
 
@@ -226,7 +232,7 @@
 	}
 }
 .nav>ul.right ul, .nav.menubar.right>ul ul, .nav.sidebar.right>ul {
-	li > *:not(ul):after { content:''; } // hide arrows on the right
+	li > *:not(ul):after { content:'' !important; display:none;} // hide arrows on the right
 }
 .nav.menubar.center>ul, ul.center {
 	justify-content:center;
@@ -304,9 +310,9 @@
 .nav,.dropdown-toggle ~ ul {
 	// cleanups. hide arrows on things that shouldn't have them
 	&.right,ul.right {
-		li > *:only-child:before { content: '' !important; }
+		li > *:only-child:before { content: '' !important; display: none;}
 	}
-	li > *:only-child:after { content: '' !important; }	
+	li > *:only-child:after { content: '' !important; display: none;}	
 }
 
 

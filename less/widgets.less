@@ -1,0 +1,207 @@
+/* Widgets */
+
+/* Simple Bootstrap-ian elements */
+@widget-padding:	1rem;
+@widget-margin-bottom: 1.2em;
+@widget-border-color:	@border-color;
+
+
+.fade {
+	&.fade-me-now { // internal, special classes used in fading alerts and modals. see inviscss.js handleFade()
+		transition-property: opacity;
+		transition-duration: 0.3s;
+	 	transition-timing-function: linear;
+	 	opacity: 1;
+
+	 	&.fade-me-now-active {
+	 		opacity: 0;
+	 	}
+	}
+}
+
+.set-colors(@color; @background; @border) {
+	color:@color;
+	background-color: @background;
+	border-color: @border;
+}
+
+.thumbnail {
+	box-sizing: border-box;
+    display: block;
+    padding: 4px;
+    margin-bottom: @widget-margin-bottom;
+    border: 1px solid @border-color;
+    border-radius: @border-radius;
+    transition: border .2s ease-in-out;
+}
+
+.set-alert-colors(@color; @background; @border) {
+	.set-colors(@color; @background; @border);
+	a, .close {
+		color: darken(@color, 10%);
+		&:hover {
+			color: darken(@color, 17%);
+		};
+	}
+}
+
+.alert {
+	box-sizing: border-box;
+	padding: @widget-padding;
+	margin-bottom: @widget-margin-bottom;
+  	border: 1px solid transparent;
+  	border-radius: @border-radius;
+  	position: relative;
+
+	.close {
+		.close_button();
+	}
+	a {
+		font-weight:bold;
+	}
+
+	&.success {
+	  .set-alert-colors(@state-success-color; @state-success-bg; @state-success-border);
+	}
+	// Info appears as blue-green
+	&.info {
+	  .set-alert-colors(@state-info-color; @state-info-bg; @state-info-border);
+	}
+	// Warning appears as orange
+	&.warning {
+	  .set-alert-colors(@state-warning-color; @state-warning-bg; @state-warning-border);
+	}
+	// Danger and error appear as red
+	&.danger {
+	  .set-alert-colors(@state-danger-color; @state-danger-bg; @state-danger-border);
+	}
+}
+
+.media {
+	box-sizing:border-box;
+	margin-top: @widget-padding; 
+	&:first-child { margin-top:0;}
+	display: flex;
+	position: relative;
+
+	>.body {
+		flex:1;
+		h2,h3,h4 { margin: 0 0 @widget-padding/2 0; padding: 0; }
+	}
+	&, >.body { 
+		overflow: hidden;
+	}
+	>.thumbnail {
+		// do some resets on the global thumbnail object
+		padding: 0 @widget-padding 0 0;
+		margin-bottom: 0;
+		border-color: transparent;
+		border-radius: 0;
+	}
+	>.body,>.thumbnail {
+		position: relative;
+		&.top {
+			align-self: flex-start;
+		}
+		&.middle {
+			align-self: center;
+		}
+		&.bottom {
+			align-self: flex-end;
+		}
+
+	}
+
+	.media-alternate &:nth-of-type(even), &.right { 
+		flex-direction: row-reverse;
+
+		>.thumbnail {
+			padding-right: 0;
+			padding-left: @widget-padding;
+		}
+	}
+}
+
+
+
+.set-listgroup-colors(@color; @background; @border) {
+	.set-colors(@color; @background; @border);
+	&:hover {
+			background-color: darken(@background, 5%);
+	}
+	a {
+		color: darken(@color, 10%);
+		&:hover {
+			color: darken(@color, 17%);
+		};
+	}
+}
+.list-group {
+	display: inline-flex;
+	flex-direction: column;
+
+	>a { 
+		text-decoration: none;
+		color:lighten(@color, 10%);
+		&:hover{
+			text-decoration: none;
+			color:lighten(@color, 5%); }
+	}
+
+	>* {
+		padding: (@sidebar-line-height+@menubar-line-height - 1em)/4  @nav-padding-horz;
+		//line-height: (@sidebar-line-height+@menubar-line-height)/2;
+		margin-bottom: -1px;
+		border:1px solid @border-color;
+		border-radius: 0;
+
+		h2,h3,h4 { margin: 0 0 @widget-padding/2 0; padding: 0; }
+
+		&:hover {
+			background-color: rgba(0,0,0,0.05);
+		}
+		&.active {
+			.set-colors(@active-color, @active-bg, @active-border);
+			&:hover {
+				background-color: lighten(@active-bg, 5%);
+				color: @active-color;
+			}
+		}
+		&.success {
+		  .set-listgroup-colors(@state-success-color; @state-success-bg; @state-success-border);
+		}
+		// Info appears as blue-green
+		&.info {
+		  .set-listgroup-colors(@state-info-color; @state-info-bg; @state-info-border);
+		}
+		// Warning appears as orange
+		&.warning {
+		  .set-listgroup-colors(@state-warning-color; @state-warning-bg; @state-warning-border);
+		}
+		// Danger and error appear as red
+		&.danger {
+		  .set-listgroup-colors(@state-danger-color; @state-danger-bg; @state-danger-border);
+		}
+		}
+	>*:first-child {
+		border-top-left-radius: @border-radius;
+		border-top-right-radius: @border-radius;
+	}
+	>*:last-child {
+		border-bottom-left-radius: @border-radius;
+		border-bottom-right-radius: @border-radius;
+	}
+}
+
+.panel, .well {
+	padding:@widget-padding;
+	margin: @widget-margin-bottom 0;
+	border:1px solid @widget-border-color;
+	border-radius: @border-radius;
+	h2,h3,h4 { margin: 0 0 @widget-padding/2 0; padding: 0; }
+}
+.well {
+	background-color: rgba(0,0,0,0.05)
+}
+
+

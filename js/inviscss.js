@@ -87,19 +87,30 @@ Copyright (c) kodespace.com, 2016
 		while (el) {
 			if (el.matches(selector)) {
 				retval.push(el);
-			} else if (stopSelector && el.matches(stopSelector)) {
+			}
+			if (stopSelector && el.matches(stopSelector)) {
 				break
 			}
 			el = el.parentElement;
 		}
 		return retval;
 	}
-	function getTargets(el) {
+	function getParent(el, selector) {
+		var retVal = getParents(el, selector, selector);
+		if (retVal.length)
+			return retVal[0];
+		return null;
+	}
+	function getTargets(el, defaultTargets) {
 		var targets = getAttr(el, 'data-target');
-		debug('target(s): ' + targets);
+		//debug('target(s): ' + targets);
 		if (targets)
 			return $$(targets);
-		return [];
+		return defaultTargets || [];
+	}
+	function getTarget(el, defaultTargets) {
+		var targets = getTargets(toggle, defaultTargets);
+		return targets.length ? targets[0] : null;
 	}
 
 	var forEach = Array.prototype.forEach;
@@ -178,9 +189,75 @@ Copyright (c) kodespace.com, 2016
 		//debug('Menu click complete')
 	}
 
+	// Function from David Walsh: http://davidwalsh.name/css-animation-callback
+	function whichTransitionEvent(){
+	  var t, el = document.createElement("fakeelement");
+
+	  var transitions = {
+	    "transition"      : "transitionend",
+	    "OTransition"     : "oTransitionEnd",
+	    "MozTransition"   : "transitionend",
+	    "WebkitTransition": "webkitTransitionEnd"
+	  }
+
+	  for (t in transitions){
+	    if (el.style[t] !== undefined){
+	      return transitions[t];
+	    }
+	  }
+	}
+	var transitionEvent = whichTransitionEvent();
+
+	function handleFade(el, fn) {
+		if (hasClass(el, 'fade')) {
+			var ended = false;
+			function onEnd(event) {
+				ended = true;
+				el.removeEventListener(transitionEvent, onEnd)
+				removeClass(el, 'fade-me-now');
+				removeClass(el, 'fade-me-now-active');
+				fn.call(el, el);
+			}
+
+			// add transition properties to the class
+			addClass(el, 'fade-me-now');
+			// start listening
+			el.addEventListener(transitionEvent, onEnd);
+			addClass(el, 'fade-me-now-active');
+			setTimeout(function() { // a catch-all, in case it fails, because we NEED our callback fn to be called!
+				if (!ended) onEnd(null);
+			}, 1000)
+		}
+		else
+			fn.call(el, el);
+	}
+
+	function handleCloseable(className) {
+		var selector = '.' + className;
+		var evClose = new Event(className + '-close');
+		$$each(selector, function(el) { 
+			$$each(el, ".close", function(closeBtn) {
+				on(closeBtn, 'click', function(e) {
+					e.preventDefault();
+					//el.parentNode.removeChild( el ); // detach from parent, jQuery does this
+					forEach.call(getTargets(el), function(target) {
+						target.dispatchEvent(evClose);
+					})
+					handleFade(el, function() {
+						el.remove();	
+					});
+					
+				})
+			})
+		})
+	}
+
 	ready(function() { // document.ready
 		addClass(document.body, 'js'); 
 		removeClass(document.body, 'no-js');
+
+		// alerts
+		handleCloseable('alert');
 
 		// modal
 		var evModalClose = new Event('modal-close');
@@ -197,15 +274,16 @@ Copyright (c) kodespace.com, 2016
 				evModalOpen.relatedTarget = toggle;
 				target.dispatchEvent(evModalOpen)
 				createBackdrop(document.body, '', function(e){
-					removeClass(target, 'open');
-					modalClose();
-					target.dispatchEvent(evModalClose)
+					close(target, evModalClose)
 				})
 			}
 			function close(target, ev) {
-				removeClass(target, 'open');
-				modalClose();
 				if (!!ev) target.dispatchEvent(ev);
+				handleFade(target, function() {
+					removeClass(target, 'open');
+					modalClose();
+				});
+
 			}
 			on(toggle, 'click', function(e) {
 				e.preventDefault();

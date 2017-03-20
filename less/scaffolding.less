@@ -16,6 +16,7 @@ body {
 }
 a { text-decoration:none; }
 a:hover { text-decoration: @link-hover-decoration; }
+a:hover, a:active, a:visited { color:unset;}
   
 
 table { border-collapse: collapse; }
@@ -29,8 +30,34 @@ p, ul, ol {
 .container:before, .container:after  { content: ""; display: table; } 
 .container:after, .row:after, .clear  { clear: both; } 
 
+.gutter-container { 
+	margin-right: @gutter-width/-2;
+	margin-left: @gutter-width/-2;
+
+	>div:not(.no-gutter), .gutter {
+		padding-left:  @gutter-width/2;
+		padding-right: @gutter-width/2;
+	}
+}
+
 .pull-left { float:left }
 .pull-right { float:right }
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.show {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
+}
+.invisible {
+  visibility: hidden;
+}
 
 .nowrap { white-space: nowrap !important;}
 
@@ -47,12 +74,12 @@ p, ul, ol {
 }
 
 hr, .hr-before:before, .hr-after:after {
-  margin-top:1.5rem;
-  margin-bottom:1.5rem;
   border:0;
   border-top:1px solid @border-color;
 }
 .hr-before:before, .hr-after:after {
+  margin-top:1.5rem;
+  margin-bottom:1.5rem;
   display:block !important;
 }
 
@@ -92,3 +119,4 @@ hr, .hr-before:before, .hr-after:after {
 		width: @container-lg;
 	}
 }
+

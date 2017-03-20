@@ -1,6 +1,8 @@
 
 @use-normalize:			true; // set this to '0' to NOT include NormalizeCSS
 
+@root-font-size:        14px;	 // this is applied to <html> and is the 'root' used in 'rem' units below == 1rem
+
 //Mobile First responsiveness. Invis CSS preferred
 @screen-xs-min: 30em;
 @screen-sm-min: 48em;
@@ -8,25 +10,15 @@
 @screen-lg-min: 75em;
 
 // So media queries don't overlap when required, provide a maximum
-@screen-xs-max:              calc(@screen-sm-min - 1px);
-@screen-sm-max:              calc(@screen-md-min - 1px);
-@screen-md-max:              calc(@screen-lg-min - 1px);
-
-
-@container-sm: calc(@screen-sm-min + @gutter-width);
-@container-md: calc(@screen-md-min + @gutter-width);
-@container-lg: calc(@screen-lg-min + @gutter-width);
-
-@container-fluid-xs: 98%;
-@container-fluid-sm: 95%;
-@container-fluid-md: 90%;
-@container-fluid-lg: 80%;
+@one-pixel-em:		    unit(round(1/@root-font-size,4), em); // We base this on 1rem = 14px == 1/14 == 0.0714rem
+@screen-xs-max:         (@screen-sm-min - @one-pixel-em); //@screen-sm-min - 1px;
+@screen-sm-max:         (@screen-md-min - @one-pixel-em); //@screen-md-min - 1px;
+@screen-md-max:         (@screen-lg-min - @one-pixel-em); //@screen-lg-min - 1px;
 
 @sm-viewport:		~"only screen and (min-width: 48em)";
 @md-viewport:		~"only screen and (min-width: 64em)";
 @lg-viewport:		~"only screen and (min-width: 75em)";
 
-@root-font-size:        14px;	 // this is applied to <html> and is the 'root' used in 'rem' units below
 @link-hover-decoration: underline;
 @z-modal: 100;
 
@@ -36,11 +28,24 @@
 @input-color:		unset;
 @input-bg-color:	unset;
 
+
+
+// container sizes
+@container-sm: calc(@screen-sm-min + @gutter-width);
+@container-md: calc(@screen-md-min + @gutter-width);
+@container-lg: calc(@screen-lg-min + @gutter-width);
+@container-fluid-xs: 98%;
+@container-fluid-sm: 95%;
+@container-fluid-md: 90%;
+@container-fluid-lg: 80%;
+
+
+
+
 // for grid
 @grid-columns:              12;
-@gutter-width: 	0; //1rem;
-@half-gutter-width: @gutter-width * 0.5;
-@gutter-compensation: @half-gutter-width * -1;
+@grid-gutter-width: 	0; //1rem; It's recommended to leave this disabled and use .gutter-container class instead
+@gutter-width:			1rem;
 
 // navigation
 @nav-padding-horz:		1em;
@@ -83,3 +88,88 @@
 @btn-danger-color:              #fff;
 @btn-danger-bg:                 @color-danger;
 @btn-danger-border:             darken(@btn-danger-bg, 5%);
+
+@active-color:                  @btn-primary-color;
+@active-bg:                     @color-primary;
+@active-border:                 darken(@active-bg, 5%);
+
+@state-success-color:             #3c763d;
+@state-success-bg:               #dff0d8;
+@state-success-border:           darken(spin(@state-success-bg, -10), 15%);
+
+@state-info-color:                #31708f;
+@state-info-bg:                  #d9edf7;
+@state-info-border:              darken(spin(@state-info-bg, -10), 17%);
+
+@state-warning-color:             #8a6d3b;
+@state-warning-bg:               #fcf8e3;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 15%);
+
+@state-danger-color:              #a94442;
+@state-danger-bg:                #f2dede;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 15%);
+
+
+
+/* Used in Widget/Theme colors. */
+@bg-color: 		#ffffff; //body bg
+@color: 		#333;
+@link-color:            #888;
+@link-hover-color:      darken(@link-color, 15%);
+@border-color:		#aaa;
+
+/* Theme colors. These ARE NOT USED except in themes */
+
+@bg-popup: 			@bg-color; 
+@bg-popup-hover:	darken(@bg-popup, 10%);
+@color-popup:		@color;
+@popup-shadow:		false;
+
+//@root-font-size:        14px;	 // this is applied to <html> and is the 'root' used in 'rem' units below
+//@link-hover-decoration: underline;
+//@border-radius:		4px;
+//@input-color:		default;
+//@input-bg-color:	default;
+//@nav-padding-horz:		1em;
+//@menubar-line-height:	3em;
+//@sidebar-line-height:	2em;
+
+@bg-menubar:		@bg-color;
+@bg-menubar-hover:  darken(@bg-menubar, 10%);
+@color-menubar: 	@color;
+@menubar-shadow:	false;
+
+@bg-sidebar:		@bg-color;
+@bg-sidebar-hover:  darken(@bg-sidebar, 10%);
+@color-sidebar: 	@color;
+@sidebar-shadow:	false;
+
+
+@bg-modal:			@bg-popup;
+@bg-tabs:			@bg-modal;
+@tabs-shadow:		false;
+
+@font-family:		~"Helvetica, Arial, sans-serif";
+@color-footer:		lighten(@color, 20%);
+
+/* bootstraps colors
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+@state-success-text:             #3c763d;
+@state-success-bg:               #dff0d8;
+@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text:                #31708f;
+@state-info-bg:                  #d9edf7;
+@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text:             #8a6d3b;
+@state-warning-bg:               #fcf8e3;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text:              #a94442;
+@state-danger-bg:                #f2dede;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+ */
