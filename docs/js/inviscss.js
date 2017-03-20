@@ -57,21 +57,27 @@ Copyright (c) kodespace.com, 2016
 
 	function $$dynamic(where, selector, fn) {		
 		if (typeof selector === 'function') { fn = selector; selector = where; where=document.body; }
-		// Add a MutationObserver, allowing dynamic 'listening' of selectors
-		var MutationObserver   = window.MutationObserver || window.WebKitMutationObserver;
-		var _observer          = new MutationObserver(mutationHandler);
-	    _observer.observe(where, { childList: true, characterData:true, attributes:true, subtree: true });
-	    function mutationHandler(mutations) {
-    		//debug('mutationHandler...')
-	    	mutations.forEach(function(mutation) {
-	    		if (!mutation.addedNodes) return;
-	    		//debug('mutation type:' + mutation.type)
-	    		forEach.call(mutation.addedNodes, function(node) {
-    				if (selectorMatches(node, selector))
-    					fn.call(node, node)
-	    		});
-	    	})
-	    }
+
+		try {
+			// Add a MutationObserver, allowing dynamic 'listening' of selectors
+			var MutationObserver   = window.MutationObserver || window.WebKitMutationObserver;
+			var _observer          = new MutationObserver(mutationHandler);
+		    _observer.observe(where, { childList: true, characterData:true, attributes:true, subtree: true });
+		    function mutationHandler(mutations) {
+	    		//debug('mutationHandler...')
+		    	mutations.forEach(function(mutation) {
+		    		if (!mutation.addedNodes) return;
+		    		//debug('mutation type:' + mutation.type)
+		    		forEach.call(mutation.addedNodes, function(node) {
+	    				if (selectorMatches(node, selector))
+	    					fn.call(node, node)
+		    		});
+		    	})
+		    }
+		}
+		catch(e) {
+			// mutation observer not supported on this platform :(
+		}
 		$$each(where, selector, fn);
 		return _observer;
 	}
@@ -525,6 +531,8 @@ Copyright (c) kodespace.com, 2016
 		// alerts
 		handleCloseable('alert', '.alert:not(.timeout)');
 		$$dynamic('.alert.timeout', function(alert) {
+			if (alert.__alert_inited) return;
+			alert.__alert_inited = true;
 			__handleCloseable(alert, 'alert')
 
 			// add timeout capabilities
