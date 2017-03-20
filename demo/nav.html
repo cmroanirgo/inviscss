@@ -9,8 +9,9 @@
 <link rel="stylesheet" href="demo.css" media="all" type="text/css" />
 <style>
 
-nav[id*="demo"]>ul>li, nav[id*="demo"] .nav-toggle, .dropdown-toggle { border:1px solid transparent; border-radius: 3px}
-nav[id*="demo"]>ul>li:hover, nav[id*="demo"] .nav-toggle:hover { border-color:#888;}
+nav[id*="demo"]>ul>li, nav[id*="demo"]>*:not(ul), .dropdown-toggle { border:1px solid transparent; border-radius: 3px}
+nav[id*="demo"]>ul>li:hover, nav[id*="demo"]>.nav-toggle:hover { border-color:#888;}
+nav[id*="demo"]>a { font-weight: bold; font-style: italic; font-size: 1.3em; padding: 0 1em 0 0;  text-shadow: 2px 2px 5px rgba(0,0,0,0.2);}
 nav[id*="demo"] .dropdown-toggle:hover { border-left-color: #888; }
 nav[id*="demo"] ul ul { background-color: #f7f7f7; border:1px solid #aaa;}
 nav[id*="demo"] a { color:#333;}
@@ -30,7 +31,7 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 			<li><a href="..">Home</a></li>
 			<li>Demos
 				<ul>
-					<li><a href=".">Getting Started</a></li>
+					<li><a href=".">Kitchen Sink</a></li>
 					<li><a href="nav.html">Navigation and Menus</a></li>
 					<li><a href="admin.html">Admin Template</a></li>
 				</ul>
@@ -46,8 +47,13 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 </div>
 <section>
 <div class="container hr-after">
+
+
+
+
 <h2> Standard / Centered / Right</h2>
 	<nav id="demo1" class="nav menubar">
+		<a href="#">Logo</a>
 		<ul>
 			<li><a href=".">Home</a></li>
 			<li>Stuff
@@ -78,9 +84,10 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 			<li><a href="#demo-about">About</a></li>
 
 		</ul>
-
-
-		<ul id="demo2" class="center">
+	</nav>
+	<nav id="demo2" class="nav menubar center">
+		<a href="#">Logo</a>
+		<ul>
 			<li><a href=".">Home</a></li>
 			<li>Stuff
 				<ul>
@@ -117,7 +124,10 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 			<li><a href="#demo-about">About</a></li>
 
 		</ul>
-		<ul id="demo3" class="right">
+	</nav>
+	<nav id="demo3" class="nav menubar right">
+		<a href="#">Logo</a>
+		<ul>
 			<li><a href=".">Home</a></li>
 			<li>Stuff
 				<ul>
@@ -162,8 +172,9 @@ nav[id*="demo"] ul ul a:hover { background-color: #888; color:#f7f7f7; }
 <div class="container hr-after">
 <h2>Collapsible</h2>
 <p>Just add a sibling element with <code>.nav-toggle</code> and <code>data-target</code> to reduce one or more navs to a hamburger menu (<span class="inv-menu"></span>) on smaller screens.</p>
-	<span class="nav-toggle" data-target="#demo-collapse1"> </span>
 	<nav id="demo-collapse1" class="nav menubar">
+		<span class="nav-toggle" data-target="#demo-collapse1"> </span>
+		<a href="#">Logo</a>
 		<ul>
 			<li><a href=".">Home</a></li>
 			<li>Stuff

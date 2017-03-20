@@ -7,7 +7,37 @@
 <title>Invis CSS</title>
 <link rel="stylesheet/less" href="themes/inviscss-strappy.less" media="all" type="text/css" />
 <style>
-code {background-color: #eee; padding:0.1em 0.3em; color:#a33;}
+code { padding: 0.2rem 0.4em;
+font-size: 0.9rem;
+line-height: 1.3rem;
+color: #C7254E;
+background-color: #F9F2F4;
+border-radius: 4px;
+}
+
+pre {
+  display:block;
+  padding:1em;
+  margin:1em 0;
+  font-size:1rem;
+  line-height:1.42857143;
+  color:#333;
+  word-break:break-all;
+  word-wrap:break-word;
+  background-color:#f5f5f5;
+  border:1px solid #ccc;
+  border-radius:4px
+}
+
+pre>code {
+  padding:0;
+  font-size:inherit;
+  color:inherit;
+  white-space:pre-wrap;
+  background-color:transparent;
+  border-radius:0;
+}
+
 </style>
 </head>
 <body>
@@ -18,7 +48,7 @@ code {background-color: #eee; padding:0.1em 0.3em; color:#a33;}
 			<li><a href=".">Home</a></li>
 			<li>Demos
 				<ul>
-					<li><a href="demo/">Getting Started</a></li>
+					<li><a href="demo/">Kitchen Sink</a></li>
 					<li><a href="demo/nav.html">Navigation and Menus</a></li>
 					<li><a href="demo/admin.html">Admin Template</a></li>
 				</ul>
@@ -49,9 +79,106 @@ code {background-color: #eee; padding:0.1em 0.3em; color:#a33;}
 
 	</p>
 
-	<p>
-		Check out the demos for more information.
-	</p>
+</section>
+<section class="container hr-after">	
+	<h2 id="diff1"><a href="#diff1">The InvisCSS Difference</a></h2>
+	<p>InvisCSS in built with the idea of <em>Minimal Opt-In</em>. This means that with only one or two class statements in higher elements of an HTML structure is all that is required to leverage CSS correctly in a cascading manner. The result is remarkably more managable HTML and easier-to-maintain css overrides, especially for colors, fonts and layouts</p>
+
+	<div class="panel">
+		<h4>A simple button</h4>
+		<p>bootstrap:</p>
+		<pre><code>&lt;button class="btn btn-primary">Primary Button&lt;/button></code></pre>
+
+		<p>pure-css:</p>
+		<pre><code>&lt;button class="pure-button pure-button-primary">Primary Button&lt;/button></code></pre>
+		
+
+		<p>InvisCSS:</p>
+		<pre><code>&lt;button class="primary">Primary Button&lt;/button></code></pre>
+		
+	</div>
+
+	<div class="panel">
+		<h4>A navigation menu</h4>
+		<p>Not convinced? Perhaps a navigation bar at the top of a page will make it obvious:</p>
+		<p>This is what a <u>basic</u> navbar in looks like in bootstrap:</p>
+		<pre><code>&lt;nav class="navbar navbar-default">
+  &lt;div class="container-fluid">
+    &lt;!-- Brand and toggle get grouped for better mobile display -->
+    &lt;div class="navbar-header">
+      &lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        &lt;span class="sr-only">Toggle navigation&lt;/span>
+        &lt;span class="icon-bar">&lt;/span>
+        &lt;span class="icon-bar">&lt;/span>
+        &lt;span class="icon-bar">&lt;/span>
+      &lt;/button>
+      &lt;a class="navbar-brand" href="#">Brand&lt;/a>
+    &lt;/div>
+
+    &lt;!-- Collect the nav links, forms, and other content for toggling -->
+    &lt;div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      &lt;ul class="nav navbar-nav">
+        &lt;li class="active">&lt;a href="#">Link &lt;span class="sr-only">(current)&lt;/span>&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#">Link&lt;/a>&lt;/li>
+        &lt;li class="dropdown">
+          &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown &lt;span class="caret">&lt;/span>&lt;/a>
+          &lt;ul class="dropdown-menu">
+            &lt;li>&lt;a href="#">Action&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Another action&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Something else here&lt;/a>&lt;/li>
+            &lt;li role="separator" class="divider">&lt;/li>
+            &lt;li>&lt;a href="#">Separated link&lt;/a>&lt;/li>
+            &lt;li role="separator" class="divider">&lt;/li>
+            &lt;li>&lt;a href="#">One more separated link&lt;/a>&lt;/li>
+          &lt;/ul>
+        &lt;/li>
+      &lt;/ul>
+    &lt;/div>&lt;!-- /.navbar-collapse -->
+  &lt;/div>&lt;!-- /.container-fluid -->
+&lt;/nav></code></pre>
+
+		<p>This is the equivalent InvisCSS:</p>
+    <nav class="nav menubar" id="demo-nav">
+	  <span class="nav-toggle" data-target="#demo-nav"></span>
+	  <a href="#">Brand</a>
+      <ul>
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Dropdown</a>
+      	<ul>
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li><hr></li>
+          <li><a href="#">Separated link</a></li>
+          <li><hr></li>
+          <li><a href="#">One more separated link</a></li>
+        </ul>
+      </li>
+      </ul>
+    </nav>
+			<pre><code>&lt;nav class="nav menubar" >
+  &lt;span class="nav-toggle" data-target=".nav.menubar">&lt;/span>
+  &lt;a href="#">Brand&lt;/a>
+  &lt;ul> &lt;!--Add class="right" or "center" here to push the menu right -->
+  &lt;li>&lt;a href="#">Link&lt;/a>&lt;/li>
+  &lt;li>&lt;a href="#">Dropdown&lt;/a>
+  	&lt;ul>
+      &lt;li>&lt;a href="#">Action&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="#">Another action&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="#">Something else here&lt;/a>&lt;/li>
+      &lt;li>&lt;hr>&lt;/li>
+      &lt;li>&lt;a href="#">Separated link&lt;/a>&lt;/li>
+      &lt;li>&lt;hr>&lt;/li>
+      &lt;li>&lt;a href="#">One more separated link&lt;/a>&lt;/li>
+    &lt;/ul>
+  &lt;/li>
+  &lt;/ul>
+&lt;/nav>
+</pre></code>
+		<p>Note that multiple targets can be targetted too, using <code>class="nav-toggle" data-target="#selector1,#selector2 .nav"</code> as an example. See the menu and sidebar being controlled in the <a href="admin.html">Admin Demo</a>.</p>
+	</div>
+
+	<p>Also check out the other demo pages</p>
 </div>
 
 </section>
@@ -61,10 +188,10 @@ code {background-color: #eee; padding:0.1em 0.3em; color:#a33;}
 -->
 <script>
   less = {
-    xx_env: "development",
-    env:'production',
-    async: false,
-    fileAsync: false,
+    env: "development",
+    xx_env:'production',
+    async: true,
+    fileAsync: true,
     poll: 1000,
     functions: {},
     dumpLineNumbers: "comments",

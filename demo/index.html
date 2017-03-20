@@ -17,7 +17,7 @@
 			<li><a href="..">Home</a></li>
 			<li>Demos
 				<ul>
-					<li><a href=".">Getting Started</a></li>
+					<li><a href=".">Kitchen Sink</a></li>
 					<li><a href="nav.html">Navigation and Menus</a></li>
 					<li><a href="admin.html">Admin Template</a></li>
 				</ul>
@@ -31,125 +31,7 @@
 		<h1 class="inv-invis">InvisCss</h1>
 	</div>
 </div>
-<section>
-<div class="container hr-after">
-	<h2 id="intro"><a href="#intro">Introduction</a></h2>
-	<p>InvisCSS is designed to bring you the core of a good Css library without the cruft. That is, it's not filled with styles that are only used by developers and designers for their own websites. The default styling is minimal so that it's easier to extend and modify, by you. Unlike bootstrap and most CSS templates, which requires a developer to excessively 'opt-in' by specifying classes all over the place, InvisCSS uses a few simple 'opt-in' classes at the base of an HTML branch. InvisCSS is for <i>real</i> sites: 
-	<h3>Cleaner HTML</h3>
-	<ul><li>No more <code>class="classA classB classC"</code> nonsense at each and every level of your HTML. InvisCSS makes your HTML is clean and lean again, using widely used naming conventions. Although built with a Bootstrap audience in mind, you'll love the simplicity.</li></ul>
-	<h3>Smarter CSS</h3>
-	<ul>
-		<li>Use of <code>rem</code> units makes font scaling a snap.</li>
-		<li>No coloring or assumptions made (except for buttons).</li>
-		<li>Forms are unbelievably easy.</li>
-		<li>Minimal rules means it's easier to override. InvisCss is designed to be easy to change core features.</li>
-	</ul>
 
-	</p>
-
-	<p>
-		<h3>The Difference</h3>
-
-		<h4>A simple button</h4>
-		<p>bootstrap:
-		<pre><code>
-&lt;button class="btn btn-primary">Primary Button&lt;/button>
-		</code></pre>
-		</p>
-
-		<p>pure-css:
-		<pre><code>
-&lt;button class="pure-button pure-button-primary">Primary Button&lt;/button>
-		</code></pre>
-		</p>
-
-		<p>InvisCSS:
-		<pre><code>
-&lt;button class="primary">Primary Button&lt;/button>
-		</code></pre>
-		</p>
-
-		<h4>A navigation menu</h4>
-		<p>Not convinced? Perhaps a navigation bar at the top of a page will make it obvious:</p>
-		<p>This is what a <u>basic</u> navbar in looks like in bootstrap:
-		<pre><code>
-&lt;nav class="navbar navbar-default">
-  &lt;div class="container-fluid">
-    &lt;!-- Brand and toggle get grouped for better mobile display -->
-    &lt;div class="navbar-header">
-      &lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        &lt;span class="sr-only">Toggle navigation&lt;/span>
-        &lt;span class="icon-bar">&lt;/span>
-        &lt;span class="icon-bar">&lt;/span>
-        &lt;span class="icon-bar">&lt;/span>
-      &lt;/button>
-      &lt;a class="navbar-brand" href="#">Brand&lt;/a>
-    &lt;/div>
-
-    &lt;!-- Collect the nav links, forms, and other content for toggling -->
-    &lt;div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      &lt;ul class="nav navbar-nav">
-        &lt;li class="active">&lt;a href="#">Link &lt;span class="sr-only">(current)&lt;/span>&lt;/a>&lt;/li>
-        &lt;li>&lt;a href="#">Link&lt;/a>&lt;/li>
-        &lt;li class="dropdown">
-          &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown &lt;span class="caret">&lt;/span>&lt;/a>
-          &lt;ul class="dropdown-menu">
-            &lt;li>&lt;a href="#">Action&lt;/a>&lt;/li>
-            &lt;li>&lt;a href="#">Another action&lt;/a>&lt;/li>
-            &lt;li>&lt;a href="#">Something else here&lt;/a>&lt;/li>
-            &lt;li role="separator" class="divider">&lt;/li>
-            &lt;li>&lt;a href="#">Separated link&lt;/a>&lt;/li>
-            &lt;li role="separator" class="divider">&lt;/li>
-            &lt;li>&lt;a href="#">One more separated link&lt;/a>&lt;/li>
-          &lt;/ul>
-        &lt;/li>
-      &lt;/ul>
-    &lt;/div>&lt;!-- /.navbar-collapse -->
-  &lt;/div>&lt;!-- /.container-fluid -->
-&lt;/nav>
-		</code></pre>
-		</p>
-
-		<p>This is the equivalent InvisCSS (although operates a little differently):
-			<code><pre>
-&lt;div>
-  &lt;span class="nav-toggle" data-target=".nav">Brand&lt;/span>
-  &lt;span id="brand">Brand&lt;/span>
-    &lt;nav class="nav menubar">
-      &lt;ul>
-      &lt;li>&lt;a href="#">Link&lt;/a>&lt;/li>
-      &lt;li>Dropdown
-      	&lt;ul>
-          &lt;li>&lt;a href="#">Action&lt;/a>&lt;/li>
-          &lt;li>&lt;a href="#">Another action&lt;/a>&lt;/li>
-          &lt;li>&lt;a href="#">Something else here&lt;/a>&lt;/li>
-          &lt;li>&lt;hr>&lt;/li>
-          &lt;li>&lt;a href="#">Separated link&lt;/a>&lt;/li>
-          &lt;li>&lt;hr>&lt;/li>
-          &lt;li>&lt;a href="#">One more separated link&lt;/a>&lt;/li>
-          &lt;/ul>
-      &lt;/li>
-    &lt;/ul>
-  &lt;/nav>
-&lt;/div>
-
-			</pre></code>
-			Note that multiple targets can be targetted too, using <code>class="nav-toggle" data-target="#selector1,#selector2 .nav"</code> as an example. See the menu and sidebar being controlled in the <a href="admin.html">Admin Demo</a>.
-		</p>
-
-	</p>
-
-	<p>See also these demo pages:
-		<ul>
-			<li><a href="nav.html">Navigation &amp; Menus</a></li>
-			<li><a href="admin.html">Sample Admin</a></li>
-		</ul>
-	</p>
-
-	<h3>Normalise CSS</h3>
-	<p>We include NormalizeCSS by default so that you get consistent results across browsers. You can remove it easily by setting <code>@use-normalize: 0;</code></p>
-</div>
-</section>
 <section>
 <div class="container hr-after">
 	<h2 id="typography"><a href="#typography">Typography</a></h2>
@@ -262,63 +144,72 @@
 			<th>Small Devices</th>
 			<th>Medium Devices</th>
 			<th>Large Devices</th>
+			<th>State</th>
 		</tr>
 	</thead>
 	<tr>
-		<td><code>.hidden-xs</code><i class="inv-invis large hidden-xs"></i></td>
+		<td><code>.hidden-xs</code></td>
 		<td class="invis">Hidden</td>
 		<td class="vis">Visible</td>
 		<td class="vis">Visible</td>
 		<td class="vis">Visible</td>
+		<td><i class="inv-invis vis nowrap hidden-xs">Visible</i></td>
 	</tr>
 	<tr>
-		<td><code>.hidden-sm</code><i class="inv-invis large hidden-sm"></i></td>
+		<td><code>.hidden-sm</code></td>
 		<td class="vis">Visible</td>
 		<td class="invis">Hidden</td>
 		<td class="vis">Visible</td>
 		<td class="vis">Visible</td>
+		<td><i class="inv-invis vis nowrap hidden-sm">Visible</i></td>
 	</tr>
 	<tr>
-		<td><code>.hidden-md</code><i class="inv-invis large hidden-md"></i></td>
+		<td><code>.hidden-md</code></td>
 		<td class="vis">Visible</td>
 		<td class="vis">Visible</td>
 		<td class="invis">Hidden</td>
 		<td class="vis">Visible</td>
+		<td><i class="inv-invis vis nowrap hidden-md">Visible</i></td>
 	</tr>
 	<tr>
-		<td><code>.hidden-lg</code><i class="inv-invis large hidden-lg"></i></td>
+		<td><code>.hidden-lg</code></td>
 		<td class="vis">Visible</td>
 		<td class="vis">Visible</td>
 		<td class="vis">Visible</td>
 		<td class="invis">Hidden</td>
+		<td><i class="inv-invis vis nowrap hidden-lg">Visible</i></td>
 	</tr>
 	<tr>
-		<td><code>.hidden-xs-sm</code><i class="inv-invis large hidden-xs-sm"></i></td>
+		<td><code>.hidden-xs-sm</code></td>
 		<td class="invis">Hidden</td>
 		<td class="invis">Hidden</td>
 		<td class="vis">Visible</td>
 		<td class="vis">Visible</td>
+		<td><i class="inv-invis vis nowrap hidden-xs-sm">Visible</i></td>
 	</tr>
 	<tr>
-		<td><code>.hidden-xs-md</code><i class="inv-invis large hidden-xs-md"></i></td>
+		<td><code>.hidden-xs-md</code></td>
 		<td class="invis">Hidden</td>
 		<td class="invis">Hidden</td>
 		<td class="invis">Hidden</td>
 		<td class="vis">Visible</td>
+		<td><i class="inv-invis vis nowrap hidden-xs-md">Visible</i></td>
 	</tr>
 	<tr>
-		<td><code>.hidden-sm-lg</code><i class="inv-invis large hidden-sm-lg"></i></td>
+		<td><code>.hidden-sm-lg</code></td>
 		<td class="vis">Visible</td>
 		<td class="invis">Hidden</td>
 		<td class="invis">Hidden</td>
 		<td class="invis">Hidden</td>
+		<td><i class="inv-invis vis nowrap hidden-sm-lg">Visible</i></td>
 	</tr>
 	<tr>
-		<td><code>.hidden-md-lg</code><i class="inv-invis large hidden-md-lg"></i></td>
+		<td><code>.hidden-md-lg</code></td>
 		<td class="vis">Visible</td>
 		<td class="vis">Visible</td>
 		<td class="invis">Hidden</td>
 		<td class="invis">Hidden</td>
+		<td><i class="inv-invis vis nowrap hidden-md-lg">Visible</i></td>
 	</tr>
 </table>
 </div>

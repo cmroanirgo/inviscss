@@ -65,6 +65,9 @@
 }
 
 // horizontal menu
+.nav.menubar {
+	display:flex;
+}
 .nav.menubar>ul, .tabs {
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -88,6 +91,14 @@
 .nav.sidebar, .dropdown-toggle ~ ul {
 	li>*:not(ul) { // smaller line height for sidebar & dropdown menus
 		line-height: @sidebar-line-height; // 2em
+	}
+}
+
+.nav.menubar{
+	>*:not(ul) { // root level elements as siblings to the base <ul>
+		display: table-cell;
+		line-height: @menubar-line-height; // 3em
+		box-sizing:border-box;
 	}
 }
 
@@ -190,9 +201,10 @@
 
 
 
-.nav ul.right, .nav.menubar.right>ul, .nav.sidebar.right {
+.nav.menubar.right, .nav ul.right, .nav.menubar.right>ul, .nav.sidebar.right {
 	justify-content:flex-end;
-
+}
+.nav ul.right, .nav.menubar.right>ul, .nav.sidebar.right {
 	ul { // align accordian to the right edge
 		right: 0;
 		left: auto;			
@@ -234,7 +246,7 @@
 .nav>ul.right ul, .nav.menubar.right>ul ul, .nav.sidebar.right>ul {
 	li > *:not(ul):after { content:'' !important; display:none;} // hide arrows on the right
 }
-.nav.menubar.center>ul, ul.center {
+.nav.menubar.center, .nav.menubar.center>ul, ul.center {
 	justify-content:center;
 } 
 
@@ -251,19 +263,23 @@
 
 	@media @sm-viewport {
 		// hide on larger screens
-		display: none;
+		display: none !important;
 	}
 
 }
 .js .nav-collapse {
+
 	& ul {
 		display:none;
 	}
 	&.open ul {
-		display:flex;
+		display:flex; // make a block level element, ie start a new line
 	}
 
 	&.menubar{
+		&.open {
+			display: block; // overrides .nav.menubar display=flex. This allows the UL to be on the next line (because flex contrains to one line otherwise)
+		}
 		>ul {
 			flex-wrap:nowrap;
 			flex-direction:column;
@@ -282,7 +298,7 @@
 		}
 	}
 	@media @sm-viewport {
-		& ul{ display: flex; }
+		&.menubar.open, & ul{ display: flex; }
 
 		// reset menubar to operate as per default
 		&.menubar{
