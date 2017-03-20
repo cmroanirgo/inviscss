@@ -68,8 +68,15 @@ body {
   /* close */
 }
 #topnav li:hover,
-#topnav .nav-toggle:hover {
+#topnav .nav-toggle:hover,
+#topnav .dropdown-toggle:hover {
   background-color: rgba(255, 255, 255, 0.09);
+}
+#topnav .dropdown-toggle {
+  border-left: 1px solid transparent;
+}
+#topnav .dropdown-toggle:hover {
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 #topnav nav ul ul {
   background-color: #f7f7ff;

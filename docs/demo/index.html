@@ -250,6 +250,81 @@
 </div>
 </section>
 
+<section >
+<div class="container hr-after">
+<h2 id="visibility"><a href="#visibility">Responsive Visibility</a></h2>
+
+<table id="vis_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Extra Small Devices</th>
+			<th>Small Devices</th>
+			<th>Medium Devices</th>
+			<th>Large Devices</th>
+		</tr>
+	</thead>
+	<tr>
+		<td><code>.hidden-xs</code><i class="inv-invis large hidden-xs"></i></td>
+		<td class="invis">Hidden</td>
+		<td class="vis">Visible</td>
+		<td class="vis">Visible</td>
+		<td class="vis">Visible</td>
+	</tr>
+	<tr>
+		<td><code>.hidden-sm</code><i class="inv-invis large hidden-sm"></i></td>
+		<td class="vis">Visible</td>
+		<td class="invis">Hidden</td>
+		<td class="vis">Visible</td>
+		<td class="vis">Visible</td>
+	</tr>
+	<tr>
+		<td><code>.hidden-md</code><i class="inv-invis large hidden-md"></i></td>
+		<td class="vis">Visible</td>
+		<td class="vis">Visible</td>
+		<td class="invis">Hidden</td>
+		<td class="vis">Visible</td>
+	</tr>
+	<tr>
+		<td><code>.hidden-lg</code><i class="inv-invis large hidden-lg"></i></td>
+		<td class="vis">Visible</td>
+		<td class="vis">Visible</td>
+		<td class="vis">Visible</td>
+		<td class="invis">Hidden</td>
+	</tr>
+	<tr>
+		<td><code>.hidden-xs-sm</code><i class="inv-invis large hidden-xs-sm"></i></td>
+		<td class="invis">Hidden</td>
+		<td class="invis">Hidden</td>
+		<td class="vis">Visible</td>
+		<td class="vis">Visible</td>
+	</tr>
+	<tr>
+		<td><code>.hidden-xs-md</code><i class="inv-invis large hidden-xs-md"></i></td>
+		<td class="invis">Hidden</td>
+		<td class="invis">Hidden</td>
+		<td class="invis">Hidden</td>
+		<td class="vis">Visible</td>
+	</tr>
+	<tr>
+		<td><code>.hidden-sm-lg</code><i class="inv-invis large hidden-sm-lg"></i></td>
+		<td class="vis">Visible</td>
+		<td class="invis">Hidden</td>
+		<td class="invis">Hidden</td>
+		<td class="invis">Hidden</td>
+	</tr>
+	<tr>
+		<td><code>.hidden-md-lg</code><i class="inv-invis large hidden-md-lg"></i></td>
+		<td class="vis">Visible</td>
+		<td class="vis">Visible</td>
+		<td class="invis">Hidden</td>
+		<td class="invis">Hidden</td>
+	</tr>
+</table>
+</div>
+</section>
+
+
 <section>
 <div class="container hr-after">
 	<h2 id="tables"><a href="#tables">CSS Tables</a></h2>
@@ -509,6 +584,156 @@
 </div>
 
 </section>
+
+<section >
+	<div class="container hr-after">
+	<h2 id="alerts"><a href="#alerts">Alerts</a></h2>
+	<div class="alert success">
+	  <b>Well done!</b> You successfully read <a>this important alert message</a>. 
+	</div>
+	<div class="alert info fade">
+	  <b>Heads up!</b> This alert <a>needs your attention</a>, but it's not super important. You can close this &amp; it will fade out.<i class="inv-cancel close"></i>
+	</div>
+	<div class="alert warning fade">
+	  <b>Warning!</b> Better <a>check yourself</a>, you're not looking too good. <i class="inv-cancel close"></i>
+	</div>
+	<div class="alert danger fade">
+	  <b>Oh snap!</b> Change a few things up and try submitting again.<i class="inv-cancel close"></i>
+	</div>
+	<div class="alert info fade">
+	  <i class="inv-invis large"></i> Have an iconic day.<i class="inv-cancel close"></i>
+	</div>
+	<pre><code>
+&lt;div class="alert success">
+  ...
+&lt;/div>
+&lt;div class="alert info fade">
+  ...&lt;i class="inv-cancel close">&lt;/i>
+&lt;/div>
+&lt;div class="alert warning">
+  ...
+&lt;/div>
+&lt;div class="alert danger">
+  ...
+&lt;/div>
+	</code></pre>
+</div>
+</section>
+
+<section >
+	<div class="container hr-after">
+	<h2 id="media"><a href="#media">Media</a></h2>
+	<div class="media">
+		<div class="thumbnail">
+			<img data-holder-rendered="true" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWFlNmYxMjYyMSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YWU2ZjEyNjIxIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi40NTgzMzM5NjkxMTYyMTEiIHk9IjM2LjgiPjY0eDY0PC90ZXh0PjwvZz48L2c+PC9zdmc+" style="width: 64px; height: 64px;" alt="64x64">
+		</div>
+		<div class="body">
+			<h2>Media heading</h2>
+			<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
+		</div>
+	</div>
+	<div class="media">
+		<div class="thumbnail middle">
+			<img data-holder-rendered="true" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWFlNmYxMjYyMSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YWU2ZjEyNjIxIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi40NTgzMzM5NjkxMTYyMTEiIHk9IjM2LjgiPjY0eDY0PC90ZXh0PjwvZz48L2c+PC9zdmc+" style="width: 64px; height: 64px;" alt="64x64">
+		</div>
+		<div class="body">
+			<h2>Media heading</h2>
+			<p>Image at middle. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
+			<div class="media">
+				<div class="thumbnail bottom">
+					<img data-holder-rendered="true" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWFlNmYxMjYyMSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YWU2ZjEyNjIxIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi40NTgzMzM5NjkxMTYyMTEiIHk9IjM2LjgiPjY0eDY0PC90ZXh0PjwvZz48L2c+PC9zdmc+" style="width: 64px; height: 64px;" alt="64x64">
+				</div>
+				<div class="body">
+					<h2>Nested Media heading</h2>
+					<p>Image at bottom. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<pre><code>
+&lt;div class="media">
+	&lt;div class="thumbnail">...&lt;/div>
+	&lt;div class="body">...&lt;/div>
+&lt;/div>
+	</code></pre>
+
+	<h2>Alternating Media</h2>
+	<p>Wrap it in <code>.media-alternate</code>, or set individually using <code>.right</code></p>
+	<div class="media-alternate">
+		<div class="media">
+			<div class="thumbnail">
+				<img data-holder-rendered="true" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWFlNmYxMjYyMSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YWU2ZjEyNjIxIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi40NTgzMzM5NjkxMTYyMTEiIHk9IjM2LjgiPjY0eDY0PC90ZXh0PjwvZz48L2c+PC9zdmc+" style="width: 64px; height: 64px;" alt="64x64">
+			</div>
+			<div class="body">
+				<h2>Media heading</h2>
+				<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
+			</div>
+		</div>
+		<div class="media">
+			<div class="thumbnail">
+				<img data-holder-rendered="true" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWFlNmYxMjYyMSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YWU2ZjEyNjIxIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi40NTgzMzM5NjkxMTYyMTEiIHk9IjM2LjgiPjY0eDY0PC90ZXh0PjwvZz48L2c+PC9zdmc+" style="width: 64px; height: 64px;" alt="64x64">
+			</div>
+			<div class="body">
+				<h2>Media heading</h2>
+				<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
+			</div>
+		</div>
+		<div class="media">
+			<div class="thumbnail">
+				<img data-holder-rendered="true" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWFlNmYxMjYyMSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YWU2ZjEyNjIxIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi40NTgzMzM5NjkxMTYyMTEiIHk9IjM2LjgiPjY0eDY0PC90ZXh0PjwvZz48L2c+PC9zdmc+" style="width: 64px; height: 64px;" alt="64x64">
+			</div>
+			<div class="body">
+				<h2>Media heading</h2>
+				<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
+			</div>
+		</div>
+	</div>
+
+</div>
+</section>
+<section >
+	<div class="container hr-after">
+		<div class="list-group">
+		  <a href="#" class="active">
+		    Cras justo odio
+		  </a>
+		  <a href="#">Dapibus ac facilisis in</a>
+		  <a href="#">Morbi leo risus</a>
+		  <a href="#">Porta ac consectetur ac</a>
+		  <a href="#">Vestibulum at eros</a>
+		</div>
+
+		<div class="list-group" style="max-width: 400px;">
+			<a href="#" class="active">
+				<h3>List group item heading</h3>
+				<p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+			</a>
+			<a href="#">
+				<h3>List group item heading</h3>
+				<p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+			</a>
+			<a href="#">
+				<h3>List group item heading</h3>
+				<p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+			</a>
+			<a href="#" class="success">
+				<h3>List group item heading</h3>
+				<p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+			</a>
+		</div>
+
+		<div class="panel">
+			<h2>A Panel</h2>
+			<p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+		</div>
+		<div class="well">
+			<h2>A Well</h2>
+			<p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+		</div>
+
+</div>
+</section>
+
 
 
 <script src="../js/inviscss.min.js" type="text/javascript"></script>

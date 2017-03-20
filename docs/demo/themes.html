@@ -222,7 +222,8 @@
 	<ul class="tabs">
 		  <li class="active"><a href="#tab-home">Home</a></li>
 		  <li><a href="#tab-profile">Form</a></li>
-		  <li><a href="#tab-messages">Messages</a></li>
+		  <li><a href="#tab-alerts">Alerts</a></li>
+		  <li><a href="#tab-list">List</a></li>
 		</ul>
 		<div class="tab-content">
 			<div id="tab-home" class="active">
@@ -236,8 +237,30 @@
 					<div class="row"> <label></label><input type="submit" class="primary" value="Submit"></div>
 				</form>
 			</div>
-			<div id="tab-messages">
-				Messages
+			<div id="tab-alerts">
+				<div class="alert success">
+				  <b>Well done!</b> You successfully read <a href='#'>this important alert message</a>. 
+				</div>
+				<div class="alert info fade">
+				  <b>Heads up!</b> This alert <a href='#'>needs your attention</a>, but it's not super important. You can close this &amp; it will fade out.<i class="inv-cancel close"></i>
+				</div>
+				<div class="alert warning fade">
+				  <b>Warning!</b> Better <a href='#'>check yourself</a>, you're not looking too good. <i class="inv-cancel close"></i>
+				</div>
+				<div class="alert danger fade">
+				  <b>Oh snap!</b> Change a few things up and try submitting again.<i class="inv-cancel close"></i>
+				</div>
+			</div>
+			<div id="tab-list">
+				<div class="list-group">
+				  <a href="#" class="active">
+				    Cras justo odio
+				  </a>
+				  <a href="#">Dapibus ac facilisis in</a>
+				  <a href="#">Morbi leo risus</a>
+				  <a href="#" class="success">Porta ac consectetur ac</a>
+				  <a href="#" class="danger">Vestibulum at eros</a>
+				</div>
 			</div>
 		</div>
 
@@ -301,6 +324,35 @@
 		</div>
 	</form> 
 
+	<div class="media-alternate panel">
+		<div class="media">
+			<div class="thumbnail">
+				<img data-holder-rendered="true" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWFlNmYxMjYyMSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YWU2ZjEyNjIxIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi40NTgzMzM5NjkxMTYyMTEiIHk9IjM2LjgiPjY0eDY0PC90ZXh0PjwvZz48L2c+PC9zdmc+" style="width: 64px; height: 64px;" alt="64x64">
+			</div>
+			<div class="body">
+				<h2>Media heading</h2>
+				<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
+			</div>
+		</div>
+		<div class="media">
+			<div class="thumbnail">
+				<img data-holder-rendered="true" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWFlNmYxMjYyMSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YWU2ZjEyNjIxIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi40NTgzMzM5NjkxMTYyMTEiIHk9IjM2LjgiPjY0eDY0PC90ZXh0PjwvZz48L2c+PC9zdmc+" style="width: 64px; height: 64px;" alt="64x64">
+			</div>
+			<div class="body">
+				<h2>Media heading</h2>
+				<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
+			</div>
+		</div>
+		<div class="media">
+			<div class="thumbnail">
+				<img data-holder-rendered="true" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWFlNmYxMjYyMSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YWU2ZjEyNjIxIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi40NTgzMzM5NjkxMTYyMTEiIHk9IjM2LjgiPjY0eDY0PC90ZXh0PjwvZz48L2c+PC9zdmc+" style="width: 64px; height: 64px;" alt="64x64">
+			</div>
+			<div class="body">
+				<h2>Media heading</h2>
+				<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
+			</div>
+		</div>
+	</div>	
 </div></section>
 <script>
 var themes = [

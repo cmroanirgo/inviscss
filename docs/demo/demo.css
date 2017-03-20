@@ -17,10 +17,12 @@ body { font-family: Helvetica, Arial, sans-serif}
 .dropdown-toggle ~ ul a { color:#333;}
 .dropdown-toggle ~ ul a:hover { background-color: #888; color:#f7f7f7; }
 
+#vis_table td, th { padding: 0.5em 1em;text-align: center; border-collapse: collapse; border:1px solid #555;}
+#vis_table .vis { background-color:#dff0d8; color: #3c763d; }
+#vis_table .invis { background-color:#f2dede; color: #a94442; }
 
 
 a { color: purple;}
-a:hover,a:visited { color: purple;}
 h2 a:hover { text-decoration: none; }
 h2 a:hover:after {
 	content: " \000020 \0000b6"; /*&para;*/

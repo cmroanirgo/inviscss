@@ -62,9 +62,20 @@ body {
 #topnav .nav-toggle.open:after {
 	content: '\e800'; /* close */
 }
-#topnav li:hover, #topnav .nav-toggle:hover {
+#topnav li:hover, #topnav .nav-toggle:hover, #topnav .dropdown-toggle:hover {
 	background-color: rgba(255,255,255,0.09)
 }
+#topnav .horz-group > :not(ul) {
+	//padding-left: 0.5em;
+	//padding-right: 0.5em;
+}
+#topnav .dropdown-toggle {
+	border-left:1px solid transparent;
+}
+#topnav .dropdown-toggle:hover {
+	border-left:1px solid rgba(255,255,255,0.3);
+}
+
 #topnav nav ul ul {
 	background-color: @bg-color;
 	color:@color;
