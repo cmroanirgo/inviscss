@@ -19,6 +19,7 @@
     "build:make": "node build.js",
     "xbuild": "npm run prep && npm run build:css && npm run build:css.min && npm run build:demo",
     "build": "npm run prep && npm run build:make",
+    "build:quick": "npm run prep && npm run build:make -- --skip-zip",
     "build:open": "echo 'building...' && npm run -s build && echo 'done' && open dist/demo/index.html"
   },
   "devDependencies": {

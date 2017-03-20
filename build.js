@@ -5,6 +5,10 @@
 var fs = require("fs");
 var path = require("path");
 
+var skip_zip = process.argv.indexOf('--skip-zip')>=0;
+if (skip_zip)
+	console.log("Skipping ZIP")
+
 function getFiles(dir, ext) {
 	var files = fs.readdirSync(dir).filter(function(filename) {
 		return path.extname(filename)==ext;
@@ -78,7 +82,7 @@ function registerLess(lessname, dest) {
 		cmds.push('node ' + path.join('node_modules','.bin','lessc') + ' ' + lessname + ' ' + dst + '.min.css ' + process.env.npm_package_config_less_min_options)
 	}
 
-	if (lessname.indexOf('inviscss-')>=0) {
+	if (!skip_zip && lessname.indexOf('inviscss-')>=0) {
 		var theme_name = path.basename(lessname, '.less');
 		cmds.push('npm config set inviscss:theme ' + theme_name + ' && npm run prep:dist && npm config delete inviscss:theme')
 	}
