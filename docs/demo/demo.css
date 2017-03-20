@@ -22,7 +22,7 @@ body { font-family: Helvetica, Arial, sans-serif}
 #vis_table .invis { background-color:#f2dede; color: #a94442; }
 
 
-a { color: purple;}
+a,a:hover { color: purple;}
 h2 a:hover { text-decoration: none; }
 h2 a:hover:after {
 	content: " \000020 \0000b6"; /*&para;*/

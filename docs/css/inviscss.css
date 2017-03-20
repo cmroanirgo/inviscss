@@ -470,11 +470,6 @@ a {
 a:hover {
   text-decoration: underline;
 }
-a:hover,
-a:active,
-a:visited {
-  color: unset;
-}
 table {
   border-collapse: collapse;
 }
@@ -3102,8 +3097,8 @@ button:hover {
   -webkit-flex: 0 1 auto;
           flex: 0 1 auto;
   margin: 0;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .horz-group > *:focus,
 .horz-group > *:hover {
@@ -3118,8 +3113,8 @@ button:hover {
   border-bottom-right-radius: 0;
 }
 .horz-group > .dropdown-toggle {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 .vert-group {
   margin: 0 0.72em;
@@ -3383,7 +3378,7 @@ Fontello config. Use this to recreate the font:
 .dropdown-toggle ~ ul li > *:not(ul):not(div),
 .tabs li > *:not(ul):not(div) {
   margin: 0;
-  padding: 0 1em;
+  padding: 0 1rem;
 }
 .nav a,
 .dropdown-toggle ~ ul a,
@@ -3400,6 +3395,11 @@ Fontello config. Use this to recreate the font:
   color: inherit;
   text-decoration: none;
 }
+.nav.menubar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
 .nav.menubar > ul,
 .tabs {
   -webkit-box-orient: horizontal;
@@ -3411,17 +3411,22 @@ Fontello config. Use this to recreate the font:
 }
 .nav.menubar > ul li > *:not(ul),
 .tabs li > *:not(ul) {
-  line-height: 3em;
+  line-height: 3rem;
 }
 .nav.menubar > ul .horz-group > *:not(ul),
 .tabs .horz-group > *:not(ul) {
   display: inline-block;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 .nav.sidebar li > *:not(ul),
 .dropdown-toggle ~ ul li > *:not(ul) {
-  line-height: 2em;
+  line-height: 2rem;
+}
+.nav.menubar > *:not(ul) {
+  display: table-cell;
+  line-height: 3rem;
+  box-sizing: border-box;
 }
 .nav.menubar ul ul,
 .nav.sidebar ul,
@@ -3530,6 +3535,7 @@ Fontello config. Use this to recreate the font:
     right: 0.3em;
   }
 }
+.nav.menubar.right,
 .nav ul.right,
 .nav.menubar.right > ul,
 .nav.sidebar.right {
@@ -3583,6 +3589,7 @@ Fontello config. Use this to recreate the font:
   content: '' !important;
   display: none;
 }
+.nav.menubar.center,
 .nav.menubar.center > ul,
 ul.center {
   -webkit-box-pack: center;
@@ -3592,8 +3599,8 @@ ul.center {
 .js .nav-toggle {
   display: inline-block;
   cursor: pointer;
-  padding: 0em 1em;
-  line-height: 3em;
+  padding: 0em 1rem;
+  line-height: 3rem;
 }
 .js .nav-toggle:after {
   font-family: "invisicons";
@@ -3601,7 +3608,7 @@ ul.center {
 }
 @media only screen and (min-width: 48em) {
   .js .nav-toggle {
-    display: none;
+    display: none !important;
   }
 }
 .js .nav-collapse ul {
@@ -3611,6 +3618,9 @@ ul.center {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
+}
+.js .nav-collapse.menubar.open {
+  display: block;
 }
 .js .nav-collapse.menubar > ul {
   -webkit-flex-wrap: nowrap;
@@ -3632,6 +3642,7 @@ ul.center {
   left: 0;
 }
 @media only screen and (min-width: 48em) {
+  .js .nav-collapse.menubar.open,
   .js .nav-collapse ul {
     display: -webkit-box;
     display: -webkit-flex;
@@ -3691,7 +3702,7 @@ ul.center {
   border-top-left-radius: 4px;
 }
 .tab-content {
-  padding: 0 1em;
+  padding: 0 1rem;
 }
 .tab-content > * {
   height: 0;
@@ -4205,7 +4216,7 @@ body.modal-open {
   color: #404040;
 }
 .list-group > * {
-  padding: 1em 1em;
+  padding: 1rem 1rem;
   margin-bottom: -1px;
   border: 1px solid #aaa;
   border-radius: 0;
