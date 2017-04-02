@@ -80,6 +80,7 @@
 		<a class="button primary pull-right" href="https://github.com/cmroanirgo/inviscss/releases/latest">Downloads</a>
 		<h1 class="inv-invis">InvisCss Responsive Themes</h1>
 		<h3 id="currentTheme" class="pull-right">Please enable Javascript</h3>
+		<p>Click on a theme below to view a demo.</p>
 		<div class="clear"></div>
 	</div>
 </div>
@@ -91,6 +92,11 @@
 
 
 <section><div class="container">
+	<h2>Installation</h2>
+	<p>You can install this theme from npm using:</p>
+	<pre><code id="npm_code">npm install inviscss-***</code></pre>
+	<p>Or, you can download the latest <code>.zip</code> from <a href="https://github.com/cmroanirgo/inviscss/releases/latest"><i class="fa fa-github"></i> github.com/cmroanirgo/inviscss</a>.</p>
+
 	<h2>Typography</h2>
 
 	<p>InvisCSS is always responsive as you can see on this page. These themes just add a little dash of color to the base styling to assist you in launching your new web project. It is recommended to have a look at the demos to find out the capabilities of InvisCSS. </p>
@@ -368,9 +374,6 @@ var themes = [
 	{name:'ultra-blue', description:'Too blue to be true' },
 	{name:'nature'    , description:'A clean and green theme' },
 ];
-var defaultTheme = themes[0].name;
-var currentTheme = getHashParam(defaultTheme);
-console.log('current theme: ' + currentTheme);
 function el(id) { return document.getElementById(id); }
 function qsa(s) { return document.querySelectorAll(s); }
 function getAttr(el, name) { return el.getAttribute(name); }
@@ -382,6 +385,10 @@ function getHashParam(defValue) {
 			return defValue;
 		}
 }
+
+var defaultTheme = themes[0].name;
+var currentTheme = getHashParam(defaultTheme);
+console.log('current theme: ' + currentTheme);
 
 function buildThemes() {
 	var container = el('themes');
@@ -409,15 +416,17 @@ function applyTheme(theme) {
 	console.log('Applying theme: ' + theme)
 	setAttr(el('theme-link'), 'href', '../themes/inviscss-'+theme+".min.css");
 	el('currentTheme').innerText = 'Current Theme: ' + theme;
+	el('npm_code').innerText = 'npm install inviscss-'+theme;
 	var links = qsa('#themes>div>a');
 	for (var i=0; i<links.length; i++)
 		links[i].classList.remove('active');
 	el(theme).classList.add('active');
+	setTimeout(function() { window.location.href = '#' + theme; }, 300);
 }
 
 //var currentTheme = getParam('theme');
 
-buildThemes(currentTheme);
+buildThemes();
 var links = qsa('#themes>div>a');
 for (var i=0; i<links.length; i++) {
 	links[i].addEventListener('click', function(e) {

@@ -1,0 +1,9 @@
+demo
+Design
+dist*
+node_modules
+x*
+build*
+dom-to-image*
+*.log
+lerna.json

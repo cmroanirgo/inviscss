@@ -69,14 +69,14 @@ Copyright (c) kodespace.com, 2016
 		    		if (!mutation.addedNodes) return;
 		    		//debug('mutation type:' + mutation.type)
 		    		forEach.call(mutation.addedNodes, function(node) {
-	    				if (selectorMatches(node, selector))
+	    				if (node.nodeType===1 && selectorMatches(node, selector))
 	    					fn.call(node, node)
 		    		});
 		    	})
 		    }
 		}
 		catch(e) {
-			// mutation observer not supported on this platform :(
+			// mutation observer not supported on this platform :( IE10, Opera Mini
 		}
 		$$each(where, selector, fn);
 		return _observer;

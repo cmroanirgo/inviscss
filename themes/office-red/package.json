@@ -1,0 +1,10 @@
+{
+  "private":true,
+  "name": "inviscss-dummy",
+  "version": "1.0.0",
+  "description": "An InvisCSS theme",
+  "license": "MIT",
+  "scripts": {
+  	"prepublishOnly": "cd dist && npm run publish"
+  }
+}
