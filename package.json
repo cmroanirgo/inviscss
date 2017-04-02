@@ -8,26 +8,6 @@
     "less_min_options": "--autoprefix --clean-css=\"--s1 --advanced\""
   },
   "scripts": {
-    "xx_prep:dist": "mkdir -p dist && rm -rf dist/* && mkdir -p dist/css && cp -r docs/fonts dist/ && cp -r docs/js dist/ && cp docs/themes/$npm_package_config_theme.* dist/css/ && rm dist-zip/$npm_package_config_theme-$npm_package_version.zip 2> /dev/null || true && zip -rq dist-zip/$npm_package_config_theme-$npm_package_version.zip dist/*",
-    "xx_prep:uglify": "uglifyjs docs/js/inviscss.js -c -m --comments -o docs/js/inviscss.min.js",
-    "xx_prep:dist-zip": "mkdir -p dist-zip && rm -rf dist-zip/* ",
-    "xx_prep:docs": "mkdir -p docs && rm -rf docs/* && mkdir -p docs/css && cp -r demo docs/ && cp -r fonts docs/ && cp -r js docs/ && cp index.html docs/",
-    "xx_prep": "npm run prep:dist-zip && npm run prep:docs && npm run prep:uglify",
-    "xx_xbuild:css": "lessc less/inviscss.less dist/css/inviscss.css --autoprefix && lessc demo/less/admin-demo.less dist/demo/css/admin-demo.css --autoprefix",
-    "xx_xbuild:css.min": "lessc less/inviscss.less --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"  dist/css/inviscss.min.css  && lessc demo/less/admin-demo.less dist/demo/css/admin-demo.min.css --autoprefix  --clean-css=\"--s1 --advanced --compatibility=ie9\"",
-    "xx_build:make": "node build.js",
-    "xx_xbuild": "npm run prep && npm run build:css && npm run build:css.min && npm run build:demo",
-    "xx_build": "npm run prep && npm run build:make",
-    "xx_build:quick": "npm run prep && npm run build:make -- --skip-zip",
-    "xx_build:open": "echo 'building...' && npm run -s build && echo 'done' && open dist/demo/index.html",
-
-    "xxxbuild:css" : "lessc less/inviscss.less css/inviscss.css $npm_package_config_less_options && lessc less/inviscss.less css/inviscss.min.css $npm_package_config_less_options",
-    "xxxbuild:demo": "lessc demo/less/admin-demo.less docs/demo/css/admin-demo.min.css $npm_package_config_less_options",
-  	"xxxxbuild:docs": "mkdir -p docs && rm -rf docs/* && mkdir -p docs/themes && cp -r demo docs/ && cp -r fonts docs/ && cp -r js docs/ && cp -r css docs/ && cp index.html docs/ && node build-docs.js",
-    "xbuild:core-css": "rm -rf css && lessc less/inviscss.less css/inviscss.css --autoprefix && lessc less/inviscss.less css/inviscss.min.css --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"",
-    "xbuild:core-js" : "uglifyjs js/inviscss.js -c -m --comments -o js/inviscss.min.js",
-    "xzip:core": "zip -rq dist-zip/inviscss-$npm_package_version.zip js/* css/* less/* fonts/*",
-
     "prep:dist": "mkdir -p dist && rm -rf dist/* && mkdir -p dist-zip && rm -rf dist-zip/* && cp -rp fonts dist/ && cp -rp less dist/ && cp -rp js dist/",
     "build:core-css": "lessc less/inviscss.less dist/css/inviscss.css --autoprefix && lessc less/inviscss.less dist/css/inviscss.min.css --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"",
     "build:core-js" : "uglifyjs js/inviscss.js -c -m --comments -o dist/js/inviscss.min.js",
@@ -45,7 +25,6 @@
     "less": "latest",
     "less-plugin-autoprefix": "^1.5.1",
     "less-plugin-clean-css": "latest",
-    "flexboxgrid": "^6.3.1",
     "font-awesome": "^4.7.0",
     "normalize.css": "^5.0.0",
     "lerna": "2.0.0-beta.38"
