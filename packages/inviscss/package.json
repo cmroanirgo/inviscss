@@ -1,6 +1,6 @@
 {
   "name": "inviscss",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "InvisCSS base library",
   "scripts": {
     "build:css": "node ../../build-less.js less/inviscss.less",
@@ -19,7 +19,7 @@
     "less",
     "css-framework",
     "inviscss"
-      ],
+  ],
   "author": "cmroanirgo",
   "license": "MIT"
 }

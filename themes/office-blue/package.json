@@ -1,15 +1,15 @@
 {
   "name": "inviscss-office-blue",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "office-blue - an InvisCSS theme",
   "repository": "https://github.com/cmroanirgo/inviscss/tree/master/themes/office-blue",
   "scripts": {
     "build": "node ../../build-theme.js",
     "prepublishOnly": "npm run build",
-    "postpublish": "node ../../zip-package.js"  	
+    "postpublish": "node ../../zip-package.js"
   },
   "devDependencies": {
-    "inviscss": "^1.6.1"
+    "inviscss": "^1.6.2"
   },
   "keywords": [
     "responsive",
