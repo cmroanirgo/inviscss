@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cmroanirgo/inviscss/packages/inviscss"
+    "url": "https://github.com/cmroanirgo/inviscss/tree/master/packages/_inviscss"
   },
   "devDependencies": {
-    "normalize.css": "latest"
+    "normalize.css": "^6.0.0"
   },
   "keywords": [
     "css"

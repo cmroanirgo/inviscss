@@ -2,10 +2,7 @@
   "name": "inviscss-clean-dark",
   "version": "1.6.1",
   "description": "clean-dark - an InvisCSS theme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cmroanirgo/inviscss/tree/master/themes/clean-dark"
-  },
+  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/packages/clean-dark",
   "scripts": {
     "build": "node ../../build-theme.js",
     "prepublishOnly": "npm run build",

@@ -30,10 +30,6 @@
     "xnormalize.css": "^5.0.0",
     "lerna": "2.0.0-beta.38"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cmroanirgo/inviscss.git"
-  },
   "author": "cmroanirgo",
   "license": "GPL",
   "bugs": {

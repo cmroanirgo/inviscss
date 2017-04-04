@@ -2,17 +2,14 @@
   "name": "inviscss-strappy",
   "version": "1.6.1",
   "description": "strappy - an InvisCSS theme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cmroanirgo/inviscss/tree/master/themes/strappy"
-  },
+  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/packages/strappy",
   "scripts": {
     "build": "node ../../build-theme.js",
     "prepublishOnly": "npm run build",
     "postpublish": "node ../../zip-package.js"  	
   },
   "devDependencies": {
-    "inviscss": "latest"
+    "inviscss": "^1.6.1"
   },
   "keywords": [
     "responsive",
