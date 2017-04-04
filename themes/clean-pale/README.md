@@ -24,9 +24,9 @@ And then include the css and js in your project:
 
 ## Installation - Download
 
-<p>Or, you can download the latest <code>inviscss-clean-pale-1.6.1.zip</code> from <a href="https://github.com/cmroanirgo/inviscss/releases/latest"><i class="fa fa-github"></i> github.com/cmroanirgo/inviscss</a>.</p>
+<p>Rather than using npm, you can download the latest <code>inviscss-clean-pale-xxx.zip</code> from <a href="https://github.com/cmroanirgo/inviscss/releases/latest"><i class="fa fa-github"></i>github.com/cmroanirgo/inviscss</a>.</p>
 
-And then include the css and js in your project:
+Then include the css and js directly into your project:
 
 ```
 <link rel="stylesheet" href="css/inviscss-clean-pale.min.css" media="all" type="text/css" />
