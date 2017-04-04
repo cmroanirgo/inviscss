@@ -1,11 +1,11 @@
 {
   "name": "inviscss-office-red",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "office-red - an InvisCSS theme",
   "repository": "https://github.com/cmroanirgo/inviscss/tree/master/themes/office-red",
   "scripts": {
     "build": "node ../../build-theme.js",
-    "prepublishOnly": "npm run build",
+    "prepublish": "npm run build",
     "postpublish": "node ../../zip-package.js"
   },
   "devDependencies": {
