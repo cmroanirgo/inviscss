@@ -17,8 +17,12 @@
     "normalize.css": "^6.0.0"
   },
   "keywords": [
-    "css"
-  ],
+    "responsive",
+    "css",
+    "less",
+    "css-framework",
+    "inviscss"
+      ],
   "author": "cmroanirgo",
   "license": "MIT"
 }
