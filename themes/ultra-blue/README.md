@@ -22,9 +22,19 @@ And then include the css and js in your project:
 <script src="node_modules/inviscss-ultra-blue/js/inviscss.min.js" type="text/javascript"></script>
 ```
 
+## Installation - CDN
+
+You can use the NPM CDN (unpkg.com) directly, without any installation whatsoever:
+
+```
+<link rel="stylesheet" href="https://unpkg.com/inviscss-ultra-blue/css/inviscss-ultra-blue.min.css" media="all" type="text/css" />
+<script src="https://unpkg.com/inviscss-ultra-blue/js/inviscss.min.js" type="text/javascript"></script>
+```
+
+
 ## Installation - Download
 
-<p>Rather than using npm, you can download the latest <code>inviscss-ultra-blue-xxx.zip</code> from <a href="https://github.com/cmroanirgo/inviscss/releases/latest"><i class="fa fa-github"></i>github.com/cmroanirgo/inviscss</a>.</p>
+<p>Rather than using npm, or it's CDN, you can download the latest <code>inviscss-ultra-blue-xxx.zip</code> from <a href="https://github.com/cmroanirgo/inviscss/releases/latest"><i class="fa fa-github"></i>github.com/cmroanirgo/inviscss</a>.</p>
 
 Then include the css and js directly into your project:
 

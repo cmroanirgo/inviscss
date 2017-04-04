@@ -14,9 +14,19 @@ npm install inviscss
 And then include the css and js in your project:
 
 ```
-&lt;link rel="stylesheet" href="node_modules/inviscss/css/inviscss.min.css" media="all" type="text/css" />
-&lt;script src="node_modules/inviscss/js/inviscss.min.js" type="text/javascript">&lt;/script>
+<link rel="stylesheet" href="node_modules/inviscss/css/inviscss.min.css" media="all" type="text/css" />
+<script src="node_modules/inviscss/js/inviscss.min.js" type="text/javascript"></script>
 ```
+
+## Installation - CDN
+
+You can use the NPM CDN (unpkg.com) directly, without any installation whatsoever:
+
+```
+<link rel="stylesheet" href="https://unpkg.com/inviscss/css/inviscss.min.css" media="all" type="text/css" />
+<script src="https://unpkg.com/inviscss" type="text/javascript"></script>
+```
+
 
 ## Installation - Download
 
