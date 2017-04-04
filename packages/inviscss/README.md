@@ -7,13 +7,16 @@
 
 You can install this theme from npm using:
 
-> npm install inviscss
+```
+npm install inviscss
+```
 
 And then include the css and js in your project:
 
-> <link rel="stylesheet" href="node_modules/inviscss/css/inviscss.min.css" media="all" type="text/css" />
-> <script src="node_modules/inviscss/js/inviscss.min.js" type="text/javascript"></script>
-
+```
+&lt;link rel="stylesheet" href="node_modules/inviscss/css/inviscss.min.css" media="all" type="text/css" />
+&lt;script src="node_modules/inviscss/js/inviscss.min.js" type="text/javascript">&lt;/script>
+```
 
 ## Installation - Download
 
@@ -21,8 +24,10 @@ And then include the css and js in your project:
 
 And then include the css and js in your project:
 
-> <link rel="stylesheet" href="css/inviscss.min.css" media="all" type="text/css" />
-> <script src="js/inviscss.min.js" type="text/javascript"></script>
+```
+&lt;link rel="stylesheet" href="css/inviscss.min.css" media="all" type="text/css" />
+&lt;script src="js/inviscss.min.js" type="text/javascript">&lt;/script>
+```
 
 ## Building
 
