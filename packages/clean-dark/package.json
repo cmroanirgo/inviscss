@@ -9,7 +9,7 @@
     "postpublish": "node ../../zip-package.js"  	
   },
   "devDependencies": {
-    "inviscss": "latest"
+    "inviscss": "^1.6.1"
   },
   "keywords": [
     "responsive",

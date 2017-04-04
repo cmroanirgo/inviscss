@@ -42,16 +42,19 @@ addCommand('cp -fpR fonts ../..', base_dir); // copy inviscss font files to targ
 // run less compiler
 var less_name = path.join(target, 'less', theme_name+'.less');
 var css_name_no_ext = path.join(target, 'css', theme_name);
+
 var lessc = 'node ' + path.join(src_dir, 'node_modules','.bin','lessc'); 
-addCommand(lessc + ' ' + less_name + ' ' + css_name_no_ext + '.css ' + process.env.npm_package_config_less_options)
-addCommand(lessc + ' ' + less_name + ' ' + css_name_no_ext + '.min.css ' + process.env.npm_package_config_less_min_options)
+var root_pkg = require(path.join(src_dir, 'package.json'));
+// NB: run in src_dir so that 'browserlist' file is automatically picked up and used.
+addCommand(lessc + ' ' + less_name + ' ' + css_name_no_ext + '.css ' + root_pkg.config.less_options, src_dir)
+addCommand(lessc + ' ' + less_name + ' ' + css_name_no_ext + '.min.css ' + root_pkg.config.less_min_options, src_dir)
 
 
 //console.log(cmds)
 console.log("Building " + theme_name);
 execSeries(cmds, function(err) {
 	if (err) return console.error(err);
-	prepFile(path.join(src_dir, 'themes/_common/README.md'), path.join(target, 'README.md'), base_theme_name)
+	prepFile(path.join(target, '../_common/README.md'), path.join(target, 'README.md'), base_theme_name)
 })
 
 })();
