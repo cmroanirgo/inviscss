@@ -28,7 +28,7 @@ You can use the NPM CDN (unpkg.com) directly, without any installation whatsoeve
 
 ```
 <link rel="stylesheet" href="https://unpkg.com/inviscss-ultra-blue/css/inviscss-ultra-blue.min.css" media="all" type="text/css" />
-<script src="https://unpkg.com/inviscss-ultra-blue/js/inviscss.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/inviscss-ultra-blue" type="text/javascript"></script>
 ```
 
 

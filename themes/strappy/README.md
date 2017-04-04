@@ -28,7 +28,7 @@ You can use the NPM CDN (unpkg.com) directly, without any installation whatsoeve
 
 ```
 <link rel="stylesheet" href="https://unpkg.com/inviscss-strappy/css/inviscss-strappy.min.css" media="all" type="text/css" />
-<script src="https://unpkg.com/inviscss-strappy/js/inviscss.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/inviscss-strappy" type="text/javascript"></script>
 ```
 
 

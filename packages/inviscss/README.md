@@ -20,7 +20,7 @@ And then include the css and js in your project:
 
 ## Installation - CDN
 
-You can use the NPM CDN (unpkg.com) directly, without any installation whatsoever:
+You can use the NPM CDN (unpkg.com) directly, without any installation:
 
 ```
 <link rel="stylesheet" href="https://unpkg.com/inviscss/css/inviscss.min.css" media="all" type="text/css" />
@@ -35,8 +35,8 @@ You can use the NPM CDN (unpkg.com) directly, without any installation whatsoeve
 And then include the css and js in your project:
 
 ```
-&lt;link rel="stylesheet" href="css/inviscss.min.css" media="all" type="text/css" />
-&lt;script src="js/inviscss.min.js" type="text/javascript">&lt;/script>
+<link rel="stylesheet" href="css/inviscss.min.css" media="all" type="text/css" />
+<script src="js/inviscss.min.js" type="text/javascript"></script>
 ```
 
 ## Building
