@@ -1,8 +1,8 @@
 {
-  "name": "inviscss-office-red",
+  "name": "inviscss-nature",
   "version": "1.6.1",
-  "description": "office-red - an InvisCSS theme",
-  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/packages/office-red",
+  "description": "nature - an InvisCSS theme",
+  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/themes/nature",
   "scripts": {
     "build": "node ../../build-theme.js",
     "prepublishOnly": "npm run build",

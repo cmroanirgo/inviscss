@@ -1,8 +1,8 @@
 {
-  "name": "inviscss-office-blue",
+  "name": "inviscss-clean-pale",
   "version": "1.6.1",
-  "description": "office-blue - an InvisCSS theme",
-  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/packages/office-blue",
+  "description": "clean-pale - an InvisCSS theme",
+  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/themes/clean-pale",
   "scripts": {
     "build": "node ../../build-theme.js",
     "prepublishOnly": "npm run build",

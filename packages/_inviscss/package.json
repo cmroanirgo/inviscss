@@ -9,7 +9,7 @@
     "prepublishOnly": "npm run build",
     "postpublish": "node ../../zip-package.js"
   },
-  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/core/_inviscss",
+  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/packages/_inviscss",
   "devDependencies": {
     "normalize.css": "^6.0.0"
   },

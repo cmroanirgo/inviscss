@@ -1,8 +1,8 @@
 {
-  "name": "inviscss-nature",
+  "name": "inviscss-office-blue",
   "version": "1.6.1",
-  "description": "nature - an InvisCSS theme",
-  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/packages/nature",
+  "description": "office-blue - an InvisCSS theme",
+  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/themes/office-blue",
   "scripts": {
     "build": "node ../../build-theme.js",
     "prepublishOnly": "npm run build",

@@ -1,8 +1,8 @@
 {
-  "name": "inviscss-clean-dark",
+  "name": "inviscss-ultra-blue",
   "version": "1.6.1",
-  "description": "clean-dark - an InvisCSS theme",
-  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/packages/clean-dark",
+  "description": "ultra-blue - an InvisCSS theme",
+  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/themes/ultra-blue",
   "scripts": {
     "build": "node ../../build-theme.js",
     "prepublishOnly": "npm run build",

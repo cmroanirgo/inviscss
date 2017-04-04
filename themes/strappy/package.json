@@ -2,7 +2,7 @@
   "name": "inviscss-strappy",
   "version": "1.6.1",
   "description": "strappy - an InvisCSS theme",
-  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/packages/strappy",
+  "repository": "https://github.com/cmroanirgo/inviscss/tree/master/themes/strappy",
   "scripts": {
     "build": "node ../../build-theme.js",
     "prepublishOnly": "npm run build",
