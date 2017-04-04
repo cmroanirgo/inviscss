@@ -1,10 +1,26 @@
 {
-  "private":true,
-  "name": "inviscss-dummy",
-  "version": "1.0.0",
-  "description": "An InvisCSS theme",
-  "license": "MIT",
+  "name": "inviscss-clean-dark",
+  "version": "1.6.1",
+  "description": "clean-dark - an InvisCSS theme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cmroanirgo/inviscss/tree/master/themes/clean-dark"
+  },
   "scripts": {
-  	"prepublishOnly": "cd dist && npm run publish"
-  }
+    "build": "node ../../build-theme.js",
+    "prepublishOnly": "npm run build",
+    "postpublish": "node ../../zip-package.js"  	
+  },
+  "devDependencies": {
+    "inviscss": "latest"
+  },
+  "keywords": [
+    "responsive",
+    "css",
+    "less",
+    "css-framework",
+    "inviscss"
+  ],
+  "author": "cmroanirgo",
+  "license": "MIT"
 }

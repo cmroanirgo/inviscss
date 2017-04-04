@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "inviscss",
+  "name": "inviscss-root",
   "version": "1.6.1",
   "description": "A minimal css library",
   "config": {
@@ -22,8 +22,9 @@
   	"build-nz":"npm run build:core-nz && npm run prep:docs && npm run build:docs-css && npm run build:themes-nz"
   },
   "devDependencies": {
+    "uglify-js": "latest",
     "less": "latest",
-    "less-plugin-autoprefix": "^1.5.1",
+    "less-plugin-autoprefix": "latest",
     "less-plugin-clean-css": "latest",
     "font-awesome": "^4.7.0",
     "normalize.css": "^5.0.0",

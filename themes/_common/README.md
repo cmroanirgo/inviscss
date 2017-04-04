@@ -10,6 +10,7 @@ Theme demos are available [here](https://cmroanirgo.github.io/inviscss/demo/them
 ## Installation - NPM
 
 You can install this theme from npm using:
+
 > npm install inviscss-{{base_theme_name}}
 
 And then include the css and js in your project:

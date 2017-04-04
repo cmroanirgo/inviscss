@@ -1,0 +1,220 @@
+/*flexboxgrid. no gutters*/
+
+.row,.flex {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+}
+.row {
+	flex: 0 1 auto;
+	flex-wrap: wrap;
+	border-collapse: collapse;
+	& when (@grid-gutter-width>0) {
+		margin-right: @grid-gutter-width/-2;
+		margin-left: @grid-gutter-width/-2;
+	}
+}
+
+
+.flex-grow { 
+/*
+useful for sticky footers:
+	<div class="flex vertical">
+		<header>...
+		<div class="flex-grow">...
+		<footer>...
+	</div>
+
+useful for double sidebars:
+	<div class="flex">
+	<nav id="leftside">...
+	<div id="main" class="flex-grow">...
+	<nav id="rightside">...
+*/
+	flex: 1;
+}
+
+
+/* Mixins */
+
+.init-grid-columns() { // lifted from bootstrap & modified to suit flex
+	// Common styles for all sizes of grid columns, widths 1-12
+	.col() { // initial
+		@index: 1;
+		@item: ~".col-xs, .col-sm, .col-md, .col-lg, .col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+		.col((@index + 1), @item);
+	}
+	.col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
+		@item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+		.col((@index + 1), ~"@{list}, @{item}");
+	}
+	.col(@index, @list) when (@index > @grid-columns) { // terminal
+		@{list} {
+			box-sizing: border-box;
+			flex:1 0 auto;	// growable, not shrinkable, uses width
+			width:100%;
+			// Inner gutter via padding
+			& when (@grid-gutter-width>0) {
+				padding-left:  @grid-gutter-width/2;
+				padding-right: @grid-gutter-width/2;
+			}
+		}
+	}
+	.col(); // kickstart it
+}
+
+
+.flex-grid-columns(@class) { // disables flex grow for this class
+	.col(@index) { // initial
+		@item: ~".col-@{class}-@{index}";
+		.col((@index + 1), @item);
+	}
+	.col(@index, @list) when (@index =< @grid-columns) { // general
+		@item: ~".col-@{class}-@{index}";
+		.col((@index + 1), ~"@{list}, @{item}");
+	}
+	.col(@index, @list) when (@index > @grid-columns) { // terminal
+		@{list} {
+			flex: 0 0 auto;
+		}
+	}
+	.col(1); // kickstart it
+}
+
+.set-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
+	.col-@{class}-@{index} {
+		width: round(percentage((@index / @grid-columns)),3);
+	}
+}
+
+.set-grid-column(@index, @class, @type) when (@type = offset) {
+	.col-@{class}-offset-@{index} {
+		margin-left: round(percentage((@index / @grid-columns)),3);
+	}
+}
+
+/*.set-grid-column(@index, @class, @type) when (@type = order) and (@index >= 0) {
+	.col-@{class}-order-@{index} {
+		order: @index;
+	}
+}*/
+
+// Basic looping in LESS
+.loop-grid-columns(@index, @class, @type) when (@index >= 0) {
+	.set-grid-column(@index, @class, @type);
+	// next iteration
+	.loop-grid-columns((@index - 1), @class, @type);
+}
+
+// Create grid for specific class
+.make-grid(@class) {
+	.col-@{class} {
+		flex-grow: 1;
+		flex-basis: 0;
+		width: 100%;
+	}
+	.first-@{class} {
+		order: -1;
+	}
+	.last-@{class} {
+		order: 100;
+	}
+	.row,.flex { 
+		&.start-@{class} {
+			justify-content: flex-start; /* browser default */
+		}
+		&.center-@{class} {
+			justify-content: center;
+		}
+		&.end-@{class} {
+			justify-content: flex-end;
+		}
+		&.spaced-@{class} {
+			justify-content: space-between;
+		}
+
+		&.stretch-@{class} { /* browser default */
+			align-items: stretch;
+		}
+		&.top-@{class} {
+			align-items: flex-start;
+		}
+		&.middle-@{class} {
+			align-items: center;
+		}
+		&.bottom-@{class} {
+			align-items: flex-end;
+		}
+		&.baseline-@{class} {
+			align-items: baseline;
+		}
+
+		&.vertical-@{class}  {
+			flex-direction: column;
+		}
+		&.horizontal-@{class}  {
+			flex-direction: row; /*browser default*/
+		}
+		&.reverse-@{class}  {
+			flex-direction: row-reverse;
+		}
+		&.vertical-reverse-@{class} {
+			flex-direction: column-reverse;
+		}
+		&.nowrap-@{class} {
+			flex-wrap: nowrap;
+		}
+		&.wrap-@{class} {
+			flex-wrap: wrap;
+		}
+		.flex-grow-@{class} {
+			flex:1;
+		}
+
+		// TODO ? add 'align-content'. Shouldn't ever be needed on a 'row'
+	}
+
+	.flex-grid-columns(@class);
+	.loop-grid-columns(@grid-columns, @class, width);
+	.loop-grid-columns(@grid-columns, @class, offset);
+	//.loop-grid-columns(@grid-columns, @class, order);
+}
+
+/* Begin FlexGrid */
+.init-grid-columns();
+
+// Extra small grid
+//
+// Columns, offsets, pushes, and pulls for extra small devices like
+// smartphones.
+
+.make-grid(xs);
+
+
+// Small grid
+//
+// Columns, offsets, pushes, and pulls for the small device range, from phones
+// to tablets.
+
+@media (min-width: @screen-sm-min) {
+	.make-grid(sm);
+}
+
+
+// Medium grid
+//
+// Columns, offsets, pushes, and pulls for the desktop device range.
+
+@media (min-width: @screen-md-min) {
+	.make-grid(md);
+}
+
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@media (min-width: @screen-lg-min) {
+	.make-grid(lg);
+}
+

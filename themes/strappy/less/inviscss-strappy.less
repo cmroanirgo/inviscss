@@ -1,4 +1,4 @@
-/*! theme: strappy-dark
+/*! theme: strappy
   _____            _      _____  _____ _____ 
  |_   _|          (_)    / ____|/ ____/ ____|
    | |  _ ____   ___ ___| |    | (___| (___  
@@ -7,7 +7,9 @@
  |_____|_| |_|\_/ |_|___/\_____|_____/_____/ 
 Copyright (c) kodespace.com, 2016
 */
-@import "theme-base.less";
+
+
+@import "../node_modules/inviscss/less/theme-base.less";
 
 @bg-color: 		#ffffff; //body bg
 @color: 		#333;
@@ -17,16 +19,12 @@ Copyright (c) kodespace.com, 2016
 @bg-popup: 			#f7f7f7; 
 @bg-popup-hover:	darken(@bg-popup, 10%);
 
-//@bg-menubar:		@bg-popup;
-//@bg-menubar-hover:  darken(@bg-menubar, 10%);
-//@color-menubar: 	lighten(@color,10%);
+@bg-menubar:		@bg-popup;
+@bg-menubar-hover:  darken(@bg-menubar, 10%);
+@color-menubar: 	lighten(@color,10%);
 
 @bg-sidebar:		@bg-popup;
 @bg-sidebar-hover:  darken(@bg-sidebar, 10%);
 @color-sidebar: 	@color;
 
 @bg-modal:	@bg-popup;
-
-@bg-menubar: #333;
-@color-menubar: white;
-@bg-menubar-hover:  lighten(@bg-menubar, 10%);

@@ -9,7 +9,7 @@ function execCmd(cmd, cb){ // from: https://gist.github.com/millermedeiros/47240
     if (typeof cmd !== 'string') { // we can accept: 'ls *' or {cmd:'ls *',cwd:'/some/dir/'}
 		cmd = cmd.cmd;    	
     }
-    console.log('executing: ' + cmd);
+    console.log('    > ' + cmd);
 
 	var p = child_process.exec(cmd, opts);
 	p.stdout.on('data', (data) => {
