@@ -1,7 +1,8 @@
 {
   "name": "inviscss",
-  "version": "1.6.2",
+  "version": "1.6.5",
   "description": "InvisCSS base library",
+  "browser": "./js/inviscss.min.js",
   "scripts": {
     "build:css": "node ../../build-less.js less/inviscss.less",
     "build:js": "node ../../build-js.js  js/inviscss.js",
