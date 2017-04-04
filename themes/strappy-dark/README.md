@@ -11,13 +11,16 @@ Theme demos are available [here](https://cmroanirgo.github.io/inviscss/demo/them
 
 You can install this theme from npm using:
 
-> npm install inviscss-strappy-dark
+```
+npm install inviscss-strappy-dark
+```
 
 And then include the css and js in your project:
 
-> <link rel="stylesheet" href="node_modules/inviscss-strappy-dark/css/inviscss-strappy-dark.min.css" media="all" type="text/css" />
-> <script src="node_modules/inviscss-strappy-dark/js/inviscss.min.js" type="text/javascript"></script>
-
+```
+<link rel="stylesheet" href="node_modules/inviscss-strappy-dark/css/inviscss-strappy-dark.min.css" media="all" type="text/css" />
+<script src="node_modules/inviscss-strappy-dark/js/inviscss.min.js" type="text/javascript"></script>
+```
 
 ## Installation - Download
 
@@ -25,7 +28,12 @@ And then include the css and js in your project:
 
 And then include the css and js in your project:
 
-> <link rel="stylesheet" href="css/inviscss-strappy-dark.min.css" media="all" type="text/css" />
-> <script src="js/inviscss.min.js" type="text/javascript"></script>
+```
+<link rel="stylesheet" href="css/inviscss-strappy-dark.min.css" media="all" type="text/css" />
+<script src="js/inviscss.min.js" type="text/javascript"></script>
+```
 
+## Building LESS
+
+Both installation versions also include the original <code>.less</code> source files, if you wish to build/ integrate with other systems. You will need to run `npm install` in order to bring in the base [InvisCSS](https://www.npmjs.com/package/inviscss) project (and its dependencies), but this is not needed if using the provided css and js (and font) files.
 

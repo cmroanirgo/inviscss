@@ -11,13 +11,16 @@ Theme demos are available [here](https://cmroanirgo.github.io/inviscss/demo/them
 
 You can install this theme from npm using:
 
-> npm install inviscss-office-blue
+```
+npm install inviscss-office-blue
+```
 
 And then include the css and js in your project:
 
-> <link rel="stylesheet" href="node_modules/inviscss-office-blue/css/inviscss-office-blue.min.css" media="all" type="text/css" />
-> <script src="node_modules/inviscss-office-blue/js/inviscss.min.js" type="text/javascript"></script>
-
+```
+<link rel="stylesheet" href="node_modules/inviscss-office-blue/css/inviscss-office-blue.min.css" media="all" type="text/css" />
+<script src="node_modules/inviscss-office-blue/js/inviscss.min.js" type="text/javascript"></script>
+```
 
 ## Installation - Download
 
@@ -25,7 +28,12 @@ And then include the css and js in your project:
 
 And then include the css and js in your project:
 
-> <link rel="stylesheet" href="css/inviscss-office-blue.min.css" media="all" type="text/css" />
-> <script src="js/inviscss.min.js" type="text/javascript"></script>
+```
+<link rel="stylesheet" href="css/inviscss-office-blue.min.css" media="all" type="text/css" />
+<script src="js/inviscss.min.js" type="text/javascript"></script>
+```
 
+## Building LESS
+
+Both installation versions also include the original <code>.less</code> source files, if you wish to build/ integrate with other systems. You will need to run `npm install` in order to bring in the base [InvisCSS](https://www.npmjs.com/package/inviscss) project (and its dependencies), but this is not needed if using the provided css and js (and font) files.
 

@@ -35,9 +35,8 @@ var theme_name = 'inviscss-' + base_theme_name;
 if (theme_name!=pkg.name) {
 	throw new SyntaxError("Unexpected error in '"+target+"'. package.name!='"+theme_name+"' (got '"+pkg.name+"')")
 }
-var base_dir = path.join(target, 'node_modules/inviscss')
-addCommand('cp -fpR js ../..', base_dir); // copy inviscss js files to target folder
-addCommand('cp -fpR fonts ../..', base_dir); // copy inviscss font files to target folder
+addCommand('cp -fpR node_modules/inviscss/js .', target); // copy inviscss js files to target folder
+addCommand('cp -fpR node_modules/inviscss/fonts .', target); // copy inviscss font files to target folder
 
 // run less compiler
 var less_name = path.join(target, 'less', theme_name+'.less');
