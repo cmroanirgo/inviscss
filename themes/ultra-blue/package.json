@@ -1,6 +1,6 @@
 {
   "name": "inviscss-ultra-blue",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "description": "ultra-blue - an InvisCSS theme",
   "repository": "https://github.com/cmroanirgo/inviscss/tree/master/themes/ultra-blue",
   "browser": "./js/inviscss.min.js",
@@ -10,7 +10,7 @@
     "postpublish": "node ../../zip-package.js"
   },
   "devDependencies": {
-    "inviscss": "^1.6.5"
+    "inviscss": "^1.6.6"
   },
   "keywords": [
     "responsive",
