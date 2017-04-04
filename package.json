@@ -8,18 +8,18 @@
     "less_min_options": "--autoprefix --clean-css=\"--s1 --advanced\""
   },
   "scripts": {
-    "prep:dist": "mkdir -p dist && rm -rf dist/* && mkdir -p dist-zip && rm -rf dist-zip/* && cp -rp fonts dist/ && cp -rp less dist/ && cp -rp js dist/",
-    "build:core-css": "lessc less/inviscss.less dist/css/inviscss.css --autoprefix && lessc less/inviscss.less dist/css/inviscss.min.css --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"",
-    "build:core-js" : "uglifyjs js/inviscss.js -c -m --comments -o dist/js/inviscss.min.js",
-    "zip:core": "cd dist && zip -rq ../dist-zip/inviscss-$npm_package_version.zip *",
-    "build:core": "npm run prep:dist && npm run build:core-js && npm run build:core-css && npm run zip:core",
-    "build:core-nz": "npm run prep:dist && npm run build:core-js && npm run build:core-css",
-  	"build:themes": "lerna exec -- node ../../build-theme.js",
-  	"build:themes-nz": "lerna exec -- node ../../build-theme.js --no-zip",
-  	"prep:docs": "mkdir -p docs/themes && rm -rf docs/themes/* && cp -r dist/* docs/ && rm -rf docs/less",
-  	"build:docs-css": "lessc docs/demo/less/admin-demo.less docs/demo/css/admin-demo.css --autoprefix && lessc docs/demo/less/admin-demo.less docs/demo/css/admin-demo.min.css --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"",
-  	"build":"npm run build:core && npm run prep:docs && npm run build:docs-css && npm run build:themes",
-  	"build-nz":"npm run build:core-nz && npm run prep:docs && npm run build:docs-css && npm run build:themes-nz"
+    "xprep:dist": "mkdir -p dist && rm -rf dist/* && mkdir -p dist-zip && rm -rf dist-zip/* && cp -rp fonts dist/ && cp -rp less dist/ && cp -rp js dist/",
+    "xbuild:core-css": "lessc less/inviscss.less dist/css/inviscss.css --autoprefix && lessc less/inviscss.less dist/css/inviscss.min.css --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"",
+    "xbuild:core-js" : "uglifyjs js/inviscss.js -c -m --comments -o dist/js/inviscss.min.js",
+    "xzip:core": "cd dist && zip -rq ../dist-zip/inviscss-$npm_package_version.zip *",
+    "xbuild:core": "npm run prep:dist && npm run build:core-js && npm run build:core-css && npm run zip:core",
+    "xbuild:core-nz": "npm run prep:dist && npm run build:core-js && npm run build:core-css",
+  	"xbuild:themes": "lerna exec -- node ../../build-theme.js",
+  	"xbuild:themes-nz": "lerna exec -- node ../../build-theme.js --no-zip",
+  	"xprep:docs": "mkdir -p docs/themes && rm -rf docs/themes/* && cp -r dist/* docs/ && rm -rf docs/less",
+  	"xbuild:docs-css": "lessc docs/demo/less/admin-demo.less docs/demo/css/admin-demo.css --autoprefix && lessc docs/demo/less/admin-demo.less docs/demo/css/admin-demo.min.css --autoprefix --clean-css=\"--s1 --advanced --compatibility=ie9\"",
+  	"xbuild":"npm run build:core && npm run prep:docs && npm run build:docs-css && npm run build:themes",
+  	"xbuild-nz":"npm run build:core-nz && npm run prep:docs && npm run build:docs-css && npm run build:themes-nz"
   },
   "devDependencies": {
     "uglify-js": "latest",
@@ -27,7 +27,7 @@
     "less-plugin-autoprefix": "latest",
     "less-plugin-clean-css": "latest",
     "font-awesome": "^4.7.0",
-    "normalize.css": "^5.0.0",
+    "xnormalize.css": "^5.0.0",
     "lerna": "2.0.0-beta.38"
   },
   "repository": {
