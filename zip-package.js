@@ -21,6 +21,7 @@ function addCommand(str, working_dir) {
 	cmds.push(cmd);
 }
 
+addCommand('mkdir -p ../../dist-zip && rm ../../dist-zip/'+pkg.name+'-*.zip || true', target)
 addCommand('zip -rq ../../dist-zip/'+pkg.name+'-'+pkg.version+'.zip js/* css/* less/* fonts/* README.md package.json', target)
 
 //console.log(cmds)
